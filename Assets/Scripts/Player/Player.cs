@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     #region Custom Methods
     void MovePlayer() {
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        characterController.Move(movement * movementDistance);
+        characterController.Move(movement * movementDistance * Time.deltaTime);
         if(movement != Vector3.zero) {
             playerDirection = movement.normalized;
         }
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
 
     void Dash() {
         if(dashReady && Convert.ToBoolean(Input.GetAxis("Fire1"))) {
-            characterController.Move(playerDirection * dashDistance);
+            characterController.Move(playerDirection * dashDistance * Time.deltaTime);
             StartCoroutine(WaitForDashCooldown(dashCooldown));
         }
     }
