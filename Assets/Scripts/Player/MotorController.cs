@@ -8,79 +8,108 @@ namespace RELIC
     {
         #region Field Declarations
         private CharacterController characterController;
-        private Vector3 playerDirection = Vector3.zero;
+        private Vector3 moveDirection = Vector3.zero;
         private Vector3 dashDirection = Vector3.zero;
         private bool dashReady = true;
         private bool dashActive = false;
+        private float stunTimer = 0f;
 
         [Header("Movement Properties")]
         [Tooltip("The distance a player can move normally.")]
-        [SerializeField] private float movementDistance = 1f;
+        [SerializeField] private float speed = 1f;
         [Tooltip("The distance multiplier a player gets when dashing.")]
-        [SerializeField] private float dashDistanceMultiplier = 3f;
+        [SerializeField] private float dashSpeedMultiplier = 3f;
         [Tooltip("The dash's duration.")]
         [SerializeField] private float dashDuration = 1f;
         [Tooltip("The cooldown after using a dash.")]
         [SerializeField] private float dashCooldown = 5f;
         [Tooltip("Should direction control during dashing be enabled?")]
-        [SerializeField] private bool canChangeDirectionDuringDash = false;
+        [SerializeField] private bool moveDuringDash = false;
+
+        public float StunTimer { get => stunTimer; set => stunTimer = value; }
         #endregion
 
         #region Unity Methods
-        void Start()
+        private void Start()
         {
             characterController = GetComponent<CharacterController>();
         }
 
-        void Update()
+        private void Update()
         {
             MovePlayer();
             Dash();
+            TickStun();
         }
         #endregion
 
         #region Custom Methods
-        void MovePlayer()
+        /// <summary>
+        /// Moves the player accourding to his input
+        /// </summary>
+        private void MovePlayer()
         {
+            // Defines the current input
             Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
-            if (movement != Vector3.zero)
-            {
-                playerDirection = movement.normalized;
-            }
+            // Defines the current player direction
+            moveDirection = movement.normalized;
 
-            if (dashActive)
+            // If the dash is active disable (or not) the player influence on the movement
+            if (dashActive == true)
             {
-                if (canChangeDirectionDuringDash)
+                if (moveDuringDash)
                 {
-                    movement = movement * dashDistanceMultiplier;
+                    movement = movement * dashSpeedMultiplier;
                 }
                 else
                 {
-                    movement = dashDirection * dashDistanceMultiplier;
+                    movement = dashDirection * dashSpeedMultiplier;
                 }
             }
 
-            characterController.Move(movement * movementDistance * Time.deltaTime);
+            // Moves the character with the character controller, if the player is not stunned
+            if (Mathf.Approximately(stunTimer, 0f))
+            {
+                characterController.Move(movement * speed * Time.deltaTime);
+            }
         }
 
-        void Dash()
+        /// <summary>
+        /// Gives a player a temporary boost in speed accourding to input and resource availability
+        /// </summary>
+        private void Dash()
         {
-            if (dashReady && playerDirection != Vector3.zero && Convert.ToBoolean(Input.GetAxis("Fire1")))
+            if (dashReady == true && !Mathf.Approximately(Input.GetAxis("Fire1"), 0f) && Mathf.Approximately(stunTimer, 0f))
             {
                 StartCoroutine(ResolveDash(dashDuration, dashCooldown));
             }
         }
+
+        /// <summary>
+        /// Ticks down the stun timer
+        /// </summary>
+        private void TickStun()
+        {
+            stunTimer = Mathf.Max(0f, stunTimer - Time.deltaTime);
+        }
         #endregion
 
         #region Coroutines
+        /// <summary>
+        /// Temporarily increases the speed of the player
+        /// </summary>
+        /// <param name="duration">How long the dash should last for</param>
+        /// <param name="cooldown">How long the cooldown of the dash is</param>
+        /// <returns></returns>
         private IEnumerator ResolveDash(float duration, float cooldown)
         {
             dashReady = false;
             dashActive = true;
-            if (!canChangeDirectionDuringDash)
+
+            if (!moveDuringDash)
             {
-                dashDirection = playerDirection;
+                dashDirection = moveDirection;
             }
 
             yield return new WaitForSeconds(duration);
