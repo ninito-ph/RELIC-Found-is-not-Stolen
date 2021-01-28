@@ -35,7 +35,7 @@ namespace RELIC
             trapEffectController.ActivateTrap();
             trapActivatorOnCooldown = true;
 
-            yield return new WaitForSeconds(trapActivationCooldown);
+            yield return new WaitForSeconds(trapActivationCooldown - trapActivationDelay);
 
             trapActivatorOnCooldown = false;
         }

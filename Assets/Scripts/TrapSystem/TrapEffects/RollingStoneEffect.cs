@@ -10,16 +10,20 @@ namespace RELIC
         [SerializeField] private GameObject rollingStoneObject;
         [Tooltip("The rolling stone's initial position and rotation.")]
         [SerializeField] private Transform rollingStoneInitialTransform;
-        [Tooltip("The rolling stone's torque.")]
-        [SerializeField] private float rollingStoneTorque = 1f;
+        [Tooltip("The rolling stone's velocity.")]
+        [SerializeField] private float rollingStoneVelocity = 1f;
 
         private Rigidbody rollingStoneRigidbody;
+        private SphereCollider rollingStoneCollider;
+        private Vector3 rollingStoneAddForcePosition;
         #endregion
 
         #region Unity Methods
         void Start()
         {
             rollingStoneRigidbody = rollingStoneObject.GetComponent<Rigidbody>();
+            rollingStoneCollider = rollingStoneObject.GetComponent<SphereCollider>();
+            rollingStoneAddForcePosition = rollingStoneInitialTransform.transform.position + Vector3.up * rollingStoneCollider.radius;
         }
         #endregion
 
@@ -28,7 +32,7 @@ namespace RELIC
         {
             rollingStoneObject.transform.SetPositionAndRotation(rollingStoneInitialTransform.position, rollingStoneInitialTransform.rotation);
             rollingStoneObject.SetActive(true);
-            rollingStoneRigidbody.AddTorque(rollingStoneObject.transform.forward * rollingStoneTorque);
+            rollingStoneRigidbody.AddForceAtPosition(rollingStoneObject.transform.forward * rollingStoneVelocity, rollingStoneAddForcePosition);
         }
         #endregion
     }
