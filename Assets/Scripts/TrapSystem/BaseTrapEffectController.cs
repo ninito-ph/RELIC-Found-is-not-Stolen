@@ -6,46 +6,79 @@ namespace RELIC {
     {
         #region Field Declarations
         [Header("Trap Effect Properties")]
-        [Tooltip("The trap effect's duration.")]
+        [Tooltip("The trap effect's type (Normal, Repeating or Toggle).")]
+        [SerializeField] private ETrapEffectType effectType;
+        [Tooltip("The trap effect's duration (only applies to non-Toggle traps).")]
         [SerializeField] private float effectDuration;
-        [Tooltip("The trap effect's number of ticks (only applies to DamageOverTime traps).")]
-        [SerializeField] private int effectTicks;
-        [Tooltip("The trap effect's cooldown.")]
-        [SerializeField] private float effectCooldown;
-        #endregion
+        [Tooltip("How many times a trap should repeat its effects (only applies to Repeating traps).")]
+        [SerializeField] private int effectRepeatAmount;
 
-        #region Unity Methods
-        virtual protected void OnEnable() {
-            ResolveEffect(effectDuration, effectCooldown);
-        }
+
+        private bool trapIsActive = false;
         #endregion
 
         #region Custom Methods
-        virtual protected void EnableEffect() {
+        public void ActivateTrap()
+        {
+            switch(effectType)
+            {
+                case ETrapEffectType.Normal:
+                    StartCoroutine(ResolveNormalEffect());
+                    break;
+                case ETrapEffectType.Repeating:
+                    StartCoroutine(ResolveRepeatingEffect());
+                    break;
+                case ETrapEffectType.Toggle:
+                    StartCoroutine(ResolveToggleEffect());
+                    break;
+            }
+        }
+
+        virtual protected void EnableEffect()
+        {
 
         }
 
-        virtual protected void TickEffect() {
-
-        }
-
-        virtual protected void DisableEffect() {
+        virtual protected void DisableEffect()
+        {
 
         }
         #endregion
 
         #region Coroutines
-        private IEnumerator ResolveEffect(float duration, float cooldown) {
+        private IEnumerator ResolveNormalEffect()
+        {
             EnableEffect();
 
-            yield return new WaitForSeconds(duration);
+            yield return new WaitForSeconds(effectDuration);
 
             DisableEffect();
+        }
 
-            yield return new WaitForSeconds(cooldown - duration);
+        private IEnumerator ResolveRepeatingEffect()
+        {
+            WaitForSeconds repeatInterval = new WaitForSeconds(effectDuration / (float)effectRepeatAmount);
 
-            this.gameObject.SetActive(false);
-            //TODO: allow trap to be activated again (though SetActive might be enough)
+            for(int i = 0; i < effectRepeatAmount; i++) {
+                EnableEffect();
+
+                yield return repeatInterval;
+            }
+
+            DisableEffect();
+        }
+
+        private IEnumerator ResolveToggleEffect()
+        {
+            if(trapIsActive) {
+                DisableEffect();
+                trapIsActive = false;
+            } else {
+                EnableEffect();
+                trapIsActive = true;
+            }
+
+            yield return null;
         }
         #endregion
     }

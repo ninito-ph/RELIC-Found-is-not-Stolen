@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace RELIC {
-    public abstract class BaseTrapActivationController : MonoBehaviour
+    public class BaseTrapActivationController : MonoBehaviour
     {
         #region Field Declarations
         [Header("Trap Activation Properties")]
@@ -9,14 +10,32 @@ namespace RELIC {
         [SerializeField] private BaseTrapEffectController trapEffectController;
         [Tooltip("The delay before activating a trap.")]
         [SerializeField] float trapActivationDelay;
+        [Tooltip("The trap activator's cooldown.")]
+        [SerializeField] private float trapActivationCooldown;
+
+        private bool trapActivatorOnCooldown = false;
         #endregion
 
         #region Unity Methods
         virtual protected void OnTriggerEnter(Collider collider)
         {
-            if(collider.CompareTag("Player") && trapEffectController.gameObject.activeSelf) {
-                trapEffectController.gameObject.SetActive(true);
+            if(collider.CompareTag("Player") && !trapActivatorOnCooldown) {
+                StartCoroutine(TriggerTrapActivation());
             }
+        }
+        #endregion
+
+        #region Coroutines
+        private IEnumerator TriggerTrapActivation()
+        {
+            yield return new WaitForSeconds(trapActivationDelay);
+
+            trapEffectController.ActivateTrap();
+            trapActivatorOnCooldown = true;
+
+            yield return new WaitForSeconds(trapActivationCooldown);
+
+            trapActivatorOnCooldown = false;
         }
         #endregion
     }
