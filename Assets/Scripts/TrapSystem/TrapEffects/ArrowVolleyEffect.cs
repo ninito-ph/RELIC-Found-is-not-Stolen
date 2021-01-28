@@ -31,7 +31,8 @@ namespace RELIC
         {
             arrowVolleyObject.transform.SetPositionAndRotation(arrowVolleyInitialTransform.position, arrowVolleyInitialTransform.rotation);
             arrowVolleyObject.SetActive(true);
-            arrowVolleyRigidbody.velocity = Vector3.forward * arrowVelocity;
+            arrowVolleyRigidbody.velocity = arrowVolleyObject.transform.forward * arrowVelocity;
+            StartCoroutine(DisableArrow());
         }
         #endregion
 
