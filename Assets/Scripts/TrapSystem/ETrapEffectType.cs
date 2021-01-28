@@ -1,4 +1,6 @@
-﻿public enum ETrapEffectType {
-    DamageOverTime,
-    InstantDamage
+﻿namespace RELIC {
+    public enum ETrapEffectType {
+        DamageOverTime,
+        InstantDamage
+    }
 }
