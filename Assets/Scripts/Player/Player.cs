@@ -8,7 +8,6 @@ namespace RELIC
     {
         #region Field Declarations
         private CharacterController characterController;
-        private Vector3 playerDirection = Vector3.zero;
         private bool dashReady = true;
         private bool dashActive = false;
 
@@ -40,11 +39,6 @@ namespace RELIC
         void MovePlayer()
         {
             Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-
-            if (movement != Vector3.zero)
-            {
-                playerDirection = movement.normalized;
-            }
 
             if (dashActive)
             {
