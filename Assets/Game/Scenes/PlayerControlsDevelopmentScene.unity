@@ -229,13 +229,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 219176239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50410608c8ea57a41a0fa098b327d18e, type: 3}
+  m_Script: {fileID: 11500000, guid: cd5471c0137b1d547b8e148872708041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementDistance: 7
   dashDistanceMultiplier: 3
-  dashDuration: 0.3
-  dashCooldown: 5
+  dashDuration: 0.15
+  dashCooldown: 1
   canChangeDirectionDuringDash: 0
 --- !u!1 &1016751852
 GameObject:
