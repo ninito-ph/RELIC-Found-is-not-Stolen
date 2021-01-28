@@ -235,6 +235,60 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Player 3",
+            "id": "a60d1e00-a729-4c5c-92cc-d1c71b43286c",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "321d35f1-b815-4312-afbc-decea7cfdbf3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7a3cf8c3-d420-4ad7-93c8-9e8b34449913",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player 4",
+            "id": "32a6a77b-4613-4330-8287-342a7310d521",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "71f570b3-2f37-43c7-bdea-72e51c852877",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "044b8e8b-3e5c-4334-8dd9-2be3f2b0a687",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

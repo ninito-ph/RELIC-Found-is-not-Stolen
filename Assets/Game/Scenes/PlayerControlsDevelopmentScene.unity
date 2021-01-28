@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -385,6 +385,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5565a31b-e89d-4675-a593-7e2a7e031ec5
     m_ActionName: Player 2/Fire[/Mouse/leftButton,/Keyboard/rightShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 321d35f1-b815-4312-afbc-decea7cfdbf3
+    m_ActionName: Player 3/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 71f570b3-2f37-43c7-bdea-72e51c852877
+    m_ActionName: Player 4/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player 1
@@ -464,6 +472,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5565a31b-e89d-4675-a593-7e2a7e031ec5
     m_ActionName: Player 2/Fire[/Mouse/leftButton,/Keyboard/rightShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 321d35f1-b815-4312-afbc-decea7cfdbf3
+    m_ActionName: Player 3/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 71f570b3-2f37-43c7-bdea-72e51c852877
+    m_ActionName: Player 4/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player 2
