@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace RELIC
 {
@@ -8,19 +9,20 @@ namespace RELIC
     {
         #region Field Declarations
         private CharacterController characterController;
+        private InputAction motorControllerActions;
         private Vector3 playerDirection = Vector3.zero;
         private Vector3 dashDirection = Vector3.zero;
         private bool dashReady = true;
         private bool dashActive = false;
 
         [Header("Movement Properties")]
-        [Tooltip("The distance a player can move normally.")]
+        [Tooltip("The normal movement's distance.")]
         [SerializeField] private float movementDistance = 1f;
-        [Tooltip("The distance multiplier a player gets when dashing.")]
+        [Tooltip("The dash's distance multiplier.")]
         [SerializeField] private float dashDistanceMultiplier = 3f;
         [Tooltip("The dash's duration.")]
         [SerializeField] private float dashDuration = 1f;
-        [Tooltip("The cooldown after using a dash.")]
+        [Tooltip("The dash's cooldown.")]
         [SerializeField] private float dashCooldown = 5f;
         [Tooltip("Should direction control during dashing be enabled?")]
         [SerializeField] private bool canChangeDirectionDuringDash = false;
@@ -30,19 +32,21 @@ namespace RELIC
         void Start()
         {
             characterController = GetComponent<CharacterController>();
+            motorControllerActions = GetComponent<PlayerInput>().actions.FindActionMap(name).FindAction("Move");
         }
 
         void Update()
         {
-            MovePlayer();
-            Dash();
+            Move();
+            LookTowardsMovementDirection();
         }
         #endregion
 
         #region Custom Methods
-        void MovePlayer()
+        public void Move()
         {
-            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+            Vector2 input = motorControllerActions.ReadValue<Vector2>();
+            Vector3 movement = new Vector3(input.x, 0f, input.y);
 
             if (movement != Vector3.zero)
             {
@@ -64,9 +68,13 @@ namespace RELIC
             characterController.Move(movement * movementDistance * Time.deltaTime);
         }
 
-        void Dash()
+        void LookTowardsMovementDirection() {
+            transform.LookAt(transform.position + playerDirection, Vector3.up);
+        }
+
+        public void Dash(InputAction.CallbackContext callbackContext)
         {
-            if (dashReady && playerDirection != Vector3.zero && Convert.ToBoolean(Input.GetAxis("Fire1")))
+            if (dashReady && playerDirection != Vector3.zero)
             {
                 StartCoroutine(ResolveDash(dashDuration, dashCooldown));
             }
