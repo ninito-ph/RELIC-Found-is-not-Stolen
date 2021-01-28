@@ -236,6 +236,7 @@ MonoBehaviour:
   dashDistanceMultiplier: 3
   dashDuration: 0.3
   dashCooldown: 5
+  canChangeDirectionDuringDash: 0
 --- !u!1 &1016751852
 GameObject:
   m_ObjectHideFlags: 0

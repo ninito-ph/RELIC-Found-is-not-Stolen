@@ -2,11 +2,12 @@
 using System.Collections;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class MotorController : MonoBehaviour
 {
     #region Field Declarations
     private CharacterController characterController;
     private Vector3 playerDirection = Vector3.zero;
+    private Vector3 dashDirection = Vector3.zero;
     private bool dashReady = true;
     private bool dashActive = false;
 
@@ -19,6 +20,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float dashDuration = 1f;
     [Tooltip("The cooldown after using a dash.")]
     [SerializeField] private float dashCooldown = 5f;
+    [Tooltip("Should direction control during dashing be enabled?")]
+    [SerializeField] private bool canChangeDirectionDuringDash = false;
     #endregion
 
     #region Unity Methods
@@ -43,23 +46,30 @@ public class Player : MonoBehaviour
         }
 
         if(dashActive) {
-            movement = movement * dashDistanceMultiplier;
+            if(canChangeDirectionDuringDash) {
+                movement = movement * dashDistanceMultiplier;
+            } else {
+                movement = dashDirection * dashDistanceMultiplier;
+            }
         }
 
         characterController.Move(movement * movementDistance * Time.deltaTime);
     }
 
     void Dash() {
-        if(dashReady && Convert.ToBoolean(Input.GetAxis("Fire1"))) {
-            StartCoroutine(WaitForDashCooldown(dashDuration, dashCooldown));
+        if(dashReady && playerDirection != Vector3.zero && Convert.ToBoolean(Input.GetAxis("Fire1"))) {
+            StartCoroutine(ResolveDash(dashDuration, dashCooldown));
         }
     }
     #endregion
 
     #region Coroutines
-    private IEnumerator WaitForDashCooldown(float duration, float cooldown) {
+    private IEnumerator ResolveDash(float duration, float cooldown) {
         dashReady = false;
         dashActive = true;
+        if(!canChangeDirectionDuringDash) {
+            dashDirection = playerDirection;
+        }
 
         yield return new WaitForSeconds(duration);
 
