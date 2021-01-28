@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace RELIC {
+namespace RELIC
+{
     public class ArrowVolleyEffect : BaseTrapEffectController
     {
         #region Field Declarations
@@ -19,13 +20,15 @@ namespace RELIC {
         #endregion
 
         #region Unity Methods
-        void Start() {
+        void Start()
+        {
             arrowVolleyRigidbody = arrowVolleyObject.GetComponent<Rigidbody>();
         }
         #endregion
 
         #region Base Class Methods
-        protected override void EnableEffect() {
+        protected override void EnableEffect()
+        {
             arrowVolleyObject.transform.SetPositionAndRotation(arrowVolleyInitialTransform.position, arrowVolleyInitialTransform.rotation);
             arrowVolleyObject.SetActive(true);
             arrowVolleyRigidbody.velocity = Vector3.forward * arrowVelocity;
@@ -33,7 +36,8 @@ namespace RELIC {
         #endregion
 
         #region Coroutines
-        private IEnumerator DisableArrow() {
+        private IEnumerator DisableArrow()
+        {
             yield return new WaitForSeconds(arrowLifetime);
 
             arrowVolleyObject.SetActive(false);

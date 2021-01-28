@@ -1,5 +1,7 @@
-namespace RELIC {
-    public enum ETrapEffectType {
+namespace RELIC
+{
+    public enum ETrapEffectType
+    {
         Normal,
         Repeating,
         Toggle

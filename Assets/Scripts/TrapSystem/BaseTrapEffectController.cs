@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace RELIC {
+namespace RELIC
+{
     public abstract class BaseTrapEffectController : MonoBehaviour
     {
         #region Field Declarations
@@ -59,7 +60,8 @@ namespace RELIC {
         {
             WaitForSeconds repeatInterval = new WaitForSeconds(effectDuration / (float)effectRepeatAmount);
 
-            for(int i = 0; i < effectRepeatAmount; i++) {
+            for(int i = 0; i < effectRepeatAmount; i++)
+            {
                 EnableEffect();
 
                 yield return repeatInterval;
@@ -70,10 +72,14 @@ namespace RELIC {
 
         private IEnumerator ResolveToggleEffect()
         {
-            if(trapIsActive) {
+            if(trapIsActive)
+            {
                 DisableEffect();
                 trapIsActive = false;
-            } else {
+            }
+
+            else
+            {
                 EnableEffect();
                 trapIsActive = true;
             }

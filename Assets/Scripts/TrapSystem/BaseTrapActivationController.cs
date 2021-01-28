@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace RELIC {
+namespace RELIC
+{
     public class BaseTrapActivationController : MonoBehaviour
     {
         #region Field Declarations
@@ -19,7 +20,8 @@ namespace RELIC {
         #region Unity Methods
         virtual protected void OnTriggerEnter(Collider collider)
         {
-            if(collider.CompareTag("Player") && !trapActivatorOnCooldown) {
+            if(collider.CompareTag("Player") && !trapActivatorOnCooldown)
+            {
                 StartCoroutine(TriggerTrapActivation());
             }
         }
