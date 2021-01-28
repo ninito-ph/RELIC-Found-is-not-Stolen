@@ -35,29 +35,35 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Custom Methods
-    void MovePlayer() {
+    void MovePlayer()
+    {
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
-        if(movement != Vector3.zero) {
+        if (movement != Vector3.zero)
+        {
             playerDirection = movement.normalized;
         }
 
-        if(dashActive) {
+        if (dashActive)
+        {
             movement = movement * dashDistanceMultiplier;
         }
 
         characterController.Move(movement * movementDistance * Time.deltaTime);
     }
 
-    void Dash() {
-        if(dashReady && Convert.ToBoolean(Input.GetAxis("Fire1"))) {
+    void Dash()
+    {
+        if (dashReady && Convert.ToBoolean(Input.GetAxis("Fire1")))
+        {
             StartCoroutine(WaitForDashCooldown(dashDuration, dashCooldown));
         }
     }
     #endregion
 
     #region Coroutines
-    private IEnumerator WaitForDashCooldown(float duration, float cooldown) {
+    private IEnumerator WaitForDashCooldown(float duration, float cooldown)
+    {
         dashReady = false;
         dashActive = true;
 
@@ -66,7 +72,7 @@ public class Player : MonoBehaviour
         dashActive = false;
 
         yield return new WaitForSeconds(cooldown - duration);
-        
+
         dashReady = true;
     }
     #endregion
