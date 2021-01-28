@@ -6,8 +6,6 @@ namespace RELIC {
     {
         #region Field Declarations
         [Header("Trap Effect Properties")]
-        [Tooltip("The trap effect's type (DamageOverTime or InstantDamage).")]
-        [SerializeField] private ETrapEffectType effectType;
         [Tooltip("The trap effect's duration.")]
         [SerializeField] private float effectDuration;
         [Tooltip("The trap effect's number of ticks (only applies to DamageOverTime traps).")]
@@ -18,15 +16,7 @@ namespace RELIC {
 
         #region Unity Methods
         virtual protected void OnEnable() {
-            switch(effectType) {
-                case ETrapEffectType.DamageOverTime:
-                    ResolveEffect(effectDuration, effectCooldown);
-                    break;
-
-                case ETrapEffectType.InstantDamage:
-                    ResolveEffectOverTime(effectDuration, effectTicks, effectCooldown);
-                    break;
-            }
+            ResolveEffect(effectDuration, effectCooldown);
         }
         #endregion
 
@@ -49,22 +39,6 @@ namespace RELIC {
             EnableEffect();
 
             yield return new WaitForSeconds(duration);
-
-            DisableEffect();
-
-            yield return new WaitForSeconds(cooldown - duration);
-
-            this.gameObject.SetActive(false);
-            //TODO: allow trap to be activated again (though SetActive might be enough)
-        }
-
-        private IEnumerator ResolveEffectOverTime(float duration, int ticks, float cooldown) {
-            WaitForSeconds tickInterval = new WaitForSeconds(duration / (float)ticks);
-
-            for(int i = 0; i < ticks; i++) {
-                TickEffect();
-                yield return tickInterval;
-            }
 
             DisableEffect();
 
