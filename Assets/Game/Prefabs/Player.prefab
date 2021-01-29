@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1295430132039595492}
   - component: {fileID: 1295430132039595495}
   - component: {fileID: 1295430132039595491}
-  - component: {fileID: 1295430132039595490}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -71,75 +70,6 @@ MonoBehaviour:
   dashCooldown: 1
   moveDuringDash: 0
   playerModel: {fileID: 3499944059923337805}
---- !u!114 &1295430132039595490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1295430132039595512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 1f46cc3100c761f4e9327aecad008768,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7f2d29f3-53a6-4cf8-85f0-7e56f661e6a8
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1295430132039595491}
-        m_MethodName: Dash
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ea8c31cb-fb3a-4e47-b067-cc58b7f0ea82
-    m_ActionName: Player/Fire[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5c3964e0-d25b-4103-8a5a-873ea03531cb
-    m_ActionName: LobbyControls/Join[/Keyboard/space,/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1295430132039595491}
-        m_MethodName: EnableGameManager
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5e61711c-751b-421d-b41c-b3bbd737437e
-    m_ActionName: "LobbyControls/Start[/Keyboard/enter,/ShanWan USB Wireless\u4747\u6161mepad/button10]"
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 31ac3149-31d6-4ada-9180-c0d33036ef86
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 8916238441529069629}
 --- !u!1 &1295430132184074716
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +255,7 @@ GameObject:
   - component: {fileID: 8916238441529069629}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MultiplayerCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -337,13 +267,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4545716418335011551}
-  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: 7.35, z: -8.15}
+  m_LocalRotation: {x: 0.5948227, y: 0, z: 0, w: 0.80385697}
+  m_LocalPosition: {x: 0, y: 15.1, z: -5.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1295430132039595492}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 73, y: 0, z: 0}
 --- !u!20 &8916238441529069629
 Camera:
   m_ObjectHideFlags: 0

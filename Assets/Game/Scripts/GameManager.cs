@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 namespace RELIC
 {
@@ -14,7 +13,7 @@ namespace RELIC
 
         [Header("Game Parameters")]
         [SerializeField] private float gameDuration = 120f;
-        private int playerCount = 2;
+        private int playerCount = 0;
 
         [Header("Item Parameters")]
         [SerializeField] private float itemRespawnTime = 10f;
@@ -59,9 +58,9 @@ namespace RELIC
 
         private void OnEnable()
         {
-            Debug.Log("Starting game...");
-            InputManager.playerInputManager.DisableJoining();
             StartGame();
+            SplitscreenController.splitscreenController.GetCameras();
+            SplitscreenController.splitscreenController.SetCameraAmount(playerCount);
         }
 
 #if UNITY_EDITOR
@@ -144,7 +143,8 @@ namespace RELIC
                 randomPoint = randomPoints[(int)Random.Range(0f, randomPoints.Length - 1)].position;
             }
 
-            return Instantiate(objectToSpawn, randomPoint, Quaternion.identity);
+            objectToSpawn.transform.SetPositionAndRotation(randomPoint, Quaternion.identity);
+            return objectToSpawn;
         }
         #endregion
 
@@ -174,8 +174,8 @@ namespace RELIC
             // Spawns all the players
             for (int index = 0; index < playerCount; index++)
             {
-                PlayerInput spawnedPlayerInput = SpawnInRandomPoint(playerSpawnPoints, playerPrefabs[index]).GetComponent<PlayerInput>();
-                spawnedPlayerInput.currentActionMap = spawnedPlayerInput.actions.FindActionMap("GameControls");
+                GameObject spawnedPlayer = SpawnInRandomPoint(playerSpawnPoints, playerPrefabs[index]);
+                spawnedPlayer.name = "Player" + index;
             }
 
             yield break;

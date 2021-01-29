@@ -455,7 +455,7 @@ PrefabInstance:
     - target: {fileID: 4137447946601607022, guid: ba01a36f412c8174c954fa0ca232675a,
         type: 3}
       propertyPath: m_Name
-      value: InputManager
+      value: LobbyManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba01a36f412c8174c954fa0ca232675a, type: 3}
