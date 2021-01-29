@@ -26,6 +26,7 @@ namespace RELIC
         private RelicController.Effects activeRelicEffect = RelicController.Effects.None;
         private float relicEffectModifier;
         private GameObject relic;
+        
 
         // Inspector
         [Header("Movement Parameters")] [Tooltip("The distance a player can move normally.")] [SerializeField]
@@ -42,6 +43,9 @@ namespace RELIC
 
         [Tooltip("Should direction control during dashing be enabled?")] [SerializeField]
         private bool moveDuringDash = false;
+
+        [Header("Active Relic Effects")]
+        private GameObject fireTrail;
 
         [Header("Fluff")] [SerializeField] private AudioClip stunAudio;
         [SerializeField] private AudioClip dashAudio;
@@ -127,6 +131,38 @@ namespace RELIC
 
         #region Custom Methods
 
+        /// <summary>
+        /// Ticks the active relic effects
+        /// </summary>
+        private void TickActiveRelicEffects()
+        {
+            // Performs relic action based on effect type
+            switch (activeRelicEffect)
+            {
+                
+                case RelicController.Effects.Shield:
+                    
+                    break;
+                
+                case RelicController.Effects.Trail:
+                    if (activeRelicEffect == RelicController.Effects.Trail)
+                    {
+                        Instantiate(fireTrail, transform.position, Quaternion.identity);
+                    }
+                    break;
+                
+                case RelicController.Effects.Points:
+                    if (activeRelicEffect == RelicController.Effects.Points)
+                    {
+                    }
+                    break;
+                
+                // Do nothing
+                default:
+                    break;
+            }
+        }
+        
         /// <summary>
         /// Robs a relic from a player
         /// </summary>
