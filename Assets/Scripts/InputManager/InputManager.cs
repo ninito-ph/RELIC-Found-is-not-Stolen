@@ -12,13 +12,14 @@ namespace RELIC
         #region Custom Methods
         public void OnPlayerJoin(PlayerInput playerInput)
         {
-            playerAmount ++;
+            GameManager.PlayerCount ++;
             playerInput.gameObject.name = "Player " + playerAmount;
+            playerInput.transform.SetParent(GameManager.PlayerPrefabs);
         }
 
         public void OnPlayerLeave(PlayerInput playerInput)
         {
-            playerAmount --;
+            GameManager.PlayerCount --;
         }
         #endregion
     }

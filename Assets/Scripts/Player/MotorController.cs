@@ -15,6 +15,8 @@ namespace RELIC
         private bool dashReady = true;
         private bool dashActive = false;
 
+        public bool DashActive { get => dashActive; set => dashActive = value; }
+
         [Header("Movement Properties")]
         [Tooltip("The normal movement's distance.")]
         [SerializeField] private float movementDistance = 1f;
