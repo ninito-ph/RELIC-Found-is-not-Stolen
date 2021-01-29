@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace RELIC
 {
@@ -8,7 +7,9 @@ namespace RELIC
     {
         #region Field Declarations
         private CharacterController characterController;
-        private InputAction motorControllerActions;
+        private string movementHorizontalAxis;
+        private string movementVerticalAxis;
+        private string dashAxis;
         private Vector3 moveDirection = Vector3.zero;
         private Vector3 dashDirection = Vector3.zero;
         private bool dashReady = true;
@@ -39,13 +40,16 @@ namespace RELIC
         void Start()
         {
             characterController = GetComponent<CharacterController>();
-            motorControllerActions = GetComponent<PlayerInput>().actions.FindAction("Move");
+            movementHorizontalAxis = name + "Horizontal";
+            movementVerticalAxis = name + "Vertical";
+            dashAxis = name + "Dash";
         }
 
         void Update()
         {
             MovePlayer();
             LookTowardsMovementDirection();
+            Dash();
             TickStun();
         }
         #endregion
@@ -57,8 +61,7 @@ namespace RELIC
         public void MovePlayer()
         {
             // Defines the current input
-            Vector2 input = motorControllerActions.ReadValue<Vector2>();
-            Vector3 movement = new Vector3(input.x, 0f, input.y);
+            Vector3 movement = new Vector3(Input.GetAxis(movementHorizontalAxis), 0f, Input.GetAxis(movementVerticalAxis));
 
             // Defines the current player direction
             if (movement != Vector3.zero)
@@ -96,10 +99,9 @@ namespace RELIC
         /// <summary>
         /// Gives a player a temporary boost in speed according to input and resource availability
         /// </summary>
-        /// <param name="callbackContext">The callback context in which the "Dash" button was pressed</param>
-        public void Dash(InputAction.CallbackContext callbackContext)
+        public void Dash()
         {
-            if (dashReady && Mathf.Approximately(stunTimer, 0f))
+            if (Input.GetButton(dashAxis) && dashReady && Mathf.Approximately(stunTimer, 0f))
             {
                 StartCoroutine(ResolveDash());
             }
