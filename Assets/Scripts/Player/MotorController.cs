@@ -7,29 +7,82 @@ namespace RELIC
     public class MotorController : MonoBehaviour
     {
         #region Field Declarations
+
+        // Movement
         private CharacterController characterController;
         private Vector3 moveDirection = Vector3.zero;
+
         private Vector3 dashDirection = Vector3.zero;
+
+        // Dash
         private bool dashReady = true;
+
         private bool dashActive = false;
+
+        // Stun
         private float stunTimer = 0f;
 
-        [Header("Movement Properties")]
-        [Tooltip("The distance a player can move normally.")]
-        [SerializeField] private float speed = 1f;
-        [Tooltip("The distance multiplier a player gets when dashing.")]
-        [SerializeField] private float dashSpeedMultiplier = 3f;
-        [Tooltip("The dash's duration.")]
-        [SerializeField] private float dashDuration = 1f;
-        [Tooltip("The cooldown after using a dash.")]
-        [SerializeField] private float dashCooldown = 5f;
-        [Tooltip("Should direction control during dashing be enabled?")]
-        [SerializeField] private bool moveDuringDash = false;
+        //Relic
+        private RelicController.Effects activeRelicEffect = RelicController.Effects.None;
+        private float relicEffectModifier;
+        private GameObject relic;
 
-        public float StunTimer { get => stunTimer; set => stunTimer = value; }
+        // Inspector
+        [Header("Movement Parameters")] [Tooltip("The distance a player can move normally.")] [SerializeField]
+        private float speed = 1f;
+
+        [Tooltip("The distance multiplier a player gets when dashing.")] [SerializeField]
+        private float dashSpeedMultiplier = 3f;
+
+        [Tooltip("The dash's duration.")] [SerializeField]
+        private float dashDuration = 1f;
+
+        [Tooltip("The cooldown after using a dash.")] [SerializeField]
+        private float dashCooldown = 5f;
+
+        [Tooltip("Should direction control during dashing be enabled?")] [SerializeField]
+        private bool moveDuringDash = false;
+
+        [Header("Fluff")] [SerializeField] private AudioClip stunAudio;
+        [SerializeField] private AudioClip dashAudio;
+        [SerializeField] private AudioClip stealAudio;
+
+        public int PlayerIndex { get; }
+
+        public float StunTimer
+        {
+            get => stunTimer;
+            set => stunTimer = value;
+        }
+
+        public bool DashActive
+        {
+            get => dashActive;
+            set => dashActive = value;
+        }
+
+        public RelicController.Effects ActiveRelicEffect
+        {
+            get => activeRelicEffect;
+            set => activeRelicEffect = value;
+        }
+
+        public float RelicEffectModifier
+        {
+            get => relicEffectModifier;
+            set => relicEffectModifier = value;
+        }
+
+        public GameObject Relic
+        {
+            get => relic;
+            set => relic = value;
+        }
+
         #endregion
 
         #region Unity Methods
+
         private void Start()
         {
             characterController = GetComponent<CharacterController>();
@@ -41,9 +94,51 @@ namespace RELIC
             Dash();
             TickStun();
         }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                MotorController otherPlayer = other.gameObject.GetComponent<MotorController>();
+
+                // Stuns player if other player has stun relic and is in a dash
+                if (otherPlayer.DashActive == true && otherPlayer.ActiveRelicEffect == RelicController.Effects.Stun &&
+                    dashActive == false)
+                {
+                    stunTimer = otherPlayer.RelicEffectModifier;
+                }
+
+                // Stuns other player if player is in a dash and has the stun relic
+                if (activeRelicEffect == RelicController.Effects.Stun && otherPlayer.DashActive == false &&
+                    dashActive == true)
+                {
+                    otherPlayer.StunTimer = relicEffectModifier;
+                }
+
+                // Robs a relic if player is in dash and other player has a relic
+                if (dashActive == true && otherPlayer.Relic != null)
+                {
+                    RobRelic(otherPlayer);
+                }
+            }
+        }
+
         #endregion
 
         #region Custom Methods
+
+        /// <summary>
+        /// Robs a relic from a player
+        /// </summary>
+        private void RobRelic(MotorController player)
+        {
+            Instantiate(player.Relic, player.transform.position, Quaternion.identity);
+
+            player.Relic = null;
+            player.RelicEffectModifier = 0;
+            player.ActiveRelicEffect = RelicController.Effects.None;
+        }
+
         /// <summary>
         /// Moves the player accourding to his input
         /// </summary>
@@ -71,7 +166,14 @@ namespace RELIC
             // Moves the character with the character controller, if the player is not stunned
             if (Mathf.Approximately(stunTimer, 0f))
             {
-                characterController.Move(movement * speed * Time.deltaTime);
+                if (activeRelicEffect == RelicController.Effects.Speed && dashActive == false)
+                {
+                    characterController.Move(movement * (speed * Time.deltaTime * relicEffectModifier));
+                }
+                else
+                {
+                    characterController.Move(movement * (speed * Time.deltaTime));
+                }
             }
         }
 
@@ -80,7 +182,8 @@ namespace RELIC
         /// </summary>
         private void Dash()
         {
-            if (dashReady == true && !Mathf.Approximately(Input.GetAxis("Fire1"), 0f) && Mathf.Approximately(stunTimer, 0f))
+            if (dashReady == true && !Mathf.Approximately(Input.GetAxis("Fire1"), 0f) &&
+                Mathf.Approximately(stunTimer, 0f))
             {
                 StartCoroutine(ResolveDash(dashDuration, dashCooldown));
             }
@@ -93,9 +196,11 @@ namespace RELIC
         {
             stunTimer = Mathf.Max(0f, stunTimer - Time.deltaTime);
         }
+
         #endregion
 
         #region Coroutines
+
         /// <summary>
         /// Temporarily increases the speed of the player
         /// </summary>
@@ -116,10 +221,18 @@ namespace RELIC
 
             dashActive = false;
 
-            yield return new WaitForSeconds(cooldown - duration);
+            if (activeRelicEffect == RelicController.Effects.Dash)
+            {
+                yield return new WaitForSeconds(Mathf.Max(relicEffectModifier - duration, duration));
+            }
+            else
+            {
+                yield return new WaitForSeconds(cooldown - duration);
+            }
 
             dashReady = true;
         }
+
         #endregion
     }
 }

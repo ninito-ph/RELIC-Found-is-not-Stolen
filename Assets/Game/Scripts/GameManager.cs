@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     #region Properties
     public int[] PlayerScores { get => playerScores; set => playerScores = value; }
     public int PlayerCount { get => playerCount; set => playerCount = value; }
+    public GameObject[] PlayerPrefabs { get => playerPrefabs; set => playerPrefabs = value; }
     #endregion
 
     #region MonoBehaviour Implementation
@@ -160,7 +161,7 @@ public class GameManager : MonoBehaviour
         // Spawns all the players
         for (int index = 0; index < playerCount; index++)
         {
-            SpawnInRandomPoint(playerSpawnPoints, playerPrefabs[index]);
+            SpawnInRandomPoint(playerSpawnPoints, PlayerPrefabs[index]);
         }
 
         yield break;
