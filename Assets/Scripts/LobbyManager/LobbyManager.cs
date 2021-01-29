@@ -25,13 +25,16 @@ namespace RELIC
             if(Input.GetButton("Join") && GameManager.gameManager.PlayerCount < 4)
             {
                 GameManager.gameManager.PlayerCount ++;
+                InterfaceController.interfaceController.UpdateNumberOfPlayers(GameManager.gameManager.PlayerCount);
             }
         }
 
         private void PlayerLeave()
         {
-            if (Input.GetButton("Leave") && GameManager.gameManager.PlayerCount > 0){
+            if (Input.GetButton("Leave") && GameManager.gameManager.PlayerCount > 0)
+            {
                 GameManager.gameManager.PlayerCount --;
+                InterfaceController.interfaceController.UpdateNumberOfPlayers(GameManager.gameManager.PlayerCount);
             }
         }
 
@@ -47,6 +50,8 @@ namespace RELIC
                 }
 
                 GameManager.gameManager.gameObject.SetActive(true);
+
+                InterfaceController.interfaceController.StartGame();
 
                 gameObject.SetActive(false);
             }
