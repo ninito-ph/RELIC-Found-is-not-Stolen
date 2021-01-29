@@ -65,11 +65,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5471c0137b1d547b8e148872708041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementDistance: 7
-  dashDistanceMultiplier: 3
+  speed: 7
+  dashSpeedMultiplier: 3
   dashDuration: 0.15
   dashCooldown: 1
-  canChangeDirectionDuringDash: 0
+  moveDuringDash: 0
   playerModel: {fileID: 3499944059923337805}
 --- !u!114 &1295430132039595490
 MonoBehaviour:
