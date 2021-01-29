@@ -49,6 +49,7 @@ namespace RELIC
         {
             MovePlayer();
             LookTowardsMovementDirection();
+            Dash();
             TickStun();
         }
         #endregion

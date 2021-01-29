@@ -47,6 +47,8 @@ namespace RELIC
                 }
 
                 GameManager.gameManager.gameObject.SetActive(true);
+
+                gameObject.SetActive(false);
             }
         }
         #endregion
