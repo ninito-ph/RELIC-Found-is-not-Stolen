@@ -120,9 +120,24 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5c3964e0-d25b-4103-8a5a-873ea03531cb
     m_ActionName: LobbyControls/Join[/Keyboard/space,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1295430132039595491}
+        m_MethodName: EnableGameManager
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5e61711c-751b-421d-b41c-b3bbd737437e
+    m_ActionName: "LobbyControls/Start[/Keyboard/enter,/ShanWan USB Wireless\u4747\u6161mepad/button10]"
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 4ce8de08-c248-4c58-ae63-ca44a121fa57
+  m_DefaultActionMap: 31ac3149-31d6-4ada-9180-c0d33036ef86
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 8916238441529069629}
 --- !u!1 &1295430132184074716

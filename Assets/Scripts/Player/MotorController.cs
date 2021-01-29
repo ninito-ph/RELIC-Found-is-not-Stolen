@@ -52,6 +52,16 @@ namespace RELIC
 
         #region Custom Methods
         /// <summary>
+        /// Enables the static GameManager. Last resort
+        /// </summary>
+        /// <param name="callbackContext">The callback context in which the "Start" button was pressed</param>
+        public void EnableGameManager(InputAction.CallbackContext callbackContext)
+        {
+            Debug.Log("Enabling Game Manager...");
+            GameManager.gameManager.gameObject.SetActive(true);
+        }
+
+        /// <summary>
         /// Moves the player according to his input
         /// </summary>
         public void MovePlayer()
