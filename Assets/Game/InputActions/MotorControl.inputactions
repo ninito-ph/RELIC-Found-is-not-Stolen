@@ -2,7 +2,67 @@
     "name": "MotorControl",
     "maps": [
         {
-            "name": "Player 1",
+            "name": "LobbyControls",
+            "id": "31ac3149-31d6-4ada-9180-c0d33036ef86",
+            "actions": [
+                {
+                    "name": "Join",
+                    "type": "Button",
+                    "id": "5c3964e0-d25b-4103-8a5a-873ea03531cb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e1084caf-da9c-450d-a519-690dea7410d5",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "07f3ee88-1336-4f5b-8368-7a3681b712fd",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fb9843b8-f457-4d5c-8c71-81b4c5149da1",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2cc1e43d-80d2-43c6-896e-111a1cb99e24",
+                    "path": "<HID::ShanWan USB WirelessGamepad >/button3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "GameControls",
             "id": "4ce8de08-c248-4c58-ae63-ca44a121fa57",
             "actions": [
                 {
@@ -110,111 +170,10 @@
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Player 2",
-            "id": "9dc04c57-601c-48d4-b44e-5f0ba859a445",
-            "actions": [
-                {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "29c9f25b-ac53-44c0-a245-bddf96cdca69",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Fire",
-                    "type": "Button",
-                    "id": "5565a31b-e89d-4675-a593-7e2a7e031ec5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "70188f40-58d7-4254-a65c-55fc7f407468",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Arrow Keys",
-                    "id": "1e7a7b90-9bb4-4057-8ae6-3d43b1f863d7",
-                    "path": "Dpad",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "8a5e5595-32bf-4558-afe3-374873693108",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "71726372-5aa1-4eef-9e54-79f121d2eac7",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "60ab8344-62b7-4272-9cb8-b6f0f1507e8c",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "064a1413-69b1-49d2-99d9-b21c9e6e9a56",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "f92cd119-90e2-40eb-b21a-7945e11d1489",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7315b67b-66a6-4ab3-99c4-9051e80f1519",
+                    "id": "9b832043-897e-4775-85d6-059a4ed029d2",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
@@ -225,66 +184,78 @@
                 },
                 {
                     "name": "",
-                    "id": "cac4c840-3334-490d-b474-f46292d36b64",
-                    "path": "<Keyboard>/rightShift",
+                    "id": "78207832-5203-427c-a16d-ccb063cffa62",
+                    "path": "<HID::ShanWan USB WirelessGamepad >/button3",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
+                    "groups": "Joystick",
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Player 3",
-            "id": "a60d1e00-a729-4c5c-92cc-d1c71b43286c",
-            "actions": [
+                },
                 {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "321d35f1-b815-4312-afbc-decea7cfdbf3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "7a3cf8c3-d420-4ad7-93c8-9e8b34449913",
-                    "path": "",
+                    "name": "Arrow Keys",
+                    "id": "3d9ebd97-747e-42a8-93ba-22d16c262f38",
+                    "path": "Dpad",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
+                    "action": "Move",
+                    "isComposite": true,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Player 4",
-            "id": "32a6a77b-4613-4330-8287-342a7310d521",
-            "actions": [
+                },
                 {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "71f570b3-2f37-43c7-bdea-72e51c852877",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "044b8e8b-3e5c-4334-8dd9-2be3f2b0a687",
-                    "path": "",
+                    "name": "up",
+                    "id": "93c93d87-a183-430b-8e12-704b29f0b931",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "New action",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "186ae1f4-84ce-4c40-afde-c931833a63f9",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "bb786c4f-c559-4e95-ae52-72720bcf8695",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "696ba938-5e8b-4bb9-89c4-abd0ae851a0b",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "914e460c-96fb-49b8-9bfa-6adb35b06f4d",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

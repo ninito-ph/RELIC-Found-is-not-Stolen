@@ -26,13 +26,17 @@ namespace RELIC
         [SerializeField] private float dashCooldown = 5f;
         [Tooltip("Should direction control during dashing be enabled?")]
         [SerializeField] private bool canChangeDirectionDuringDash = false;
+
+        [Header("Player Properties")]
+        [Tooltip("The player's character model.")]
+        [SerializeField] private Transform playerModel;
         #endregion
 
         #region Unity Methods
         void Start()
         {
             characterController = GetComponent<CharacterController>();
-            motorControllerActions = GetComponent<PlayerInput>().actions.FindActionMap(name).FindAction("Move");
+            motorControllerActions = GetComponent<PlayerInput>().actions.FindAction("Move");
         }
 
         void Update()
@@ -69,7 +73,7 @@ namespace RELIC
         }
 
         void LookTowardsMovementDirection() {
-            transform.LookAt(transform.position + playerDirection, Vector3.up);
+            playerModel.LookAt(transform.position + playerDirection, Vector3.up);
         }
 
         public void Dash(InputAction.CallbackContext callbackContext)
