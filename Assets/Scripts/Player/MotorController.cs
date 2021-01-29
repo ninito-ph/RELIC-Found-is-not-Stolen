@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace RELIC
 {
@@ -8,55 +8,66 @@ namespace RELIC
     {
         #region Field Declarations
         private CharacterController characterController;
+        private InputAction motorControllerActions;
         private Vector3 moveDirection = Vector3.zero;
         private Vector3 dashDirection = Vector3.zero;
         private bool dashReady = true;
         private bool dashActive = false;
         private float stunTimer = 0f;
 
+        public bool DashActive { get => dashActive; set => dashActive = value; }
+        public float StunTimer { get => stunTimer; set => stunTimer = value; }
+
         [Header("Movement Properties")]
-        [Tooltip("The distance a player can move normally.")]
+        [Tooltip("The normal movement's distance.")]
         [SerializeField] private float speed = 1f;
-        [Tooltip("The distance multiplier a player gets when dashing.")]
+        [Tooltip("The dash's distance multiplier.")]
         [SerializeField] private float dashSpeedMultiplier = 3f;
         [Tooltip("The dash's duration.")]
         [SerializeField] private float dashDuration = 1f;
-        [Tooltip("The cooldown after using a dash.")]
+        [Tooltip("The dash's cooldown.")]
         [SerializeField] private float dashCooldown = 5f;
         [Tooltip("Should direction control during dashing be enabled?")]
         [SerializeField] private bool moveDuringDash = false;
 
-        public float StunTimer { get => stunTimer; set => stunTimer = value; }
+        [Header("Player Properties")]
+        [Tooltip("The player's character model.")]
+        [SerializeField] private Transform playerModel;
         #endregion
 
         #region Unity Methods
-        private void Start()
+        void Start()
         {
             characterController = GetComponent<CharacterController>();
+            motorControllerActions = GetComponent<PlayerInput>().actions.FindAction("Move");
         }
 
-        private void Update()
+        void Update()
         {
             MovePlayer();
-            Dash();
+            LookTowardsMovementDirection();
             TickStun();
         }
         #endregion
 
         #region Custom Methods
         /// <summary>
-        /// Moves the player accourding to his input
+        /// Moves the player according to his input
         /// </summary>
-        private void MovePlayer()
+        public void MovePlayer()
         {
             // Defines the current input
-            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+            Vector2 input = motorControllerActions.ReadValue<Vector2>();
+            Vector3 movement = new Vector3(input.x, 0f, input.y);
 
             // Defines the current player direction
-            moveDirection = movement.normalized;
+            if (movement != Vector3.zero)
+            {
+                moveDirection = movement.normalized;
+            }
 
             // If the dash is active disable (or not) the player influence on the movement
-            if (dashActive == true)
+            if (dashActive)
             {
                 if (moveDuringDash)
                 {
@@ -76,13 +87,21 @@ namespace RELIC
         }
 
         /// <summary>
-        /// Gives a player a temporary boost in speed accourding to input and resource availability
+        /// Rotates character so that it looks towards the movement direction
         /// </summary>
-        private void Dash()
+        void LookTowardsMovementDirection() {
+            playerModel.LookAt(transform.position + moveDirection, Vector3.up);
+        }
+
+        /// <summary>
+        /// Gives a player a temporary boost in speed according to input and resource availability
+        /// </summary>
+        /// <param name="callbackContext">The callback context in which the "Dash" button was pressed</param>
+        public void Dash(InputAction.CallbackContext callbackContext)
         {
-            if (dashReady == true && !Mathf.Approximately(Input.GetAxis("Fire1"), 0f) && Mathf.Approximately(stunTimer, 0f))
+            if (dashReady && Mathf.Approximately(stunTimer, 0f))
             {
-                StartCoroutine(ResolveDash(dashDuration, dashCooldown));
+                StartCoroutine(ResolveDash());
             }
         }
 
@@ -99,24 +118,21 @@ namespace RELIC
         /// <summary>
         /// Temporarily increases the speed of the player
         /// </summary>
-        /// <param name="duration">How long the dash should last for</param>
-        /// <param name="cooldown">How long the cooldown of the dash is</param>
         /// <returns></returns>
-        private IEnumerator ResolveDash(float duration, float cooldown)
+        private IEnumerator ResolveDash()
         {
             dashReady = false;
             dashActive = true;
-
             if (!moveDuringDash)
             {
                 dashDirection = moveDirection;
             }
 
-            yield return new WaitForSeconds(duration);
+            yield return new WaitForSeconds(dashDuration);
 
             dashActive = false;
 
-            yield return new WaitForSeconds(cooldown - duration);
+            yield return new WaitForSeconds(dashCooldown - dashDuration);
 
             dashReady = true;
         }
