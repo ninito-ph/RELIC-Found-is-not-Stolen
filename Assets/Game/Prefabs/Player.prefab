@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5471c0137b1d547b8e148872708041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 4.4
   dashSpeedMultiplier: 3
   dashDuration: 0.15
   dashCooldown: 1
@@ -75,7 +75,8 @@ MonoBehaviour:
   relicTickInterval: 1
   playerModel: {fileID: 2849483154897461000}
   stunEffect: {fileID: 0}
-  dashEffect: {fileID: 0}
+  dashEffect: {fileID: 6128198943177155182, guid: 3441aedc6c63dd647bea334f8332c21e,
+    type: 3}
   stealEffect: {fileID: 0}
 --- !u!136 &425181403688130929
 CapsuleCollider:
@@ -345,12 +346,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30dd0ccb800a88d4eaef63758d81f5c0, type: 3}
---- !u!1 &3224776866970666418 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9028740289479600651, guid: 30dd0ccb800a88d4eaef63758d81f5c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 5876126646974508985}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2849483154897461000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8504863008164425905, guid: 30dd0ccb800a88d4eaef63758d81f5c0,
