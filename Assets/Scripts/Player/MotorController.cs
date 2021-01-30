@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RELIC
 {
@@ -57,10 +58,9 @@ namespace RELIC
         [Header("Player Properties")] [Tooltip("The player's character model.")] [SerializeField]
         private Transform playerModel;
 
-        [Header("Fluff")] [SerializeField] private AudioClip stunAudio;
-
-        [SerializeField] private AudioClip dashAudio;
-        [SerializeField] private AudioClip stealAudio;
+        [FormerlySerializedAs("stunAudio")] [Header("Fluff")] [SerializeField] private ParticleEffect stunEffect;
+        [FormerlySerializedAs("dashAudio")] [SerializeField] private ParticleEffect dashEffect;
+        [FormerlySerializedAs("stealAudio")] [SerializeField] private ParticleEffect stealEffect;
 
         public int PlayerIndex
         {
@@ -355,7 +355,7 @@ namespace RELIC
                         yield return null;
                         break;
                     case RelicController.Effects.Points:
-                        //GameManager.Instance.AddPoints(playerIndex, relicEffectModifier);
+                        GameManager.gameManager.AddScore(playerIndex, Mathf.RoundToInt(relicEffectModifier));
                         break;
                     case RelicController.Effects.Trail:
                         if (dashActive == true)
