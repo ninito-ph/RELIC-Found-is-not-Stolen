@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RELIC
 {
@@ -49,13 +46,9 @@ namespace RELIC
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Collision");
-
             // Checks if colliding gameObject is a player
             if (other.gameObject.CompareTag("Player") == true)
             {
-                Debug.Log("Contact");
-
                 // Check if colliding player is in a dash
                 if (other.gameObject.GetComponent<MotorController>().DashActive == true)
                 {
