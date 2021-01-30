@@ -503,6 +503,12 @@ MonoBehaviour:
   dashDuration: 0.15
   dashCooldown: 1
   moveDuringDash: 0
+  fireTrail: {fileID: 0}
+  relicTickInterval: 1
+  playerModel: {fileID: 0}
+  stunEffect: {fileID: 0}
+  dashEffect: {fileID: 0}
+  stealEffect: {fileID: 0}
 --- !u!143 &1850181762
 CharacterController:
   m_ObjectHideFlags: 0
