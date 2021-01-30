@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1778773306630037255
+--- !u!1 &3210512390515796933
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,71 +8,71 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1778773306630037257}
-  - component: {fileID: 1778773306630037254}
-  - component: {fileID: 1778773306630037256}
-  - component: {fileID: -583612871045898905}
+  - component: {fileID: 3210512390515796939}
+  - component: {fileID: 3210512390515796932}
+  - component: {fileID: 3210512390515796938}
+  - component: {fileID: 7773747249029852822}
   m_Layer: 0
-  m_Name: ArrowVolleyActivator
+  m_Name: FlameBarrierActivator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1778773306630037257
+--- !u!4 &3210512390515796939
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778773306630037255}
+  m_GameObject: {fileID: 3210512390515796933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2923241881265666096}
+  - {fileID: 3205410970179493457}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1778773306630037254
+--- !u!114 &3210512390515796932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778773306630037255}
+  m_GameObject: {fileID: 3210512390515796933}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33d7aaccaad4aa74eb1d0f162ae468ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapButtonObject: {fileID: 9082010050832400122}
-  trapButtonReadyTransform: {fileID: 2923241881265666096}
+  trapButtonObject: {fileID: 3934125318434289517}
+  trapButtonReadyTransform: {fileID: 3205410970179493457}
   trapButtonPressedOffset: {x: 0, y: -0.1, z: 0}
   trapButtonAnimationDuration: 0.5
   trapEffectController: {fileID: 0}
-  trapActivationDelay: 0.5
-  trapActivationCooldown: 5
---- !u!65 &1778773306630037256
+  trapActivationDelay: 1
+  trapActivationCooldown: 10
+--- !u!65 &3210512390515796938
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778773306630037255}
+  m_GameObject: {fileID: 3210512390515796933}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &-583612871045898905
+--- !u!54 &7773747249029852822
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778773306630037255}
+  m_GameObject: {fileID: 3210512390515796933}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -82,7 +82,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &9082010050832400122
+--- !u!1 &3934125318434289517
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,9 +90,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2923241881265666096}
-  - component: {fileID: 8474588647921154718}
-  - component: {fileID: 4314309850561170752}
+  - component: {fileID: 3205410970179493457}
+  - component: {fileID: 1423228387368197417}
+  - component: {fileID: 3681155801674746329}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -100,35 +100,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2923241881265666096
+--- !u!4 &3205410970179493457
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9082010050832400122}
+  m_GameObject: {fileID: 3934125318434289517}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1778773306630037257}
+  m_Father: {fileID: 3210512390515796939}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8474588647921154718
+--- !u!33 &1423228387368197417
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9082010050832400122}
+  m_GameObject: {fileID: 3934125318434289517}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4314309850561170752
+--- !u!23 &3681155801674746329
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9082010050832400122}
+  m_GameObject: {fileID: 3934125318434289517}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1

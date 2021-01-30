@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 288716610024880873}
   - component: {fileID: 2654871043691114009}
   m_Layer: 0
-  m_Name: Trigger
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,6 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d7aaccaad4aa74eb1d0f162ae468ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trapButtonObject: {fileID: 2403016426336653485}
+  trapButtonReadyTransform: {fileID: 4303753338910718353}
+  trapButtonPressedOffset: {x: 0, y: -0.1, z: 0}
+  trapButtonAnimationDuration: 0.5
   trapEffectController: {fileID: 0}
   trapActivationDelay: 0.5
   trapActivationCooldown: 15
