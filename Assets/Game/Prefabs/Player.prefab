@@ -69,7 +69,12 @@ MonoBehaviour:
   dashDuration: 0.15
   dashCooldown: 1
   moveDuringDash: 0
+  fireTrail: {fileID: 0}
+  relicTickInterval: 1
   playerModel: {fileID: 3499944059923337805}
+  stunAudio: {fileID: 0}
+  dashAudio: {fileID: 0}
+  stealAudio: {fileID: 0}
 --- !u!1 &1295430132184074716
 GameObject:
   m_ObjectHideFlags: 0
