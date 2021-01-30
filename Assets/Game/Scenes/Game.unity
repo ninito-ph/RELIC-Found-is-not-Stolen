@@ -478,6 +478,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4137447946601607019, guid: d8fc75dad273f874a9a0588c4ad2ffad,
+        type: 3}
+      propertyPath: playerCharacters.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137447946601607019, guid: d8fc75dad273f874a9a0588c4ad2ffad,
+        type: 3}
+      propertyPath: playerCharacters.Array.data[0]
+      value: 
+      objectReference: {fileID: 1295430132039595512, guid: 9271ad72e101d384f9c0519ef1ed16a6,
+        type: 3}
+    - target: {fileID: 4137447946601607019, guid: d8fc75dad273f874a9a0588c4ad2ffad,
+        type: 3}
+      propertyPath: playerCharacters.Array.data[1]
+      value: 
+      objectReference: {fileID: 1295430132039595512, guid: a03c377dcc24d9d4a9be69eecd0b2fe1,
+        type: 3}
+    - target: {fileID: 4137447946601607019, guid: d8fc75dad273f874a9a0588c4ad2ffad,
+        type: 3}
+      propertyPath: playerCharacters.Array.data[2]
+      value: 
+      objectReference: {fileID: 1295430132039595512, guid: b1ec8557e858f4740ab7fcf671d3fccf,
+        type: 3}
+    - target: {fileID: 4137447946601607019, guid: d8fc75dad273f874a9a0588c4ad2ffad,
+        type: 3}
+      propertyPath: playerCharacters.Array.data[3]
+      value: 
+      objectReference: {fileID: 1295430132039595512, guid: 6374079df66f94746a16a9e43e0b2c7e,
+        type: 3}
+    - target: {fileID: 4137447946601607019, guid: d8fc75dad273f874a9a0588c4ad2ffad,
+        type: 3}
+      propertyPath: playerCharacters.Array.data[4]
+      value: 
+      objectReference: {fileID: 8609475597605293583, guid: 2bb8acfbccb4e9243899644a7cc32cc2,
+        type: 3}
     - target: {fileID: 4137447946601607022, guid: d8fc75dad273f874a9a0588c4ad2ffad,
         type: 3}
       propertyPath: m_Name
@@ -739,7 +774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be5ad942dabc054c82ff72cf666b273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDuration: 120
+  gameDuration: 30
   itemRespawnTime: 10
   vase: {fileID: 6362452136248314263, guid: 6cf6b81b2d19d0742bed95c4b7d8fb7d, type: 3}
   playerSpawnPoints:
