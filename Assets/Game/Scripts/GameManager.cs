@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
+using RELIC;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform[] vaseSpawnPoints;
     [SerializeField] private float spawnCheckRadius = 1f;
     private int[] playerScores = new int[4];
-    
+
     private Coroutine spawnVaseRoutine;
     private Coroutine spawnPlayerRoutine;
     [Space]
@@ -77,11 +78,11 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Adds score to a given player
     /// </summary>
-    /// <param name="player">The index of the desired player</param>
-    /// <param name="playerScore">The score of the desired player</param>
-    public void AddScore(int player, int playerScore)
+    /// <param name="playerIndex">The index of the desired player</param>
+    /// <param name="score">The score of the desired player</param>
+    public void AddScore(int playerIndex, int score)
     {
-        playerScores[player] += playerScore;
+        playerScores[playerIndex] += score;
     }
 
     /// <summary>
@@ -161,7 +162,8 @@ public class GameManager : MonoBehaviour
         // Spawns all the players
         for (int index = 0; index < playerCount; index++)
         {
-            SpawnInRandomPoint(playerSpawnPoints, PlayerPrefabs[index]);
+            GameObject player = SpawnInRandomPoint(playerSpawnPoints, PlayerPrefabs[index]);
+            player.GetComponent<MotorController>().PlayerIndex = index;
         }
 
         yield break;
