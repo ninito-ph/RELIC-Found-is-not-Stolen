@@ -9,20 +9,22 @@ namespace RELIC
     public class GameManager : MonoBehaviour
     {
         #region Field Declarations
+
         public static GameManager gameManager = null;
 
-        [Header("Game Parameters")]
-        [SerializeField] private float gameDuration = 120f;
+        [Header("Game Parameters")] [SerializeField]
+        private float gameDuration = 120f;
+
         private int playerCount = 0;
 
-        [Header("Item Parameters")]
-        [SerializeField] private float itemRespawnTime = 10f;
+        [Header("Item Parameters")] [SerializeField]
+        private float itemRespawnTime = 10f;
+
         private int activeIdols = 0;
         private bool activeRelic = false;
         [SerializeField] private GameObject vase;
 
-        [Header("Spawn Parameters")]
-        private List<GameObject> playerPrefabs = new List<GameObject>();
+        [Header("Spawn Parameters")] private List<GameObject> playerPrefabs = new List<GameObject>();
         [SerializeField] private Transform[] playerSpawnPoints;
         [SerializeField] private Transform[] vaseSpawnPoints;
         [SerializeField] private float spawnCheckRadius = 1f;
@@ -30,25 +32,42 @@ namespace RELIC
 
         private Coroutine spawnVaseRoutine;
         private Coroutine spawnPlayerRoutine;
-        [Space]
 
-        [Header("Game Events")]
-        [SerializeField] private UnityEvent onGameStart;
+        [Space] [Header("Game Events")] [SerializeField]
+        private UnityEvent onGameStart;
+
         [SerializeField] private UnityEvent onGameEnd;
 
 #if UNITY_EDITOR
-        [Header("Debug")]
-        [SerializeField] private bool enableSpawnZoneDisplay = false;
+        [Header("Debug")] [SerializeField] private bool enableSpawnZoneDisplay = false;
 #endif
+
         #endregion
 
         #region Properties
-        public List<GameObject> PlayerPrefabs { get => playerPrefabs; set => playerPrefabs = value; }
-        public int[] PlayerScores { get => playerScores; set => playerScores = value; }
-        public int PlayerCount { get => playerCount; set => playerCount = value; }
+
+        public List<GameObject> PlayerPrefabs
+        {
+            get => playerPrefabs;
+            set => playerPrefabs = value;
+        }
+
+        public int[] PlayerScores
+        {
+            get => playerScores;
+            set => playerScores = value;
+        }
+
+        public int PlayerCount
+        {
+            get => playerCount;
+            set => playerCount = value;
+        }
+
         #endregion
 
         #region MonoBehaviour Implementation
+
         // Sets up the game before start
         private void Awake()
         {
@@ -83,18 +102,20 @@ namespace RELIC
             }
         }
 #endif
+
         #endregion
 
-    #region Public Methods
-    /// <summary>
-    /// Adds score to a given player
-    /// </summary>
-    /// <param name="playerIndex">The index of the desired player</param>
-    /// <param name="score">The score of the desired player</param>
-    public void AddScore(int playerIndex, int score)
-    {
-        playerScores[playerIndex] += score;
-    }
+        #region Public Methods
+
+        /// <summary>
+        /// Adds score to a given player
+        /// </summary>
+        /// <param name="playerIndex">The index of the desired player</param>
+        /// <param name="score">The score of the desired player</param>
+        public void AddScore(int playerIndex, int score)
+        {
+            playerScores[playerIndex] += score;
+        }
 
         /// <summary>
         /// Generates a string with the winner's name and his score
@@ -107,12 +128,15 @@ namespace RELIC
             // Gets the index of the highest score using LINQ
             int winningPlayer = System.Array.IndexOf(playerScores, largestScore) + 1;
 
-            string winnerString = "The winner is Player " + winningPlayer.ToString() + "! \n" + largestScore.ToString() + " points earned";
+            string winnerString = "The winner is Player " + winningPlayer.ToString() + "! \n" +
+                                  largestScore.ToString() + " points earned";
             return winnerString;
         }
+
         #endregion
 
         #region Private Methods
+
         /// <summary>
         /// Starts the game by spawning all players and vases
         /// </summary>
@@ -132,7 +156,7 @@ namespace RELIC
             // 9 is the largest amount of entities theoretically possible to be in a spawn zone (4 players + 5 dropped relics)
             Collider[] overlaps = new Collider[9];
 
-            Vector3 randomPoint = randomPoints[(int)Random.Range(0f, randomPoints.Length - 1)].position;
+            Vector3 randomPoint = randomPoints[(int) Random.Range(0f, randomPoints.Length - 1)].position;
 
             // Bitwise int
             int entityMask = LayerMask.GetMask("Entities");
@@ -140,15 +164,17 @@ namespace RELIC
             // This could possibly end up in an infinite loop, and its actually very bad performance-wise
             while (Physics.OverlapSphereNonAlloc(randomPoint, spawnCheckRadius, overlaps, entityMask) > 0)
             {
-                randomPoint = randomPoints[(int)Random.Range(0f, randomPoints.Length - 1)].position;
+                randomPoint = randomPoints[(int) Random.Range(0f, randomPoints.Length - 1)].position;
             }
 
             objectToSpawn.transform.SetPositionAndRotation(randomPoint, Quaternion.identity);
             return objectToSpawn;
         }
+
         #endregion
 
         #region Coroutines
+
         /// <summary>
         /// A game timer that waits the duration of the game and ends it
         /// </summary>
@@ -166,18 +192,18 @@ namespace RELIC
             onGameEnd.Invoke();
         }
 
-    /// <summary>
-    /// Spawns players in a random point
-    /// </summary>
-    private IEnumerator SpawnPlayers()
-    {
-        // Spawns all the players
-        for (int index = 0; index < playerCount; index++)
+        /// <summary>
+        /// Spawns players in a random point
+        /// </summary>
+        private IEnumerator SpawnPlayers()
         {
-            GameObject player = SpawnInRandomPoint(playerSpawnPoints, PlayerPrefabs[index]);
-            player.GetComponent<MotorController>().PlayerIndex = index;
-            player.name = "Player" + index;
-        }
+            // Spawns all the players
+            for (int index = 0; index < playerCount; index++)
+            {
+                GameObject player = SpawnInRandomPoint(playerSpawnPoints, PlayerPrefabs[index]);
+                player.GetComponent<MotorController>().PlayerIndex = index;
+                player.name = "Player" + index.ToString();
+            }
 
             yield break;
         }
@@ -214,6 +240,7 @@ namespace RELIC
                 yield return spawnInterval;
             }
         }
+
         #endregion
     }
 }
