@@ -58,9 +58,9 @@ namespace RELIC
         [Header("Player Properties")] [Tooltip("The player's character model.")] [SerializeField]
         private Transform playerModel;
 
-        [FormerlySerializedAs("stunAudio")] [Header("Fluff")] [SerializeField] private ParticleEffect stunEffect;
-        [FormerlySerializedAs("dashAudio")] [SerializeField] private ParticleEffect dashEffect;
-        [FormerlySerializedAs("stealAudio")] [SerializeField] private ParticleEffect stealEffect;
+        [FormerlySerializedAs("stunAudio")] [Header("Fluff")] [SerializeField] private GameObject stunEffect;
+        [FormerlySerializedAs("dashAudio")] [SerializeField] private GameObject dashEffect;
+        [FormerlySerializedAs("stealAudio")] [SerializeField] private GameObject stealEffect;
 
         public int PlayerIndex
         {
@@ -313,18 +313,26 @@ namespace RELIC
         /// <returns></returns>
         private IEnumerator ResolveDash()
         {
+            // Expends and activates dash
             dashReady = false;
             dashActive = true;
 
+            // Instantiates dash effect
+            Instantiate(dashEffect, transform.position, Quaternion.identity);
+
+            // Locks movement if desired
             if (!moveDuringDash)
             {
                 dashDirection = moveDirection;
             }
 
+            // Waits the dash duration before proceeding
             yield return new WaitForSeconds(dashDuration);
 
+            // Deactivates dash, as it has ended
             dashActive = false;
 
+            // Alters dash cooldown based on relic presence
             if (activeRelicEffect == RelicController.Effects.Dash)
             {
                 yield return new WaitForSeconds(Mathf.Max(relicEffectModifier - dashDuration, dashDuration));
@@ -334,6 +342,7 @@ namespace RELIC
                 yield return new WaitForSeconds(dashCooldown - dashDuration);
             }
 
+            // Marks dash as ready again
             dashReady = true;
         }
 
