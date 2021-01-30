@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RELIC
 {
@@ -9,15 +8,16 @@ namespace RELIC
     {
         #region Field Declarations
 
-        [Header("Relic Parameters")]
-        [SerializeField] private float relicLifetime;
+        [Header("Relic Parameters")] [SerializeField]
+        private float relicLifetime;
 
-        [Header("Effect Parameters")]
-        [SerializeField] private Effects relicEffect;
-        [SerializeField] private float relicEffectIntensity;
-        
-        [Header("Fluff")]
-        [SerializeField] private AudioClip relicPickupSound;
+        [Header("Effect Parameters")] [SerializeField]
+        private Effects relicEffect;
+
+        [FormerlySerializedAs("relicEffectIntensity")] [SerializeField]
+        private float relicEffectModifier;
+
+        [Header("Fluff")] [SerializeField] private AudioClip relicPickupSound;
 
         private Coroutine lifetimeRoutine;
 
@@ -34,10 +34,9 @@ namespace RELIC
         {
             if (other.CompareTag("Player") != true) return;
             MotorController player = other.GetComponent<MotorController>();
-            player.ActiveRelicEffect = relicEffect;
-            player.RelicEffectModifier = relicEffectIntensity;
+            player.SetRelic(relicEffect, relicEffectModifier, gameObject);
             AudioSource.PlayClipAtPoint(relicPickupSound, transform.position);
-            
+
             Destroy(gameObject);
         }
 
@@ -51,6 +50,8 @@ namespace RELIC
             Destroy(gameObject);
         }
 
+        #endregion
+
         public enum Effects
         {
             None,
@@ -61,7 +62,5 @@ namespace RELIC
             Stun,
             Trail
         }
-
-        #endregion
     }
 }
