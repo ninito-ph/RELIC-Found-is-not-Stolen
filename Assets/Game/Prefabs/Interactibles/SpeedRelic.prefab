@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3823117493077658788
+--- !u!1 &7640131330660942767
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5165989067241669015}
-  - component: {fileID: 7259224683684437692}
-  - component: {fileID: 5333315104219769978}
-  - component: {fileID: 944480712046387413}
-  - component: {fileID: 4110203752387617473}
-  - component: {fileID: 2389103590727234900}
+  - component: {fileID: 7011227603798366485}
+  - component: {fileID: 6260911466281408176}
+  - component: {fileID: 8144705532080382586}
+  - component: {fileID: 7405706859194508774}
+  - component: {fileID: 7405706859194508770}
   m_Layer: 0
-  m_Name: Relic Placeholder
+  m_Name: SpeedRelic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5165989067241669015
+--- !u!4 &7011227603798366485
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3823117493077658788}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 7640131330660942767}
+  m_LocalRotation: {x: 0, y: 0, z: 0.2588191, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7259224683684437692
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
+--- !u!33 &6260911466281408176
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3823117493077658788}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5333315104219769978
+  m_GameObject: {fileID: 7640131330660942767}
+  m_Mesh: {fileID: 570275127343607571, guid: 93b2cd4b838b6c74f8e417e59d09fe32, type: 3}
+--- !u!23 &8144705532080382586
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3823117493077658788}
+  m_GameObject: {fileID: 7640131330660942767}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 340f98bf9ae5c2c449efe9b904bd1785, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,49 +81,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &944480712046387413
-SphereCollider:
+--- !u!136 &7405706859194508774
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3823117493077658788}
+  m_GameObject: {fileID: 7640131330660942767}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.4
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4110203752387617473
+  m_Radius: 1.2
+  m_Height: 4.4
+  m_Direction: 1
+  m_Center: {x: -0.0014145377, y: 0.012581825, z: -0.00000017881393}
+--- !u!114 &7405706859194508770
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3823117493077658788}
+  m_GameObject: {fileID: 7640131330660942767}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21d9c0f737c3b2741a50dd1d3f450aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relicLifetime: 7
-  relicEffect: 1
-  relicEffectModifier: 10
-  relicPickupSound: {fileID: 0}
-  pickupEffect: {fileID: 1845240806346120, guid: b395d5d6eb4b4b846acc021ee036b744,
+  relicLifetime: 10
+  relicEffect: 2
+  relicEffectModifier: 1.45
+  pickupEffect: {fileID: 1845240806346120, guid: 87508af5da0bbf144a8f14bc4439325b,
     type: 3}
-  spawnEffect: {fileID: 1845240806346120, guid: b395d5d6eb4b4b846acc021ee036b744,
+  spawnEffect: {fileID: 6128198943177155182, guid: 76340460bdb1a794b87f63deffed091e,
     type: 3}
---- !u!135 &2389103590727234900
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3823117493077658788}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.6
-  m_Center: {x: 0, y: 0, z: 0}
