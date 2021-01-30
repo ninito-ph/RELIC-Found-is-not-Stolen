@@ -107,7 +107,7 @@ namespace RELIC
             // Gets the index of the highest score using LINQ
             int winningPlayer = System.Array.IndexOf(playerScores, largestScore) + 1;
 
-            string winnerString = "The winner is Player " + winningPlayer + "! \n" + largestScore + " points earned";
+            string winnerString = "The winner is Player " + winningPlayer.ToString() + "! \n" + largestScore.ToString() + " points earned";
             return winnerString;
         }
         #endregion
@@ -176,7 +176,7 @@ namespace RELIC
         {
             GameObject player = SpawnInRandomPoint(playerSpawnPoints, PlayerPrefabs[index]);
             player.GetComponent<MotorController>().PlayerIndex = index;
-            spawnedPlayer.name = "Player" + index;
+            player.name = "Player" + index;
         }
 
             yield break;

@@ -53,10 +53,9 @@ namespace RELIC
 
         [SerializeField] [Tooltip("How long should the player wait before triggering the relic effect")]
         private float relicTickInterval = 1;
-        
-        [Header("Player Properties")]
-        [Tooltip("The player's character model.")]
-        [SerializeField] private Transform playerModel;
+
+        [Header("Player Properties")] [Tooltip("The player's character model.")] [SerializeField]
+        private Transform playerModel;
 
         [Header("Fluff")] [SerializeField] private AudioClip stunAudio;
 
@@ -181,7 +180,8 @@ namespace RELIC
         public void MovePlayer()
         {
             // Defines the current input
-            Vector3 movement = new Vector3(Input.GetAxis(movementHorizontalAxis), 0f, Input.GetAxis(movementVerticalAxis));
+            Vector3 movement = new Vector3(Input.GetAxis(movementHorizontalAxis), 0f,
+                Input.GetAxis(movementVerticalAxis));
 
             // Defines the current player direction
             if (movement != Vector3.zero)
@@ -219,7 +219,8 @@ namespace RELIC
         /// <summary>
         /// Rotates character so that it looks towards the movement direction
         /// </summary>
-        void LookTowardsMovementDirection() {
+        void LookTowardsMovementDirection()
+        {
             playerModel.LookAt(transform.position + moveDirection, Vector3.up);
         }
 
@@ -228,7 +229,7 @@ namespace RELIC
         /// </summary>
         public void Dash()
         {
-            if (dashReady == true && !Mathf.Approximately(Input.GetAxis("Fire1"), 0f) &&
+            if (dashReady == true && Input.GetButtonDown(dashAxis) &&
                 Mathf.Approximately(stunTimer, 0f))
             {
                 StartCoroutine(ResolveDash());
@@ -293,11 +294,11 @@ namespace RELIC
 
             if (activeRelicEffect == RelicController.Effects.Dash)
             {
-                yield return new WaitForSeconds(Mathf.Max(relicEffectModifier - duration, duration));
+                yield return new WaitForSeconds(Mathf.Max(relicEffectModifier - dashDuration, dashDuration));
             }
             else
             {
-                yield return new WaitForSeconds(cooldown - duration);
+                yield return new WaitForSeconds(dashCooldown - dashDuration);
             }
 
             dashReady = true;

@@ -22,7 +22,7 @@ namespace RELIC
         #region Custom Methods
         private void PlayerJoin()
         {
-            if(Input.GetButton("Join") && GameManager.gameManager.PlayerCount < 4)
+            if(Input.GetButtonDown("Join") && GameManager.gameManager.PlayerCount < 4)
             {
                 GameManager.gameManager.PlayerCount ++;
                 InterfaceController.interfaceController.UpdateNumberOfPlayers(GameManager.gameManager.PlayerCount);
@@ -31,7 +31,7 @@ namespace RELIC
 
         private void PlayerLeave()
         {
-            if (Input.GetButton("Leave") && GameManager.gameManager.PlayerCount > 0)
+            if (Input.GetButtonDown("Leave") && GameManager.gameManager.PlayerCount > 0)
             {
                 GameManager.gameManager.PlayerCount --;
                 InterfaceController.interfaceController.UpdateNumberOfPlayers(GameManager.gameManager.PlayerCount);
