@@ -102,12 +102,15 @@ namespace RELIC
 
         #region Unity Methods
 
+        CharacterAnimation playerAnimation; 
+
         private void Start()
         {
             characterController = GetComponent<CharacterController>();
             movementHorizontalAxis = name + "Horizontal";
             movementVerticalAxis = name + "Vertical";
             dashAxis = name + "Dash";
+            playerAnimation = playerModel.GetComponent<CharacterAnimation>();
         }
 
         void Update()
@@ -188,6 +191,11 @@ namespace RELIC
             {
                 moveDirection = movement.normalized;
             }
+            else
+            {
+                playerAnimation.AnimateIdle();
+            }
+            
 
             // If the dash is active disable (or not) the player influence on the movement
             if (dashActive)
@@ -207,12 +215,36 @@ namespace RELIC
             {
                 if (activeRelicEffect == RelicController.Effects.Speed && dashActive == false)
                 {
-                    characterController.Move(movement * (speed * Time.deltaTime * relicEffectModifier));
+                    Vector3 finalmovement = movement * speed * relicEffectModifier * Time.deltaTime;
+                    if (finalmovement.magnitude > 0.01f)
+                    {
+                        playerAnimation.AnimateRun();
+                    }
+                    else
+                    {
+                        playerAnimation.AnimateStop();
+                    }
+
+                    characterController.Move(finalmovement);
+
                 }
                 else
                 {
-                    characterController.Move(movement * (speed * Time.deltaTime));
+                    Vector3 finalmovement = movement * speed * Time.deltaTime;
+                    if(finalmovement.magnitude > 0.01f)
+                    {
+                        playerAnimation.AnimateRun();
+                    }
+                    else
+                    {
+                        playerAnimation.AnimateStop();
+                    }
+                    characterController.Move(finalmovement);
                 }
+            }
+            else
+            {
+                playerAnimation.AnimateFall();
             }
 
             characterController.Move(Vector3.down * 0.2f);
@@ -235,6 +267,7 @@ namespace RELIC
                 Mathf.Approximately(stunTimer, 0f))
             {
                 StartCoroutine(ResolveDash());
+                playerAnimation.AnimateDash();
             }
         }
 
