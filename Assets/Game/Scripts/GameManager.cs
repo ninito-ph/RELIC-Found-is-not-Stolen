@@ -27,7 +27,10 @@ namespace RELIC
         [Header("Spawn Parameters")] private List<GameObject> playerPrefabs = new List<GameObject>();
         [SerializeField] private GameObject vase;
         [SerializeField] private Transform[] playerSpawnPoints;
-        [FormerlySerializedAs("playerRespawnDelay")] [SerializeField] private float playerRespawnStun = 5f;
+
+        [FormerlySerializedAs("playerRespawnDelay")] [SerializeField]
+        private float playerRespawnStun = 5f;
+
         [SerializeField] private Transform[] vaseSpawnPoints;
         [SerializeField] private float vaseSpawnDelay;
         [SerializeField] private float spawnCheckRadius = 1f;
@@ -145,6 +148,22 @@ namespace RELIC
             return winnerString;
         }
 
+        /// <summary>
+        /// Returns a relic to the spawnpool
+        /// </summary>
+        public void ReturnRelic(GameObject relic)
+        {
+            // Marks the the relic as inactive
+            if (relic == spawnableRelics[0])
+            {
+                activeRelic = false;
+            }
+            else
+            {
+                activeIdols++;
+            }
+        }
+
         #endregion
 
         #region Private Methods
@@ -185,7 +204,7 @@ namespace RELIC
                 activeRelic = true;
                 return spawnableRelics[0];
             }
-            
+
             // If there are not 4 items active, spawn them
             if (activeIdols < 4)
             {
@@ -254,7 +273,8 @@ namespace RELIC
             for (int index = 0; index < playerCount; index++)
             {
                 playerPrefabs[index].SetActive(true);
-                playerPrefabs[index].transform.SetPositionAndRotation(playerSpawnPoints[index].position, Quaternion.identity);
+                playerPrefabs[index].transform
+                    .SetPositionAndRotation(playerSpawnPoints[index].position, Quaternion.identity);
                 playerPrefabs[index].GetComponent<MotorController>().PlayerIndex = index;
             }
 
@@ -308,6 +328,7 @@ namespace RELIC
                 yield return interval;
             }
         }
+
         #endregion
     }
 }
