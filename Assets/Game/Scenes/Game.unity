@@ -1483,7 +1483,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 126
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
     - target: {fileID: 1094605168275786, guid: 692e45f793a2c7f4e8d41f76fa1ca621, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 126
@@ -8626,7 +8625,5 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 126
       objectReference: {fileID: 0}
-=======
->>>>>>> Stashed changes
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 692e45f793a2c7f4e8d41f76fa1ca621, type: 3}
