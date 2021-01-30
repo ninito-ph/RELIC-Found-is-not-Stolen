@@ -17,7 +17,7 @@ namespace RELIC
         [FormerlySerializedAs("relicEffectIntensity")] [SerializeField]
         private float relicEffectModifier;
 
-        [Header("Fluff")] [SerializeField] private AudioClip relicPickupSound;
+        [Header("Fluff")]
         [SerializeField] private GameObject pickupEffect;
         [SerializeField] private GameObject spawnEffect;
 
