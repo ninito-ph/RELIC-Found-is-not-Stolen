@@ -284,8 +284,6 @@ namespace RELIC
         /// </summary>
         private void HandlePlayerCollision(MotorController otherPlayer)
         {
-            Debug.Log("Taking place!");
-
             // Stuns player if other player has stun relic and is in a dash
             if (otherPlayer.DashActive && otherPlayer.ActiveRelicEffect == RelicController.Effects.Stun)
             {
