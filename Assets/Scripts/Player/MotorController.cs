@@ -1,4 +1,3 @@
-﻿using System;
 using System.Collections;
 using UnityEngine;
 
@@ -11,12 +10,10 @@ namespace RELIC
         // Movement
         private CharacterController characterController;
         private Vector3 moveDirection = Vector3.zero;
-
         private Vector3 dashDirection = Vector3.zero;
 
         // Dash
         private bool dashReady = true;
-
         private bool dashActive = false;
 
         // Stun
@@ -26,7 +23,11 @@ namespace RELIC
         private RelicController.Effects activeRelicEffect = RelicController.Effects.None;
         private float relicEffectModifier;
         private GameObject relic;
-        
+        private Coroutine relicEffecTimer;
+
+        // Other
+        private int playerIndex;
+        private bool shieldActive = false;
 
         // Inspector
         [Header("Movement Parameters")] [Tooltip("The distance a player can move normally.")] [SerializeField]
@@ -44,14 +45,22 @@ namespace RELIC
         [Tooltip("Should direction control during dashing be enabled?")] [SerializeField]
         private bool moveDuringDash = false;
 
-        [Header("Active Relic Effects")]
+        [Header("Active Relic Effects")] [SerializeField]
         private GameObject fireTrail;
 
+        [SerializeField] [Tooltip("How long should the player wait before triggering the relic effect")]
+        private float relicTickInterval = 1;
+
         [Header("Fluff")] [SerializeField] private AudioClip stunAudio;
+
         [SerializeField] private AudioClip dashAudio;
         [SerializeField] private AudioClip stealAudio;
 
-        public int PlayerIndex { get; }
+        public int PlayerIndex
+        {
+            get => playerIndex;
+            set => playerIndex = value;
+        }
 
         public float StunTimer
         {
@@ -99,70 +108,50 @@ namespace RELIC
             TickStun();
         }
 
-        private void OnCollisionEnter(Collision other)
+        private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Player"))
             {
                 MotorController otherPlayer = other.gameObject.GetComponent<MotorController>();
-
-                // Stuns player if other player has stun relic and is in a dash
-                if (otherPlayer.DashActive == true && otherPlayer.ActiveRelicEffect == RelicController.Effects.Stun &&
-                    dashActive == false)
-                {
-                    stunTimer = otherPlayer.RelicEffectModifier;
-                }
-
-                // Stuns other player if player is in a dash and has the stun relic
-                if (activeRelicEffect == RelicController.Effects.Stun && otherPlayer.DashActive == false &&
-                    dashActive == true)
-                {
-                    otherPlayer.StunTimer = relicEffectModifier;
-                }
-
-                // Robs a relic if player is in dash and other player has a relic
-                if (dashActive == true && otherPlayer.Relic != null)
-                {
-                    RobRelic(otherPlayer);
-                }
+                HandlePlayerCollision(otherPlayer);
             }
         }
 
         #endregion
 
-        #region Custom Methods
+        #region Public Methods
 
         /// <summary>
-        /// Ticks the active relic effects
+        /// Sets the player's current Relic
         /// </summary>
-        private void TickActiveRelicEffects()
+        /// <param name="activeRelicEffect">The effect of the active Relic</param>
+        /// <param name="relicEffectModifier">The numeric modifier for the relic's effect</param>
+        /// <param name="relic">The relic's gameObject</param>
+        public void SetRelic(RelicController.Effects activeRelicEffect, float relicEffectModifier, GameObject relic)
         {
-            // Performs relic action based on effect type
-            switch (activeRelicEffect)
+            this.activeRelicEffect = activeRelicEffect;
+            this.relicEffectModifier = relicEffectModifier;
+            this.relic = relic;
+
+            StartCoroutine(TickRelicEffect());
+        }
+
+        /// <summary>
+        /// Stuns a player for a given amount of seconds
+        /// </summary>
+        /// <param name="stunAmount">The amount of seconds to stun for</param>
+        public void Stun(float stunAmount)
+        {
+            if (dashActive == false && shieldActive == false)
             {
-                
-                case RelicController.Effects.Shield:
-                    
-                    break;
-                
-                case RelicController.Effects.Trail:
-                    if (activeRelicEffect == RelicController.Effects.Trail)
-                    {
-                        Instantiate(fireTrail, transform.position, Quaternion.identity);
-                    }
-                    break;
-                
-                case RelicController.Effects.Points:
-                    if (activeRelicEffect == RelicController.Effects.Points)
-                    {
-                    }
-                    break;
-                
-                // Do nothing
-                default:
-                    break;
+                stunTimer += stunAmount;
             }
         }
-        
+
+        #endregion
+
+        #region Private Methods
+
         /// <summary>
         /// Robs a relic from a player
         /// </summary>
@@ -233,6 +222,32 @@ namespace RELIC
             stunTimer = Mathf.Max(0f, stunTimer - Time.deltaTime);
         }
 
+        /// <summary>
+        /// Handles collisions between players
+        /// </summary>
+        private void HandlePlayerCollision(MotorController otherPlayer)
+        {
+            Debug.Log("Taking place!");
+
+            // Stuns player if other player has stun relic and is in a dash
+            if (otherPlayer.DashActive && otherPlayer.ActiveRelicEffect == RelicController.Effects.Stun)
+            {
+                Stun(relicEffectModifier);
+            }
+
+            // Stuns other player if player is in a dash and has the stun relic
+            if (activeRelicEffect == RelicController.Effects.Stun && dashActive)
+            {
+                otherPlayer.Stun(relicEffectModifier);
+            }
+
+            // Robs a relic if player is in dash and other player has a relic
+            if (dashActive && otherPlayer.Relic != null)
+            {
+                RobRelic(otherPlayer);
+            }
+        }
+
         #endregion
 
         #region Coroutines
@@ -247,6 +262,10 @@ namespace RELIC
         {
             dashReady = false;
             dashActive = true;
+
+            if (activeRelicEffect == RelicController.Effects.Shield)
+            {
+            }
 
             if (!moveDuringDash)
             {
@@ -267,6 +286,37 @@ namespace RELIC
             }
 
             dashReady = true;
+        }
+
+        /// <summary>
+        /// Runs a tick with a relic effect periodically
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator TickRelicEffect()
+        {
+            WaitForSeconds interval = new WaitForSeconds(relicTickInterval);
+
+            while (true)
+            {
+                switch (activeRelicEffect)
+                {
+                    default:
+                        yield return null;
+                        break;
+                    case RelicController.Effects.Points:
+                        //GameManager.Instance.AddPoints(playerIndex, relicEffectModifier);
+                        break;
+                    case RelicController.Effects.Trail:
+                        if (dashActive == true)
+                        {
+                            Instantiate(fireTrail, transform.position, Quaternion.identity);
+                        }
+
+                        break;
+                }
+
+                yield return interval;
+            }
         }
 
         #endregion
