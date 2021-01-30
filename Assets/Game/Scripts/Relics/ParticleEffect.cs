@@ -1,16 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace RELIC
 {
+    [RequireComponent(typeof(AudioSource), typeof(ParticleSystem))]
     public class ParticleEffect : MonoBehaviour
     {
         #region Field Declarations
 
-        [FormerlySerializedAs("particleSystem")] [SerializeField]
-        private ParticleSystem particleEffect;
+        [Header("Effect Parameters")] private ParticleSystem particleEffect;
+
+        private AudioSource audioSource;
+
+        [SerializeField] [Range(0.01f, 2f)] private float audioPitchUpperBound = 1;
+        [SerializeField] [Range(0.01f, 2f)] private float audioPitchLowerBound = 1;
 
         private Coroutine lifetimeRoutine;
 
@@ -21,19 +24,17 @@ namespace RELIC
         // Start is called before the first frame update
         void Start()
         {
+            // Caches components
             particleEffect = GetComponent<ParticleSystem>();
+            audioSource = GetComponent<AudioSource>();
+
+            // Play sound effect and particle effect
             particleEffect.Play();
-            StartCoroutine(Lifetime());
-        }
+            audioSource.pitch = Random.Range(Mathf.Min(audioPitchLowerBound, audioPitchUpperBound),
+                Mathf.Max(audioPitchLowerBound, audioPitchUpperBound));
+            audioSource.Play();
 
-        #endregion
-
-        #region Coroutines
-
-        private IEnumerator Lifetime()
-        {
-            yield return new WaitForSeconds(particleEffect.main.duration);
-            Destroy(gameObject);
+            Destroy(gameObject, Mathf.Max(particleEffect.main.duration, audioSource.clip.length));
         }
 
         #endregion
