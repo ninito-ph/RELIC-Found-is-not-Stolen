@@ -46,6 +46,7 @@ namespace RELIC
         public void StartGame()
         {
             lobbyTextObject.SetActive(false);
+            HUDController.hudController.gameObject.SetActive(true);
         }
         #endregion
     }
