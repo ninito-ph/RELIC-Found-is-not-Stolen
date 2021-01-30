@@ -136,15 +136,20 @@ namespace RELIC
         /// Generates a string with the winner's name and his score
         /// </summary>
         /// <returns>A string with the winner's name and his score</returns>
-        public string GetWinnerString()
+        public string GetWinnerScore()
         {
             // Gets the highest score using LINQ
             int largestScore = playerScores.Max();
+
+            if (largestScore == 0)
+            {
+                return "Search for the relic!";
+            }
+            
             // Gets the index of the highest score using LINQ
             int winningPlayer = System.Array.IndexOf(playerScores, largestScore) + 1;
 
-            string winnerString = "The winner is Player " + winningPlayer.ToString() + "! \n" +
-                                  largestScore.ToString() + " points earned";
+            string winnerString = "Player " + winningPlayer.ToString() + " has " + largestScore.ToString() + " points!";
             return winnerString;
         }
 
