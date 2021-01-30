@@ -18,6 +18,8 @@ namespace RELIC
         private float relicEffectModifier;
 
         [Header("Fluff")] [SerializeField] private AudioClip relicPickupSound;
+        [SerializeField] private ParticleEffect pickupEffect;
+        [SerializeField] private ParticleEffect spawnEffect;
 
         private Coroutine lifetimeRoutine;
 
@@ -32,6 +34,7 @@ namespace RELIC
 
         private void OnTriggerEnter(Collider other)
         {
+            // If other isn't player
             if (other.CompareTag("Player") != true) return;
             MotorController player = other.GetComponent<MotorController>();
             player.SetRelic(relicEffect, relicEffectModifier, gameObject);
@@ -46,7 +49,16 @@ namespace RELIC
 
         private IEnumerator Lifetime()
         {
+            // Shows spawn effect
+            Instantiate(spawnEffect, transform.position, Quaternion.identity);
+            
+            // Waits relic lifetime
             yield return new WaitForSeconds(relicLifetime);
+            
+            // Reuses spawn effect
+            Instantiate(spawnEffect, transform.position, Quaternion.identity);
+            
+            // Destroys relic
             Destroy(gameObject);
         }
 
