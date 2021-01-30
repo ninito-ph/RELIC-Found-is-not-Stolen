@@ -17,8 +17,6 @@ namespace RELIC
 
         [SerializeField] private GameObject breakEffect;
 
-        [SerializeField] private AudioClip breakSound;
-
         public GameObject ContainedItem
         {
             get => containedItem;
