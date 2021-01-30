@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44366303, g: 0.4929948, b: 0.5725512, a: 1}
+  m_IndirectSpecularColor: {r: 0.44366336, g: 0.49299508, b: 0.5725518, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1181,6 +1181,7 @@ MonoBehaviour:
   - {fileID: 1267298023}
   - {fileID: 407139994}
   - {fileID: 1188151917}
+  playerRespawnDelay: 3
   vaseSpawnPoints:
   - {fileID: 2119677131}
   - {fileID: 516599913}
@@ -1267,7 +1268,9 @@ MonoBehaviour:
   - {fileID: 779010079}
   - {fileID: 1552074415}
   - {fileID: 1201425650}
+  vaseSpawnDelay: 3
   spawnCheckRadius: 0.25
+  spawnableRelics: []
   onGameStart:
     m_PersistentCalls:
       m_Calls: []
