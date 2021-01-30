@@ -4,6 +4,7 @@ using UnityEngine.Serialization;
 
 namespace RELIC
 {
+    [RequireComponent(typeof(AudioSource))]
     public class MotorController : MonoBehaviour
     {
         #region Field Declarations
@@ -49,7 +50,8 @@ namespace RELIC
         [Tooltip("Should direction control during dashing be enabled?")] [SerializeField]
         private bool moveDuringDash = false;
 
-        [Header("Stun Parameters")] private float normalStunDuration = 1f;
+        [Header("Stun Parameters")] [SerializeField]
+        private float normalStunDuration = 1f;
 
         [Header("Active Relic Effects")] [SerializeField]
         private GameObject fireTrail;
@@ -68,6 +70,8 @@ namespace RELIC
 
         [FormerlySerializedAs("stealAudio")] [SerializeField]
         private GameObject stealEffect;
+
+        private AudioSource audioSource;
 
         public int PlayerIndex
         {
@@ -113,10 +117,13 @@ namespace RELIC
 
         private void Start()
         {
+            audioSource = GetComponent<AudioSource>();
             characterController = GetComponent<CharacterController>();
+
             movementHorizontalAxis = name + "Horizontal";
             movementVerticalAxis = name + "Vertical";
             dashAxis = name + "Dash";
+
             playerAnimation = playerModel.GetComponent<CharacterAnimation>();
         }
 
@@ -164,6 +171,7 @@ namespace RELIC
         {
             if (dashActive == false && shieldActive == false)
             {
+                Instantiate(stunEffect, transform.position + Vector3.up, Quaternion.Euler(90f, 0f, 0f));
                 stunTimer += stunAmount;
             }
         }
@@ -177,11 +185,14 @@ namespace RELIC
         /// </summary>
         private void RobRelic(MotorController player)
         {
-            Instantiate(player.Relic, player.transform.position, Quaternion.identity);
+            if (player.dashActive == false)
+            {
+                Instantiate(player.Relic, player.transform.position, Quaternion.identity);
 
-            player.Relic = null;
-            player.RelicEffectModifier = 0;
-            player.ActiveRelicEffect = RelicController.Effects.None;
+                player.Relic = null;
+                player.RelicEffectModifier = 0;
+                player.ActiveRelicEffect = RelicController.Effects.None;
+            }
         }
 
         /// <summary>
@@ -202,7 +213,6 @@ namespace RELIC
             {
                 playerAnimation.AnimateIdle();
             }
-
 
             // If the dash is active disable (or not) the player influence on the movement
             if (dashActive)
@@ -300,8 +310,8 @@ namespace RELIC
                 }
                 else
                 {
-                    // Regularly stun the player
-                    otherPlayer.Stun(relicEffectModifier);
+                    Debug.Log("regular stun");
+                    otherPlayer.Stun(normalStunDuration);
                 }
             }
 
@@ -331,6 +341,8 @@ namespace RELIC
 
             // Instantiates dash effect
             Instantiate(dashEffect, transform.position, Quaternion.identity);
+            audioSource.pitch = Random.Range(0.8f, 1.2f);
+            audioSource.Play();
 
             // Locks movement if desired
             if (!moveDuringDash)
