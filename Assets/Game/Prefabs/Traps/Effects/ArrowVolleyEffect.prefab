@@ -135,12 +135,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectType: 1
-  effectDuration: 1.5
+  effectDuration: 2.25
   effectRepeatAmount: 2
   arrowVolleyObject: {fileID: 1651614643887073163}
   arrowVolleyInitialTransform: {fileID: 1651614644773514652}
   arrowVelocity: 12
-  arrowLifetime: 0.375
+  arrowLifetime: 1
 --- !u!1001 &33218111008001672
 PrefabInstance:
   m_ObjectHideFlags: 0

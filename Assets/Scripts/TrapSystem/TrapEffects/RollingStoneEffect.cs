@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace RELIC
@@ -12,6 +13,8 @@ namespace RELIC
         [SerializeField] private Transform rollingStoneInitialTransform;
         [Tooltip("The rolling stone's velocity.")]
         [SerializeField] private float rollingStoneVelocity = 1f;
+        [Tooltip("The rolling stone's lifetime.")]
+        [SerializeField] private float rollingStoneLifetime = 3f;
 
         private Rigidbody rollingStoneRigidbody;
         private SphereCollider rollingStoneCollider;
@@ -33,6 +36,16 @@ namespace RELIC
             rollingStoneObject.transform.SetPositionAndRotation(rollingStoneInitialTransform.position, rollingStoneInitialTransform.rotation);
             rollingStoneObject.SetActive(true);
             rollingStoneRigidbody.AddForceAtPosition(rollingStoneObject.transform.forward * rollingStoneVelocity, rollingStoneAddForcePosition);
+            StartCoroutine(DisableRollingStone());
+        }
+        #endregion
+
+        #region Coroutines
+        private IEnumerator DisableRollingStone()
+        {
+            yield return new WaitForSeconds(rollingStoneLifetime);
+
+            rollingStoneObject.SetActive(false);
         }
         #endregion
     }

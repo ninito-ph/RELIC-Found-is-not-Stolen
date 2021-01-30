@@ -41,45 +41,33 @@ namespace RELIC
         {
             if(collider.CompareTag("Player") && !trapActivatorOnCooldown)
             {
+                trapActivatorOnCooldown = true;
                 StartCoroutine(TriggerTrapActivation());
             }
-        }
-        #endregion
-
-        #region Custom Methods
-        private void AnimatePressed()
-        {
-            StartCoroutine(AnimateButtonMovement(trapButtonReadyPosition, trapButtonPressedPosition));
-        }
-
-        private void AnimateReady()
-        {
-            StartCoroutine(AnimateButtonMovement(trapButtonPressedPosition, trapButtonReadyPosition));
         }
         #endregion
 
         #region Coroutines
         private IEnumerator TriggerTrapActivation()
         {
-            AnimatePressed();
+            StartCoroutine(AnimateButtonPressed());
 
             yield return new WaitForSeconds(trapActivationDelay);
 
             trapEffectController.ActivateTrap();
-            trapActivatorOnCooldown = true;
 
             yield return new WaitForSeconds(trapActivationCooldown - trapActivationDelay);
 
-            trapActivatorOnCooldown = false;
-            AnimateReady();
+            StartCoroutine(AnimateButtonReady());
         }
 
-        private IEnumerator AnimateButtonMovement(Vector3 initialPosition, Vector3 finalPosition)
+        private IEnumerator AnimateButtonPressed()
         {
             float t = 0f;
+
             while (t <= 1f)
             {
-                trapButtonObject.transform.position = Vector3.Lerp(initialPosition, finalPosition, t);
+                trapButtonObject.transform.position = Vector3.Lerp(trapButtonReadyPosition, trapButtonPressedPosition, t);
 
                 float tIncrease = Time.deltaTime / trapButtonAnimationDuration;
 
@@ -87,6 +75,24 @@ namespace RELIC
 
                 yield return new WaitForSeconds(tIncrease);
             }
+        }
+
+        private IEnumerator AnimateButtonReady()
+        {
+            float t = 0f;
+
+            while (t <= 1f)
+            {
+                trapButtonObject.transform.position = Vector3.Lerp(trapButtonPressedPosition, trapButtonReadyPosition, t);
+
+                float tIncrease = Time.deltaTime / trapButtonAnimationDuration;
+
+                t += tIncrease;
+
+                yield return new WaitForSeconds(tIncrease);
+            }
+
+            trapActivatorOnCooldown = false;
         }
         #endregion
     }
