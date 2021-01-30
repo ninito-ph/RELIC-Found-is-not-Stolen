@@ -30,7 +30,7 @@ namespace RELIC
                     StartCoroutine(ResolveRepeatingEffect());
                     break;
                 case ETrapEffectType.Toggle:
-                    StartCoroutine(ResolveToggleEffect());
+                    ResolveToggleEffect();
                     break;
             }
         }
@@ -43,6 +43,21 @@ namespace RELIC
         virtual protected void DisableEffect()
         {
 
+        }
+
+        private void ResolveToggleEffect()
+        {
+            if(trapIsActive)
+            {
+                DisableEffect();
+                trapIsActive = false;
+            }
+
+            else
+            {
+                EnableEffect();
+                trapIsActive = true;
+            }
         }
         #endregion
 
@@ -68,23 +83,6 @@ namespace RELIC
             }
 
             DisableEffect();
-        }
-
-        private IEnumerator ResolveToggleEffect()
-        {
-            if(trapIsActive)
-            {
-                DisableEffect();
-                trapIsActive = false;
-            }
-
-            else
-            {
-                EnableEffect();
-                trapIsActive = true;
-            }
-
-            yield return null;
         }
         #endregion
     }
