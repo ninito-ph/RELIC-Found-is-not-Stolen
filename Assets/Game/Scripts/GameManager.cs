@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace RELIC
 {
@@ -26,7 +27,7 @@ namespace RELIC
         [Header("Spawn Parameters")] private List<GameObject> playerPrefabs = new List<GameObject>();
         [SerializeField] private GameObject vase;
         [SerializeField] private Transform[] playerSpawnPoints;
-        [SerializeField] private float playerRespawnDelay;
+        [FormerlySerializedAs("playerRespawnDelay")] [SerializeField] private float playerRespawnStun = 5f;
         [SerializeField] private Transform[] vaseSpawnPoints;
         [SerializeField] private float vaseSpawnDelay;
         [SerializeField] private float spawnCheckRadius = 1f;
@@ -245,16 +246,16 @@ namespace RELIC
         }
 
         /// <summary>
-        /// Spawns players in a random point
+        /// Spawns players
         /// </summary>
         private IEnumerator SpawnPlayers()
         {
             // Spawns all the players
             for (int index = 0; index < playerCount; index++)
             {
-                //GameObject player = SpawnInRandomPoints(playerSpawnPoints, PlayerPrefabs[index]);
-                //player.GetComponent<MotorController>().PlayerIndex = index;
-                //player.name = "Player" + index.ToString();
+                playerPrefabs[index].SetActive(true);
+                playerPrefabs[index].transform.SetPositionAndRotation(playerSpawnPoints[index].position, Quaternion.identity);
+                playerPrefabs[index].GetComponent<MotorController>().PlayerIndex = index;
             }
 
             yield break;
@@ -306,10 +307,7 @@ namespace RELIC
 
                 yield return interval;
             }
-
-            yield break;
         }
-
         #endregion
     }
 }
