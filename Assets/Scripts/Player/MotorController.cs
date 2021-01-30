@@ -214,6 +214,8 @@ namespace RELIC
                     characterController.Move(movement * (speed * Time.deltaTime));
                 }
             }
+
+            characterController.Move(Vector3.down * 0.2f);
         }
 
         /// <summary>
