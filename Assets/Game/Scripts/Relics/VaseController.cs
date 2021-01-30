@@ -16,7 +16,9 @@ namespace RELIC
         private GameObject containedItem;
 
         [Space] [Header("Fluff")] [SerializeField]
-        private GameObject breakEffect;
+        private GameObject spawnEffect;
+
+        [SerializeField] private GameObject breakEffect;
 
         [SerializeField] private AudioClip breakSound;
 
@@ -30,6 +32,11 @@ namespace RELIC
 
         #region MonoBehavior implementation
 
+        private void Start()
+        {
+            Instantiate(spawnEffect, transform.position, Quaternion.identity);
+        }
+
         private void OnDestroy()
         {
             if (containedItem != null)
@@ -38,7 +45,6 @@ namespace RELIC
             }
 
             Instantiate(breakEffect, transform.position, Quaternion.identity);
-            AudioSource.PlayClipAtPoint(breakSound, transform.position);
         }
 
         private void OnTriggerEnter(Collider other)
