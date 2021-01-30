@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RELIC
 {
@@ -7,8 +8,8 @@ namespace RELIC
     {
         #region Field Declarations
 
-        [Header("Lobby Properties")] [Tooltip("The player prefab to be used.")] [SerializeField]
-        private GameObject playerPrefab;
+        [FormerlySerializedAs("playerPrefab")] [Header("Lobby Properties")] [Tooltip("The player prefab to be used.")] [SerializeField]
+        private GameObject[] playerCharacters;
 
         #endregion
 
@@ -49,7 +50,7 @@ namespace RELIC
             {
                 for (int index = 0; index < GameManager.gameManager.PlayerCount; index++)
                 {
-                    GameObject newPlayer = Instantiate(playerPrefab);
+                    GameObject newPlayer = Instantiate(playerCharacters[index]);
                     newPlayer.name = "Player" + index.ToString();
                     GameManager.gameManager.PlayerPrefabs.Add(newPlayer);
                 }
