@@ -113,7 +113,7 @@ namespace RELIC
             playerAnimation = playerModel.GetComponent<CharacterAnimation>();
         }
 
-        void Update()
+        private void Update()
         {
             MovePlayer();
             LookTowardsMovementDirection();
@@ -202,7 +202,7 @@ namespace RELIC
             {
                 if (moveDuringDash)
                 {
-                    movement = movement * dashSpeedMultiplier;
+                    movement *= dashSpeedMultiplier;
                 }
                 else
                 {
