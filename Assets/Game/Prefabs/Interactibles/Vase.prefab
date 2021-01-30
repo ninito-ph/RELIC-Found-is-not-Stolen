@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 5980824485382705965}
   - component: {fileID: 7255285512510823560}
   - component: {fileID: 4848974862014621762}
-  - component: {fileID: 6564936893922372671}
-  m_Layer: 0
-  m_Name: Jar
+  - component: {fileID: 2223789841758020445}
+  - component: {fileID: 1514028889213189236}
+  - component: {fileID: 7735353890929975436}
+  m_Layer: 8
+  m_Name: Vase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6362452136248314263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.362, y: -0.38671, z: -9.848}
+  m_LocalPosition: {x: -2.21, y: -0.37239772, z: 4.528}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,8 +82,26 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6564936893922372671
-BoxCollider:
+--- !u!114 &2223789841758020445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362452136248314263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778c4af9be5c49b409a79ce45772a124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  containedItem: {fileID: 0}
+  spawnEffect: {fileID: 6128198943177155182, guid: 76340460bdb1a794b87f63deffed091e,
+    type: 3}
+  breakEffect: {fileID: 5006921601033372919, guid: 3a2424299d4ecda4a9033c16b046c96a,
+    type: 3}
+  breakSound: {fileID: 8300000, guid: a6d4e2cf0f627604b99d614610cad543, type: 3}
+--- !u!136 &1514028889213189236
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -90,6 +110,21 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.65294445, y: 0.8000248, z: 0.61796176}
-  m_Center: {x: -0.0019336343, y: 0.4000124, z: 0.0045547485}
+  m_Radius: 0.27
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: -0.0006322861, y: 0.3733256, z: 0}
+--- !u!136 &7735353890929975436
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362452136248314263}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.33
+  m_Height: 1.1
+  m_Direction: 1
+  m_Center: {x: -0.0006322861, y: 0.3733256, z: 0}

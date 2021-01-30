@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RELIC
 {
@@ -16,33 +13,42 @@ namespace RELIC
         private GameObject containedItem;
 
         [Space] [Header("Fluff")] [SerializeField]
-        private GameObject breakEffect;
+        private GameObject spawnEffect;
+
+        [SerializeField] private GameObject breakEffect;
 
         [SerializeField] private AudioClip breakSound;
+
+        public GameObject ContainedItem
+        {
+            get => containedItem;
+            set => containedItem = value;
+        }
 
         #endregion
 
         #region MonoBehavior implementation
+
+        private void Start()
+        {
+            Instantiate(spawnEffect, transform.position, Quaternion.identity);
+        }
 
         private void OnDestroy()
         {
             if (containedItem != null)
             {
                 Instantiate(containedItem, transform.position, Quaternion.identity);
-                Instantiate(breakEffect, transform.position, Quaternion.identity);
-                AudioSource.PlayClipAtPoint(breakSound, transform.position);
             }
+
+            Instantiate(breakEffect, transform.position, Quaternion.identity);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Collision");
-
             // Checks if colliding gameObject is a player
             if (other.gameObject.CompareTag("Player") == true)
             {
-                Debug.Log("Contact");
-
                 // Check if colliding player is in a dash
                 if (other.gameObject.GetComponent<MotorController>().DashActive == true)
                 {

@@ -3,52 +3,83 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace RELIC
 {
     public class GameManager : MonoBehaviour
     {
         #region Field Declarations
+
         public static GameManager gameManager = null;
 
-        [Header("Game Parameters")]
-        [SerializeField] private float gameDuration = 120f;
+        [Header("Game Parameters")] [SerializeField]
+        private float gameDuration = 120f;
+
         private int playerCount = 0;
 
-        [Header("Item Parameters")]
-        [SerializeField] private float itemRespawnTime = 10f;
+        [Header("Item Parameters")] [SerializeField]
+        private float itemRespawnTime = 10f;
+
         private int activeIdols = 0;
         private bool activeRelic = false;
-        [SerializeField] private GameObject vase;
 
-        [Header("Spawn Parameters")]
-        private List<GameObject> playerPrefabs = new List<GameObject>();
+        [Header("Spawn Parameters")] private List<GameObject> playerPrefabs = new List<GameObject>();
+        [SerializeField] private GameObject vase;
         [SerializeField] private Transform[] playerSpawnPoints;
+        [FormerlySerializedAs("playerRespawnDelay")] [SerializeField] private float playerRespawnStun = 5f;
         [SerializeField] private Transform[] vaseSpawnPoints;
+        [SerializeField] private float vaseSpawnDelay;
         [SerializeField] private float spawnCheckRadius = 1f;
         private int[] playerScores = new int[4];
 
+        [SerializeField] [Tooltip("The relics used in the game. Element 0 should always be at the ")]
+        private GameObject[] spawnableRelics;
+
         private Coroutine spawnVaseRoutine;
         private Coroutine spawnPlayerRoutine;
-        [Space]
 
-        [Header("Game Events")]
-        [SerializeField] private UnityEvent onGameStart;
+        [Space] [Header("Game Events")] [SerializeField]
+        private UnityEvent onGameStart;
+
         [SerializeField] private UnityEvent onGameEnd;
 
 #if UNITY_EDITOR
-        [Header("Debug")]
-        [SerializeField] private bool enableSpawnZoneDisplay = false;
+        [Header("Debug")] [SerializeField] private bool enableSpawnZoneDisplay = false;
 #endif
+
         #endregion
 
         #region Properties
-        public List<GameObject> PlayerPrefabs { get => playerPrefabs; set => playerPrefabs = value; }
-        public int[] PlayerScores { get => playerScores; set => playerScores = value; }
-        public int PlayerCount { get => playerCount; set => playerCount = value; }
+
+        public List<GameObject> PlayerPrefabs
+        {
+            get => playerPrefabs;
+            set => playerPrefabs = value;
+        }
+
+        public int[] PlayerScores
+        {
+            get => playerScores;
+            set => playerScores = value;
+        }
+
+        public int PlayerCount
+        {
+            get => playerCount;
+            set => playerCount = value;
+        }
+
+        public float GameDuration
+        {
+            get => gameDuration;
+            set => gameDuration = value;
+        }
+
         #endregion
 
         #region MonoBehaviour Implementation
+
         // Sets up the game before start
         private void Awake()
         {
@@ -83,18 +114,20 @@ namespace RELIC
             }
         }
 #endif
+
         #endregion
 
-    #region Public Methods
-    /// <summary>
-    /// Adds score to a given player
-    /// </summary>
-    /// <param name="playerIndex">The index of the desired player</param>
-    /// <param name="score">The score of the desired player</param>
-    public void AddScore(int playerIndex, int score)
-    {
-        playerScores[playerIndex] += score;
-    }
+        #region Public Methods
+
+        /// <summary>
+        /// Adds score to a given player
+        /// </summary>
+        /// <param name="playerIndex">The index of the desired player</param>
+        /// <param name="score">The score of the desired player</param>
+        public void AddScore(int playerIndex, int score)
+        {
+            playerScores[playerIndex] += score;
+        }
 
         /// <summary>
         /// Generates a string with the winner's name and his score
@@ -107,57 +140,103 @@ namespace RELIC
             // Gets the index of the highest score using LINQ
             int winningPlayer = System.Array.IndexOf(playerScores, largestScore) + 1;
 
-            string winnerString = "The winner is Player " + winningPlayer.ToString() + "! \n" + largestScore.ToString() + " points earned";
+            string winnerString = "The winner is Player " + winningPlayer.ToString() + "! \n" +
+                                  largestScore.ToString() + " points earned";
             return winnerString;
         }
+
         #endregion
 
         #region Private Methods
+
         /// <summary>
         /// Starts the game by spawning all players and vases
         /// </summary>
         private void StartGame()
         {
+            // Spawns players and vases
             spawnPlayerRoutine = StartCoroutine(SpawnPlayers());
-
-            // Spawns vases
             spawnVaseRoutine = StartCoroutine(SpawnVases());
+            // Raises game start events
+            onGameStart.Invoke();
         }
 
         /// <summary>
-        /// Spawns an object in a random point
+        /// Checks whether a given position is occupied.
         /// </summary>
-        private GameObject SpawnInRandomPoint(Transform[] randomPoints, GameObject objectToSpawn)
+        /// <param name="bitwiseLayermask">A bitwise layer mask</param>
+        /// <param name="position">The position to check in</param>
+        /// <param name="overlaps">The array used to store overlaps in</param>
+        /// <returns>Whether the position is occupied or not by something in the given layer, at the given position</returns>
+        private bool IsLocationFree(int bitwiseLayermask, Vector3 position, Collider[] overlaps)
         {
-            // 9 is the largest amount of entities theoretically possible to be in a spawn zone (4 players + 5 dropped relics)
-            Collider[] overlaps = new Collider[9];
+            return Physics.OverlapSphereNonAlloc(position, spawnCheckRadius, overlaps, bitwiseLayermask) > 0;
+        }
 
-            Vector3 randomPoint = randomPoints[(int)Random.Range(0f, randomPoints.Length - 1)].position;
-
-            // Bitwise int
-            int entityMask = LayerMask.GetMask("Entities");
-
-            // This could possibly end up in an infinite loop, and its actually very bad performance-wise
-            while (Physics.OverlapSphereNonAlloc(randomPoint, spawnCheckRadius, overlaps, entityMask) > 0)
+        /// <summary>
+        /// Randomly picks a relic from the spawnable relics array
+        /// </summary>
+        /// <returns>The relic GameObject</returns>
+        private GameObject PickRelic()
+        {
+            // If the relic is not active, prioritize spawning it
+            if (activeRelic == false)
             {
-                randomPoint = randomPoints[(int)Random.Range(0f, randomPoints.Length - 1)].position;
+                activeRelic = true;
+                return spawnableRelics[0];
+            }
+            
+            // If there are not 4 items active, spawn them
+            if (activeIdols < 4)
+            {
+                activeIdols++;
+                return spawnableRelics[Random.Range(1, spawnableRelics.Length - 1)];
             }
 
-            objectToSpawn.transform.SetPositionAndRotation(randomPoint, Quaternion.identity);
-            return objectToSpawn;
+            return null;
         }
+
+        /// <summary>
+        /// Generates and returns a random quaternion rotation
+        /// </summary>
+        /// <param name="rotateX">Whether to randomize rotation on the X axis</param>
+        /// <param name="rotateY">Whether to randomize rotation on the Y axis</param>
+        /// <param name="rotateZ">Whether to randomize rotation on the Z axis</param>
+        /// <returns>A randomly rotated Quaternion</returns>
+        private Quaternion GetRandomRotation(bool rotateX, bool rotateY, bool rotateZ)
+        {
+            // Declares random rotations
+            float rotationX = 0f;
+            float rotationY = 0f;
+            float rotationZ = 0f;
+
+            if (rotateX == true)
+            {
+                rotationX = Random.Range(0f, 360f);
+            }
+
+            if (rotateY == true)
+            {
+                rotationY = Random.Range(0f, 360f);
+            }
+
+            if (rotateZ == true)
+            {
+                rotationZ = Random.Range(0f, 360f);
+            }
+
+            return Quaternion.Euler(rotationX, rotationY, rotationZ);
+        }
+
         #endregion
 
         #region Coroutines
+
         /// <summary>
         /// A game timer that waits the duration of the game and ends it
         /// </summary>
-        /// <param name="gameDuration">How long the game should endure</param>
         private IEnumerator GameTimer()
         {
-            // Notifies of game start
-            onGameStart.Invoke();
-
             // Waits match duration
             WaitForSeconds routineWait = new WaitForSeconds(gameDuration);
             yield return routineWait;
@@ -166,52 +245,67 @@ namespace RELIC
             onGameEnd.Invoke();
         }
 
-    /// <summary>
-    /// Spawns players in a random point
-    /// </summary>
-    private IEnumerator SpawnPlayers()
-    {
-        // Spawns all the players
-        for (int index = 0; index < playerCount; index++)
+        /// <summary>
+        /// Spawns players
+        /// </summary>
+        private IEnumerator SpawnPlayers()
         {
-            GameObject player = SpawnInRandomPoint(playerSpawnPoints, PlayerPrefabs[index]);
-            player.GetComponent<MotorController>().PlayerIndex = index;
-            player.name = "Player" + index;
-        }
+            // Spawns all the players
+            for (int index = 0; index < playerCount; index++)
+            {
+                playerPrefabs[index].SetActive(true);
+                playerPrefabs[index].transform.SetPositionAndRotation(playerSpawnPoints[index].position, Quaternion.identity);
+                playerPrefabs[index].GetComponent<MotorController>().PlayerIndex = index;
+            }
 
             yield break;
         }
 
+        // what the fuck, this method is a fucking leviathan
         /// <summary>
-        /// Spawns vases with items inside
+        /// Spawns vases periodically in randomized spawnpoints.
         /// </summary>
-        /// <returns></returns>
         private IEnumerator SpawnVases()
         {
-            WaitForSeconds spawnInterval = new WaitForSeconds(itemRespawnTime);
+            // Caches WaitForSeconds object
+            WaitForSeconds interval = new WaitForSeconds(vaseSpawnDelay);
+            // Creates dump array to store SphereOverlapNonAlloc in
+            Collider[] dumpArray = new Collider[10];
+            // Caches LayerMask
+            int bitwiseLayerMask = LayerMask.GetMask("Entities");
+
+            // Saves the array in a modifiable list
+            List<Transform> remainingPointsToSpawn = vaseSpawnPoints.ToList();
 
             while (true)
             {
-                if (activeRelic == false)
-                {
-                    GameObject relicVase = SpawnInRandomPoint(vaseSpawnPoints, vase);
-                    // VaseController relicVaseController = relicVase.GetComponent<VaseController>();
-                    // relicVaseController.ContainedItem = gameItems.Relic;
+                // Picks a random index in the remainingPointsToSpawn array
+                int randomIndex = Random.Range(0, remainingPointsToSpawn.Count - 1);
 
-                    activeRelic = true;
+                while (IsLocationFree(bitwiseLayerMask, remainingPointsToSpawn[randomIndex].position, dumpArray))
+                {
+                    // Removes occupied point from list
+                    remainingPointsToSpawn.Remove(remainingPointsToSpawn[randomIndex]);
+
+                    // Waits and refreshes the list before trying again
+                    if (remainingPointsToSpawn.Count == 0)
+                    {
+                        yield return new WaitForSeconds(vaseSpawnDelay * 5f);
+                        remainingPointsToSpawn = vaseSpawnPoints.ToList();
+                    }
+
+                    // Re-randomizes the spawnpoint index
+                    randomIndex = Random.Range(0, remainingPointsToSpawn.Count - 1);
+
+                    yield return null;
                 }
 
-                // Spawns idols until all idols are active
-                for (int index = activeIdols; index < 4; index++)
-                {
-                    GameObject idolVase = SpawnInRandomPoint(vaseSpawnPoints, vase);
-                    // VaseController idolVaseController = idolVaseController.GetComponent<VaseController>();
-                    // idolVaseController.ContainedItem = gameItems.RandomIdol;
+                // Spawns vase and gives it a random relic
+                VaseController vaseController = Instantiate(vase, remainingPointsToSpawn[randomIndex].position,
+                    GetRandomRotation(false, true, false)).GetComponent<VaseController>();
+                vaseController.ContainedItem = PickRelic();
 
-                    activeIdols++;
-                }
-
-                yield return spawnInterval;
+                yield return interval;
             }
         }
         #endregion

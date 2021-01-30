@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RELIC
 {
@@ -57,10 +58,9 @@ namespace RELIC
         [Header("Player Properties")] [Tooltip("The player's character model.")] [SerializeField]
         private Transform playerModel;
 
-        [Header("Fluff")] [SerializeField] private AudioClip stunAudio;
-
-        [SerializeField] private AudioClip dashAudio;
-        [SerializeField] private AudioClip stealAudio;
+        [FormerlySerializedAs("stunAudio")] [Header("Fluff")] [SerializeField] private GameObject stunEffect;
+        [FormerlySerializedAs("dashAudio")] [SerializeField] private GameObject dashEffect;
+        [FormerlySerializedAs("stealAudio")] [SerializeField] private GameObject stealEffect;
 
         public int PlayerIndex
         {
@@ -102,15 +102,18 @@ namespace RELIC
 
         #region Unity Methods
 
+        CharacterAnimation playerAnimation; 
+
         private void Start()
         {
             characterController = GetComponent<CharacterController>();
             movementHorizontalAxis = name + "Horizontal";
             movementVerticalAxis = name + "Vertical";
             dashAxis = name + "Dash";
+            playerAnimation = playerModel.GetComponent<CharacterAnimation>();
         }
 
-        void Update()
+        private void Update()
         {
             MovePlayer();
             LookTowardsMovementDirection();
@@ -188,13 +191,18 @@ namespace RELIC
             {
                 moveDirection = movement.normalized;
             }
+            else
+            {
+                playerAnimation.AnimateIdle();
+            }
+            
 
             // If the dash is active disable (or not) the player influence on the movement
             if (dashActive)
             {
                 if (moveDuringDash)
                 {
-                    movement = movement * dashSpeedMultiplier;
+                    movement *= dashSpeedMultiplier;
                 }
                 else
                 {
@@ -207,12 +215,36 @@ namespace RELIC
             {
                 if (activeRelicEffect == RelicController.Effects.Speed && dashActive == false)
                 {
-                    characterController.Move(movement * (speed * Time.deltaTime * relicEffectModifier));
+                    Vector3 finalmovement = movement * speed * relicEffectModifier * Time.deltaTime;
+                    if (finalmovement.magnitude > 0.01f)
+                    {
+                        playerAnimation.AnimateRun();
+                    }
+                    else
+                    {
+                        playerAnimation.AnimateStop();
+                    }
+
+                    characterController.Move(finalmovement);
+
                 }
                 else
                 {
-                    characterController.Move(movement * (speed * Time.deltaTime));
+                    Vector3 finalmovement = movement * speed * Time.deltaTime;
+                    if(finalmovement.magnitude > 0.01f)
+                    {
+                        playerAnimation.AnimateRun();
+                    }
+                    else
+                    {
+                        playerAnimation.AnimateStop();
+                    }
+                    characterController.Move(finalmovement);
                 }
+            }
+            else
+            {
+                playerAnimation.AnimateFall();
             }
 
             characterController.Move(Vector3.down * 0.2f);
@@ -235,6 +267,7 @@ namespace RELIC
                 Mathf.Approximately(stunTimer, 0f))
             {
                 StartCoroutine(ResolveDash());
+                playerAnimation.AnimateDash();
             }
         }
 
@@ -251,8 +284,6 @@ namespace RELIC
         /// </summary>
         private void HandlePlayerCollision(MotorController otherPlayer)
         {
-            Debug.Log("Taking place!");
-
             // Stuns player if other player has stun relic and is in a dash
             if (otherPlayer.DashActive && otherPlayer.ActiveRelicEffect == RelicController.Effects.Stun)
             {
@@ -282,18 +313,26 @@ namespace RELIC
         /// <returns></returns>
         private IEnumerator ResolveDash()
         {
+            // Expends and activates dash
             dashReady = false;
             dashActive = true;
 
+            // Instantiates dash effect
+            Instantiate(dashEffect, transform.position, Quaternion.identity);
+
+            // Locks movement if desired
             if (!moveDuringDash)
             {
                 dashDirection = moveDirection;
             }
 
+            // Waits the dash duration before proceeding
             yield return new WaitForSeconds(dashDuration);
 
+            // Deactivates dash, as it has ended
             dashActive = false;
 
+            // Alters dash cooldown based on relic presence
             if (activeRelicEffect == RelicController.Effects.Dash)
             {
                 yield return new WaitForSeconds(Mathf.Max(relicEffectModifier - dashDuration, dashDuration));
@@ -303,6 +342,7 @@ namespace RELIC
                 yield return new WaitForSeconds(dashCooldown - dashDuration);
             }
 
+            // Marks dash as ready again
             dashReady = true;
         }
 
@@ -322,7 +362,7 @@ namespace RELIC
                         yield return null;
                         break;
                     case RelicController.Effects.Points:
-                        //GameManager.Instance.AddPoints(playerIndex, relicEffectModifier);
+                        GameManager.gameManager.AddScore(playerIndex, Mathf.RoundToInt(relicEffectModifier));
                         break;
                     case RelicController.Effects.Trail:
                         if (dashActive == true)

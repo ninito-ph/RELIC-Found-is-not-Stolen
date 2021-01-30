@@ -40,7 +40,11 @@ public class CharacterAnimation : MonoBehaviour
 
     public void AnimateStop()
     {
-        Animate(STOP_ANIMATION_BOOL);
+        if (!animator.GetBool(IDLE_ANIMATION_BOOL))
+        {
+            Animate(STOP_ANIMATION_BOOL);
+        }
+       
     }
 
     #endregion
