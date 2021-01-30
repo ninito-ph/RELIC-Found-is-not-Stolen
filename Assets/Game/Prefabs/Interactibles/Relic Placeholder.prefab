@@ -108,9 +108,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relicLifetime: 7
-  relicEffect: 0
-  relicEffectModifier: 0
+  relicEffect: 1
+  relicEffectModifier: 10
   relicPickupSound: {fileID: 0}
+  pickupEffect: {fileID: 0}
+  spawnEffect: {fileID: 0}
 --- !u!135 &2389103590727234900
 SphereCollider:
   m_ObjectHideFlags: 0
