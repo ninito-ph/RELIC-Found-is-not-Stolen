@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5006921601033676511}
   - component: {fileID: 5006921601019501873}
   - component: {fileID: 5006921601019428095}
+  - component: {fileID: 2270928021504707270}
   m_Layer: 0
   m_Name: JarBreakFX
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5006921601033372919}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 17.780718, y: -0.16912603, z: 3.1419253}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 5006921601033658485}
   m_Father: {fileID: 0}
@@ -4705,6 +4706,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 6617962447968786754, guid: 4d1073e25eb5d9d4289f801aa5085441, type: 3}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &2270928021504707270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5006921601033372919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 511a6e81bdfcc424fba2f79a38915b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleEffect: {fileID: 0}
 --- !u!1001 &1186580662794045669
 PrefabInstance:
   m_ObjectHideFlags: 0

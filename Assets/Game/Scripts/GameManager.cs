@@ -85,16 +85,16 @@ namespace RELIC
 #endif
         #endregion
 
-        #region Public Methods
-        /// <summary>
-        /// Adds score to a given player
-        /// </summary>
-        /// <param name="player">The index of the desired player</param>
-        /// <param name="playerScore">The score of the desired player</param>
-        public void AddScore(int player, int playerScore)
-        {
-            playerScores[player] += playerScore;
-        }
+    #region Public Methods
+    /// <summary>
+    /// Adds score to a given player
+    /// </summary>
+    /// <param name="playerIndex">The index of the desired player</param>
+    /// <param name="score">The score of the desired player</param>
+    public void AddScore(int playerIndex, int score)
+    {
+        playerScores[playerIndex] += score;
+    }
 
         /// <summary>
         /// Generates a string with the winner's name and his score
@@ -166,17 +166,18 @@ namespace RELIC
             onGameEnd.Invoke();
         }
 
-        /// <summary>
-        /// Spawns players in a random point
-        /// </summary>
-        private IEnumerator SpawnPlayers()
+    /// <summary>
+    /// Spawns players in a random point
+    /// </summary>
+    private IEnumerator SpawnPlayers()
+    {
+        // Spawns all the players
+        for (int index = 0; index < playerCount; index++)
         {
-            // Spawns all the players
-            for (int index = 0; index < playerCount; index++)
-            {
-                GameObject spawnedPlayer = SpawnInRandomPoint(playerSpawnPoints, playerPrefabs[index]);
-                spawnedPlayer.name = "Player" + index;
-            }
+            GameObject player = SpawnInRandomPoint(playerSpawnPoints, PlayerPrefabs[index]);
+            player.GetComponent<MotorController>().PlayerIndex = index;
+            spawnedPlayer.name = "Player" + index;
+        }
 
             yield break;
         }

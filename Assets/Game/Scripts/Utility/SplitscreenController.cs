@@ -5,7 +5,7 @@ using UnityEngine;
 namespace RELIC
 {
     /// <summary>
-    /// A controller script 
+    /// A controller script for splitscreen
     /// </summary>
     public class SplitscreenController : MonoBehaviour
     {
