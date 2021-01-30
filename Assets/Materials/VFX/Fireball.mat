@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Fireball
+  m_Shader: {fileID: 4800000, guid: 70603e5ed6ae2b14b9426e9a8e062ede, type: 3}
+  m_ShaderKeywords: COLOR_BANDING SECONDARY_TEX TERTIARY_TEX VERTEX_COLOR VERTEX_OFFSET
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DisplacementTex:
+        m_Texture: {fileID: 2800000, guid: 8b8de1d01c8ae1e419c9e85b93ce6d33, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: -0.62, y: 9.64}
+    - _GradientMap:
+        m_Texture: {fileID: 2800000, guid: aec0961153fb205459cd8f1115ca5692, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 50ee9d009ee4fe2489aef0941ecbbc45, type: 3}
+        m_Scale: {x: 1, y: 2}
+        m_Offset: {x: 0, y: 0}
+    - _SecondaryTex:
+        m_Texture: {fileID: 2800000, guid: bdad0d3d2018c0049848b8088b578941, type: 3}
+        m_Scale: {x: 0.83, y: 1.01}
+        m_Offset: {x: 0.86, y: 0}
+    - _TertiaryTex:
+        m_Texture: {fileID: 2800000, guid: 04cdeccb3a58c6443b96ffb2442f1da3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BurnSize: 0.492
+    - _CircleSmoothness: 0.477
+    - _CircularMask: 0
+    - _ColorBanding: 1
+    - _Contrast: 1
+    - _CullMode: 0
+    - _Cutoff: 0.524
+    - _CutoffSoftness: 0.407
+    - _DisplacementAmount: 0
+    - _HasSecondaryTex: 1
+    - _HasTertiaryTex: 1
+    - _InnerRadius: -0.5
+    - _Intensity: 1
+    - _IntersectionMaxThreshold: 0
+    - _NumberOfBands: 2
+    - _OuterRadius: 0.636
+    - _PolarCoordinates: 0
+    - _RectangleCutoff: 1
+    - _RectangleHeight: 1
+    - _RectangleSmoothness: 1
+    - _RectangleWidth: 1
+    - _RectangularMask: 0
+    - _SoftBlend: 0
+    - _VertexColor: 1
+    - _VertexOffset: 1
+    - _VertexOffsetAmount: 0.04
+    m_Colors:
+    - _BurnColor: {r: 1, g: 0.6094421, b: 0, a: 1}
+    - _Color: {r: 1, g: 0.8287188, b: 0, a: 1}
+    - _PanningSpeed: {r: -0.5, g: -1, b: 59, a: 110}
+    - _SecondaryPanningSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _SecondaryTertiaryPanningSpeed: {r: 0, g: 0, b: 0, a: -1.5}
