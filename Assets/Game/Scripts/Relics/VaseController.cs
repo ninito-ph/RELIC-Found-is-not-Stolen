@@ -20,6 +20,12 @@ namespace RELIC
 
         [SerializeField] private AudioClip breakSound;
 
+        public GameObject ContainedItem
+        {
+            get => containedItem;
+            set => containedItem = value;
+        }
+
         #endregion
 
         #region MonoBehavior implementation
@@ -29,9 +35,10 @@ namespace RELIC
             if (containedItem != null)
             {
                 Instantiate(containedItem, transform.position, Quaternion.identity);
-                Instantiate(breakEffect, transform.position, Quaternion.identity);
-                AudioSource.PlayClipAtPoint(breakSound, transform.position);
             }
+
+            Instantiate(breakEffect, transform.position, Quaternion.identity);
+            AudioSource.PlayClipAtPoint(breakSound, transform.position);
         }
 
         private void OnTriggerEnter(Collider other)
