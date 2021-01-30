@@ -18,8 +18,8 @@ namespace RELIC
         private float relicEffectModifier;
 
         [Header("Fluff")] [SerializeField] private AudioClip relicPickupSound;
-        [SerializeField] private ParticleEffect pickupEffect;
-        [SerializeField] private ParticleEffect spawnEffect;
+        [SerializeField] private GameObject pickupEffect;
+        [SerializeField] private GameObject spawnEffect;
 
         private Coroutine lifetimeRoutine;
 
@@ -38,7 +38,8 @@ namespace RELIC
             if (other.CompareTag("Player") != true) return;
             MotorController player = other.GetComponent<MotorController>();
             player.SetRelic(relicEffect, relicEffectModifier, gameObject);
-            AudioSource.PlayClipAtPoint(relicPickupSound, transform.position);
+
+            Instantiate(pickupEffect, transform.position, Quaternion.identity);
 
             Destroy(gameObject);
         }
@@ -59,6 +60,7 @@ namespace RELIC
             Instantiate(spawnEffect, transform.position, Quaternion.identity);
             
             // Destroys relic
+            GameManager.gameManager.ReturnRelic(gameObject);
             Destroy(gameObject);
         }
 
