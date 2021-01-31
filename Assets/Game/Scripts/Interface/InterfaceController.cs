@@ -129,6 +129,7 @@ namespace RELIC
         {
             lobbyTextObject.SetActive(false);
             HUDController.hudController.gameObject.SetActive(true);
+            SwitchToMenu("Background");
         }
 
         public void SetMaster(float sliderValue)
