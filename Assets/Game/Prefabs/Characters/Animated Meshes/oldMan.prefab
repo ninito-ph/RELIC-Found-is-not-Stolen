@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 8798160313777917194}
   - component: {fileID: -378106214211475765}
   m_Layer: 0
-  m_Name: OldGuy
+  m_Name: oldMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -827,7 +827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &256359904779128483
 Transform:
   m_ObjectHideFlags: 0
