@@ -59,10 +59,10 @@ namespace RELIC
         private IEnumerator TriggerTrapActivation()
         {
             audioSource.Play();
-            trapActivationEffectObject.SetActive(true);
+//            trapActivationEffectObject.SetActive(true);
 
             StartCoroutine(AnimateButtonPressed());
-            StartCoroutine(DisableTrapActivationEffect());
+//            StartCoroutine(DisableTrapActivationEffect());
 
             yield return new WaitForSeconds(trapActivationDelay);
 

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -71,6 +72,15 @@ namespace RELIC
         [FormerlySerializedAs("stealAudio")] [SerializeField]
         private GameObject stealEffect;
 
+        [Header("Relic VFX Properties")]
+        [Tooltip("Relic VFX names")]
+        [SerializeField] private RelicController.Effects[] relicVFXNames;
+
+        [Tooltip("Relic VFX objects")]
+        [SerializeField] private GameObject[] relicVFXObjects;
+
+        private Dictionary<RelicController.Effects, GameObject> relicVFX = new Dictionary<RelicController.Effects, GameObject>();
+
         private AudioSource audioSource;
 
         public int PlayerIndex
@@ -125,6 +135,11 @@ namespace RELIC
             dashAxis = name + "Dash";
 
             playerAnimation = playerModel.GetComponent<CharacterAnimation>();
+
+            for (int i = 0; i < relicVFXNames.Length; i++)
+            {
+                relicVFX.Add(relicVFXNames[i], relicVFXObjects[i]);
+            }
         }
 
         private void Update()
@@ -338,6 +353,7 @@ namespace RELIC
             // Expends and activates dash
             dashReady = false;
             dashActive = true;
+            relicVFX[activeRelicEffect].SetActive(true);
 
             // Instantiates dash effect
             Instantiate(dashEffect, transform.position, Quaternion.identity);
@@ -355,6 +371,7 @@ namespace RELIC
 
             // Deactivates dash, as it has ended
             dashActive = false;
+            relicVFX[activeRelicEffect].SetActive(false);
 
             // Alters dash cooldown based on relic presence
             if (activeRelicEffect == RelicController.Effects.Dash)
