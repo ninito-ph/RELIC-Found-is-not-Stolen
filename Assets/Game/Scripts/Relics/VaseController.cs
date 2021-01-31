@@ -33,6 +33,16 @@ namespace RELIC
             Instantiate(spawnEffect, transform.position, Quaternion.identity);
         }
 
+        private void OnDestroy()
+        {
+            if (containedItem != null)
+            {
+                Instantiate(containedItem, transform.position, Quaternion.identity);
+            }
+
+            Instantiate(breakEffect, transform.position, Quaternion.identity);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             // Checks if colliding gameObject is a player
@@ -41,7 +51,7 @@ namespace RELIC
                 // Check if colliding player is in a dash
                 if (other.gameObject.GetComponent<MotorController>().DashActive == true)
                 {
-                    BreakVase();
+                    Destroy(gameObject);
                 }
             }
         }
@@ -54,7 +64,7 @@ namespace RELIC
                 // Check if colliding player is in a dash
                 if (other.gameObject.GetComponent<MotorController>().DashActive == true)
                 {
-                    BreakVase();
+                    Destroy(gameObject);
                 }
             }
         }
@@ -69,22 +79,6 @@ namespace RELIC
             }
         }
 #endif
-
-        #endregion
-
-        #region Private Methods
-
-        private void BreakVase()
-        {
-            if (containedItem != null)
-            {
-                Instantiate(containedItem, transform.position, Quaternion.identity);
-            }
-
-            Instantiate(breakEffect, transform.position, Quaternion.identity);
-            
-            Destroy(gameObject);
-        }
 
         #endregion
     }
