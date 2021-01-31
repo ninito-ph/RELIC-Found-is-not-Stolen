@@ -72,6 +72,7 @@ MonoBehaviour:
   dashDuration: 0.15
   dashCooldown: 1
   moveDuringDash: 1
+  normalStunDuration: 1
   fireTrail: {fileID: 0}
   relicTickInterval: 1
   playerModel: {fileID: 4464840966731583291}
@@ -212,7 +213,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -5325451303140623306, guid: 846f53811d16e4342ad93669128a74fc,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 35a636ec138a82f40acaff574275033b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.6
   m_Pitch: 1
   Loop: 0

@@ -72,6 +72,7 @@ MonoBehaviour:
   dashDuration: 0.15
   dashCooldown: 1
   moveDuringDash: 1
+  normalStunDuration: 1
   fireTrail: {fileID: 0}
   relicTickInterval: 1
   playerModel: {fileID: 8388560903416885553}
@@ -80,7 +81,6 @@ MonoBehaviour:
   dashEffect: {fileID: 6128198943177155182, guid: 3441aedc6c63dd647bea334f8332c21e,
     type: 3}
   stealEffect: {fileID: 0}
-  audioSource: {fileID: 0}
 --- !u!136 &425181403688130929
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -213,7 +213,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -5325451303140623306, guid: 846f53811d16e4342ad93669128a74fc,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: e06c78a205327f74bac5ef9a7f4ca1e7, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
