@@ -99,7 +99,6 @@ MonoBehaviour:
     type: 3}
   breakEffect: {fileID: 5006921601033372919, guid: 3a2424299d4ecda4a9033c16b046c96a,
     type: 3}
-  breakSound: {fileID: 8300000, guid: a6d4e2cf0f627604b99d614610cad543, type: 3}
 --- !u!136 &1514028889213189236
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -110,7 +109,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.27
+  m_Radius: 0.25
   m_Height: 1
   m_Direction: 1
   m_Center: {x: -0.0006322861, y: 0.3733256, z: 0}
@@ -124,7 +123,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.33
+  m_Radius: 0.45
   m_Height: 1.1
   m_Direction: 1
   m_Center: {x: -0.0006322861, y: 0.3733256, z: 0}
