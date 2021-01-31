@@ -49,7 +49,8 @@ MonoBehaviour:
   effectRepeatAmount: 0
   rollingStoneObject: {fileID: 2654324695111995880}
   rollingStoneInitialTransform: {fileID: 3083793154638915183}
-  rollingStoneVelocity: 120
+  rollingStoneVelocity: 180
+  rollingStoneLifetime: 10
 --- !u!1001 &5309471212375485136
 PrefabInstance:
   m_ObjectHideFlags: 0
