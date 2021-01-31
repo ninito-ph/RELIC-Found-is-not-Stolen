@@ -159,6 +159,7 @@ namespace RELIC
 
         public void ShowEndScreen()
         {
+            HUDController.hudController.gameObject.SetActive(false);
             int characterEndScreen = GameManager.gameManager.GetWinner();
             switch (characterEndScreen)
             {
