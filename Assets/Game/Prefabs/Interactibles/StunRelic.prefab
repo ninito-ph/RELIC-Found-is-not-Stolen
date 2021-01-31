@@ -118,3 +118,4 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0.45, z: 0}
   rotationOffset: {x: 0, y: 0, z: 45}
   rotationSpeed: 48
+  blinkAmount: 8
