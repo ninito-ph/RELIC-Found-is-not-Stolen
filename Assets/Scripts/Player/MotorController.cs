@@ -213,18 +213,28 @@ namespace RELIC
         /// </summary>
         public void Die()
         {
+            // Drops the current relic
+            SetRelic(RelicController.Effects.None, 0f, null);
+            
             // Disables the gameObject to prevent CharacterController or other effects from moving it
             gameObject.SetActive(false);
+            // Stops active coroutines to prevent odd behaviour
+            StopAllCoroutines();
 
             // Move the player to his spawnpoint
             transform.position = GameManager.gameManager.PlayerSpawnPoints[playerIndex].position;
             // Instances a puff of smoke for looks 
             Instantiate(respawnEffect, transform.position, Quaternion.identity);
+
+            // Resets dash effects
+            dashReady = true;
+            dashActive = false;
             // Stuns the player
             Stun(GameManager.gameManager.PlayerRespawnStun);
-
+            
             // Reenables the player within the same frame
             gameObject.SetActive(true);
+            StartCoroutine(TickRelicEffect());
         }
 
         #endregion
