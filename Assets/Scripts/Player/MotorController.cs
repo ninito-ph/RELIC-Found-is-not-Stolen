@@ -395,7 +395,7 @@ namespace RELIC
             // Expends and activates dash
             dashReady = false;
             dashActive = true;
-            relicVFX[activeRelicEffect].SetActive(true);
+            //relicVFX[activeRelicEffect].SetActive(true);
 
             // Instantiates dash effect
             Instantiate(dashEffect, transform.position, Quaternion.identity);
@@ -420,7 +420,7 @@ namespace RELIC
 
             // Deactivates dash, as it has ended
             dashActive = false;
-            relicVFX[activeRelicEffect].SetActive(false);
+            // relicVFX[activeRelicEffect].SetActive(false);
 
             // Alters dash cooldown based on relic presence
             if (activeRelicEffect == RelicController.Effects.Dash)

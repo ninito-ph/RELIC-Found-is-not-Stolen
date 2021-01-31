@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   containedItem: {fileID: 0}
-  spawnEffect: {fileID: 6128198943177155182, guid: 2d1be2360893ee04687eea2aaddf5090,
+  spawnEffect: {fileID: 6128198943177155182, guid: 76340460bdb1a794b87f63deffed091e,
     type: 3}
   breakEffect: {fileID: 5006921601033372919, guid: 3a2424299d4ecda4a9033c16b046c96a,
     type: 3}

@@ -55,6 +55,19 @@ namespace RELIC
                 }
             }
         }
+        
+        private void OnTriggerStay(Collider other)
+        {
+            // Checks if colliding gameObject is a player
+            if (other.gameObject.CompareTag("Player") == true)
+            {
+                // Check if colliding player is in a dash
+                if (other.gameObject.GetComponent<MotorController>().DashActive == true)
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()

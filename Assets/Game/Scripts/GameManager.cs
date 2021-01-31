@@ -79,6 +79,18 @@ namespace RELIC
             set => gameDuration = value;
         }
 
+        public Transform[] PlayerSpawnPoints
+        {
+            get => playerSpawnPoints;
+            set => playerSpawnPoints = value;
+        }
+
+        public float PlayerRespawnStun
+        {
+            get => playerRespawnStun;
+            set => playerRespawnStun = value;
+        }
+
         #endregion
 
         #region MonoBehaviour Implementation
@@ -120,17 +132,7 @@ namespace RELIC
 
         #endregion
 
-        #region Public Methods@
-        /// <summary>
-        /// Respawns a player after its death
-        /// </summary>
-        /// <param name="player">The player to be respawned.</param>
-        public void SpawnPlayerAfterDeath(GameObject player)
-        {
-            MotorController playerMotorController = player.GetComponent<MotorController>();
-            player.transform.SetPositionAndRotation(playerSpawnPoints[playerMotorController.PlayerIndex].position, Quaternion.identity);
-            playerMotorController.Stun(playerRespawnStun);
-        }
+        #region Public Methods
 
         /// <summary>
         /// Adds score to a given player
@@ -155,7 +157,7 @@ namespace RELIC
             {
                 return "Search for the relic!";
             }
-            
+
             // Gets the index of the highest score using LINQ
             int winningPlayer = System.Array.IndexOf(playerScores, largestScore) + 1;
 
@@ -166,10 +168,10 @@ namespace RELIC
         /// <summary>
         /// Returns a relic to the spawnpool
         /// </summary>
-        public void ReturnRelic(GameObject relic)
+        public void ReturnRelic(RelicController relic)
         {
             // Marks the the relic as inactive
-            if (relic == spawnableRelics[0])
+            if (relic.RelicEffect == RelicController.Effects.Points)
             {
                 activeRelic = false;
             }
@@ -177,6 +179,8 @@ namespace RELIC
             {
                 activeIdols++;
             }
+
+            Destroy(relic.gameObject);
         }
 
         #endregion
@@ -287,9 +291,9 @@ namespace RELIC
             // Spawns all the players
             for (int index = 0; index < playerCount; index++)
             {
-                playerPrefabs[index].SetActive(true);
                 playerPrefabs[index].transform
                     .SetPositionAndRotation(playerSpawnPoints[index].position, Quaternion.identity);
+                playerPrefabs[index].SetActive(true);
                 playerPrefabs[index].GetComponent<MotorController>().PlayerIndex = index;
             }
 

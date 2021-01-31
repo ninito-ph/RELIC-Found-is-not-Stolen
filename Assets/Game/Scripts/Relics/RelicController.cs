@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -33,6 +34,16 @@ namespace RELIC
 
         #endregion
 
+        #region Properties
+
+        public Effects RelicEffect
+        {
+            get => relicEffect;
+            set => relicEffect = value;
+        }
+
+        #endregion
+
         #region MonoBehaviour Implementation
 
         private void Start()
@@ -55,7 +66,24 @@ namespace RELIC
             player.SetRelic(relicEffect, relicEffectModifier, gameObject);
 
             Instantiate(pickupEffect, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            StopAllCoroutines();
+            gameObject.SetActive(false);
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Re-starts a relic for reuse
+        /// </summary>
+        public void ReStart(Vector3 position)
+        {
+            gameObject.SetActive(true);
+            canPickup = false;
+            transform.position = position + positionOffset;
+            transform.rotation = Quaternion.Euler(rotationOffset.x, rotationOffset.y, rotationOffset.z);
+            lifetimeRoutine = StartCoroutine(Lifetime());
         }
 
         #endregion
@@ -77,8 +105,7 @@ namespace RELIC
             Instantiate(spawnEffect, transform.position, Quaternion.identity);
 
             // Destroys relic
-            GameManager.gameManager.ReturnRelic(gameObject);
-            Destroy(gameObject);
+            GameManager.gameManager.ReturnRelic(this);
         }
 
         #endregion
