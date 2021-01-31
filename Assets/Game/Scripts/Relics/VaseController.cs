@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RELIC
 {
@@ -17,6 +16,8 @@ namespace RELIC
         private GameObject spawnEffect;
 
         [SerializeField] private GameObject breakEffect;
+
+        [SerializeField] private AudioClip breakSound;
 
         public GameObject ContainedItem
         {
@@ -55,17 +56,6 @@ namespace RELIC
                 }
             }
         }
-
-#if UNITY_EDITOR
-        private void OnDrawGizmos()
-        {
-            if (containedItem != null)
-            {
-                Gizmos.color = new Color(0f, 1f, 0.33f, 0.4f);
-                Gizmos.DrawSphere(transform.position + (Vector3.up * 0.5f), 0.66f);
-            }
-        }
-#endif
 
         #endregion
     }
