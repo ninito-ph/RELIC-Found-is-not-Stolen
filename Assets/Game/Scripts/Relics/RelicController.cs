@@ -28,6 +28,9 @@ namespace RELIC
         [SerializeField] private Vector3 rotationOffset;
         [SerializeField] private float rotationSpeed = 3f;
 
+        [Tooltip("How many times the relic will blink before becoming pick-uppable")] [SerializeField]
+        private int blinkAmount = 4;
+
         private bool canPickup = false;
 
         private Coroutine lifetimeRoutine;
@@ -57,6 +60,7 @@ namespace RELIC
             transform.position += positionOffset;
             transform.rotation = Quaternion.Euler(rotationOffset.x, rotationOffset.y, rotationOffset.z);
             lifetimeRoutine = StartCoroutine(Lifetime());
+            StartCoroutine(BlinkRelic());
         }
 
         private void Update()
@@ -112,6 +116,22 @@ namespace RELIC
 
             // Destroys relic
             GameManager.gameManager.ReturnRelic(this);
+        }
+
+        private IEnumerator BlinkRelic()
+        {
+            // Gets the mesh renderer's material
+            Material blinkMaterial = GetComponent<MeshRenderer>().material;
+            int enableBlink = 0;
+            WaitForSeconds interval = new WaitForSeconds((pickupDelay / blinkAmount));
+
+            for (int blink = 0; blink <= blinkAmount; blink++)
+            {
+                blinkMaterial.SetInt("_Blink", enableBlink == 1 ? enableBlink = 0 : enableBlink = 1);
+                yield return interval;
+            }
+            
+            blinkMaterial.SetInt("_Blink", 0);
         }
 
         #endregion
