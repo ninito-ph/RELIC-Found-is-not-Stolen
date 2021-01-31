@@ -6,11 +6,11 @@ namespace RELIC
     public class LethalDamage : MonoBehaviour
     {
         #region Unity Methods
-        void OnTriggerEnter(Collider collider)
+        void OnTriggerEnter(Collider other)
         {
-            if (collider.CompareTag("Player"))
+            if (other.CompareTag("Player"))
             {
-                GameManager.gameManager.SpawnPlayerAfterDeath(collider.gameObject);
+                other.GetComponent<MotorController>().Die();
             }
         }
         #endregion
