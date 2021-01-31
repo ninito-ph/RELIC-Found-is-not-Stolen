@@ -10,7 +10,7 @@ namespace RELIC
         {
             if (collider.CompareTag("Player"))
             {
-//                collider.GetComponent<MotorController>().Kill();
+                GameManager.gameManager.SpawnPlayerAfterDeath(collider.gameObject);
             }
         }
         #endregion
