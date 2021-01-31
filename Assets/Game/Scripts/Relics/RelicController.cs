@@ -42,6 +42,12 @@ namespace RELIC
             set => relicEffect = value;
         }
 
+        public Vector3 RotationOffset
+        {
+            get => rotationOffset;
+            set => rotationOffset = value;
+        }
+
         #endregion
 
         #region MonoBehaviour Implementation

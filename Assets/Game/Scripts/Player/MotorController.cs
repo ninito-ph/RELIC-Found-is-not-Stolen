@@ -72,17 +72,22 @@ namespace RELIC
         [FormerlySerializedAs("stealAudio")] [SerializeField]
         private GameObject stealEffect;
 
-        [Header("Relic VFX Properties")]
-        [Tooltip("Relic VFX names")]
+        [Header("Relic VFX Properties")] [SerializeField]
+        private GameObject relicDisplayPoint;
+
+        [SerializeField] private float relicDisplaySpinSpeed = 42f;
+
+        private MeshFilter relicDisplay;
         [SerializeField] private RelicController.Effects[] relicVFXNames;
 
-        [Tooltip("Relic VFX objects")]
-        [SerializeField] private GameObject[] relicVFXObjects;
+        [Tooltip("Relic VFX objects")] [SerializeField]
+        private GameObject[] relicVFXObjects;
 
-        private Dictionary<RelicController.Effects, GameObject> relicVFX = new Dictionary<RelicController.Effects, GameObject>();
-        
+        private Dictionary<RelicController.Effects, GameObject> relicVFX =
+            new Dictionary<RelicController.Effects, GameObject>();
+
         [SerializeField] private GameObject respawnEffect;
-        
+
         private AudioSource audioSource;
         private CharacterAnimation playerAnimation;
 
@@ -128,6 +133,7 @@ namespace RELIC
 
         private void Start()
         {
+            relicDisplay = relicDisplayPoint.GetComponent<MeshFilter>();
             audioSource = GetComponent<AudioSource>();
             characterController = GetComponent<CharacterController>();
 
@@ -141,6 +147,7 @@ namespace RELIC
             {
                 relicVFX.Add(relicVFXNames[i], relicVFXObjects[i]);
             }
+
             StartCoroutine(TickRelicEffect());
         }
 
@@ -150,6 +157,9 @@ namespace RELIC
             LookTowardsMovementDirection();
             Dash();
             TickStun();
+
+            relicDisplayPoint.transform.Rotate(new Vector3(0f, relicDisplaySpinSpeed * Time.deltaTime, 0f),
+                Space.World);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -173,11 +183,12 @@ namespace RELIC
         /// <param name="relic">The relic's gameObject</param>
         public void SetRelic(RelicController.Effects effect, float modifier, GameObject relicGameObject)
         {
+            // If the player already has a relic
             if (relic != null)
             {
                 // Instantiates the relic at the player, as if it were dropped
                 relic.GetComponent<RelicController>().ReStart(transform.position);
-                
+
                 // Clears relic
                 activeRelicEffect = RelicController.Effects.None;
                 relicEffectModifier = 0f;
@@ -187,6 +198,11 @@ namespace RELIC
             activeRelicEffect = effect;
             relicEffectModifier = modifier;
             relic = relicGameObject;
+
+            if (relicGameObject != null)
+            {
+                UpdateRelicDisplay(relic.transform, relic.GetComponent<RelicController>().RotationOffset, relic.GetComponent<MeshFilter>().mesh);
+            }
         }
 
         /// <summary>
@@ -217,6 +233,8 @@ namespace RELIC
                 // Instantiates the relic at the player, as if it were dropped
                 player.Relic.GetComponent<RelicController>().ReStart(transform.position);
 
+                // Clears relic display
+                player.UpdateRelicDisplay(transform, new Vector3(), null);
                 // Sets the player's relic to null
                 player.Relic = null;
                 // Sets the effect modifier to zero
@@ -233,7 +251,8 @@ namespace RELIC
         {
             // Drops the current relic
             SetRelic(RelicController.Effects.None, 0f, null);
-            
+            UpdateRelicDisplay(transform, new Vector3(), null);
+
             // Disables the gameObject to prevent CharacterController or other effects from moving it
             gameObject.SetActive(false);
             // Stops active coroutines to prevent odd behaviour
@@ -249,7 +268,7 @@ namespace RELIC
             dashActive = false;
             // Stuns the player
             Stun(GameManager.gameManager.PlayerRespawnStun);
-            
+
             // Reenables the player within the same frame
             gameObject.SetActive(true);
             StartCoroutine(TickRelicEffect());
@@ -258,6 +277,22 @@ namespace RELIC
         #endregion
 
         #region Private Methods
+
+        public void UpdateRelicDisplay(Transform relicTransform, Vector3 offsetRotation, Mesh relicMesh)
+        {
+            // If a relic mesh does not
+            if (relicMesh != null)
+            {
+                // Sets the mesh, sets its scale and its rotation
+                relicDisplay.mesh = relicMesh;
+                relicDisplay.transform.localScale = relicTransform.localScale * 0.67f;
+                relicDisplay.transform.rotation = Quaternion.Euler(offsetRotation);
+            }
+            else
+            {
+                relicDisplay.mesh = null;
+            }
+        }
 
         /// <summary>
         /// Moves the player according to his input
