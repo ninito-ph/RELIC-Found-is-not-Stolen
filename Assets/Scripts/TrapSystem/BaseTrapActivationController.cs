@@ -26,6 +26,12 @@ namespace RELIC
         [SerializeField] float trapActivationDelay;
         [Tooltip("The trap activator's cooldown.")]
         [SerializeField] private float trapActivationCooldown;
+        [Tooltip("The trap activator's effect when pressed.")]
+        [SerializeField] private GameObject trapActivationEffectObject;
+        [Tooltip("The trap activator's effect duration.")]
+        [SerializeField] private float trapActivationEffectDuration;
+
+        private AudioSource audioSource;
 
         private bool trapActivatorOnCooldown = false;
         #endregion
@@ -35,6 +41,8 @@ namespace RELIC
         {
             trapButtonReadyPosition = trapButtonReadyTransform.position;
             trapButtonPressedPosition = trapButtonReadyPosition + trapButtonPressedOffset;
+
+            audioSource = GetComponent<AudioSource>();
         }
 
         virtual protected void OnTriggerEnter(Collider collider)
@@ -50,7 +58,11 @@ namespace RELIC
         #region Coroutines
         private IEnumerator TriggerTrapActivation()
         {
+            audioSource.Play();
+            trapActivationEffectObject.SetActive(true);
+
             StartCoroutine(AnimateButtonPressed());
+            StartCoroutine(DisableTrapActivationEffect());
 
             yield return new WaitForSeconds(trapActivationDelay);
 
@@ -93,6 +105,13 @@ namespace RELIC
             }
 
             trapActivatorOnCooldown = false;
+        }
+
+        private IEnumerator DisableTrapActivationEffect()
+        {
+            yield return new WaitForSeconds(trapActivationEffectDuration);
+
+            trapActivationEffectObject.SetActive(false);
         }
         #endregion
     }
