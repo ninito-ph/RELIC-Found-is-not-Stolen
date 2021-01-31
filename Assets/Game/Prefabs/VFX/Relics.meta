@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Game/Prefabs/VFX/Relics.meta
 guid: fa72143e528840548b79038c2216034d
+=======
+guid: 7ca51ab790762bf46a31d9a6dc9a42b9
+>>>>>>> feature/menus:Assets/Game/Shaders.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
