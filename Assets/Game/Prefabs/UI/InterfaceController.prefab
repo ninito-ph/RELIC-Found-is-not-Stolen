@@ -262,14 +262,22 @@ MonoBehaviour:
   - Pause
   - VictoryScreen
   - Background
+  - Liana
+  - Thomas
+  - Nara
+  - Woody
   menuObject:
   - {fileID: 5709186661504141377}
   - {fileID: 3042915974932391833}
   - {fileID: 7021427801570464143}
   - {fileID: 3612462787854985769}
-  - {fileID: 0}
+  - {fileID: 1676604340913615084}
   - {fileID: 5719613492611006319}
   - {fileID: 1676604340913615084}
+  - {fileID: 2573565265127350037}
+  - {fileID: 3051387547412717175}
+  - {fileID: 4930907014845187957}
+  - {fileID: 939675088349754050}
   mainMixer: {fileID: 24100000, guid: 846f53811d16e4342ad93669128a74fc, type: 2}
   lobbyNumberOfPlayersObject: {fileID: 5053527225872310587}
   lobbyStartGameControlsHelpTextObject: {fileID: 7840130515106501657}
@@ -440,7 +448,7 @@ MonoBehaviour:
     Press B (Gamepad) or BACKSPACE
     to remove players'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -958,8 +966,8 @@ RectTransform:
   - {fileID: 8055851793068715915}
   - {fileID: 2647899876433310210}
   - {fileID: 6236028824476003939}
-  m_Father: {fileID: 4757571872646746839}
-  m_RootOrder: 3
+  m_Father: {fileID: 5311319403772788423}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1156,18 +1164,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4524141946290974979}
-        m_MethodName: SwitchToMenu
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: StartMenu
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4524141946290974979}
-        m_MethodName: PlayClickSound
+        m_MethodName: ReloadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1206,7 +1203,7 @@ RectTransform:
   m_Children:
   - {fileID: 23864343260017557}
   m_Father: {fileID: 5311319403772788423}
-  m_RootOrder: 5
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2209,8 +2206,8 @@ RectTransform:
   - {fileID: 7222331369494633836}
   - {fileID: 8359042516080668421}
   - {fileID: 9037001010691580452}
-  m_Father: {fileID: 4757571872646746839}
-  m_RootOrder: 0
+  m_Father: {fileID: 5311319403772788423}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2508,8 +2505,8 @@ RectTransform:
   - {fileID: 445343708910224307}
   - {fileID: 3275382437184644943}
   - {fileID: 6484500941787291120}
-  m_Father: {fileID: 4757571872646746839}
-  m_RootOrder: 1
+  m_Father: {fileID: 5311319403772788423}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2940,6 +2937,10 @@ RectTransform:
   - {fileID: 4661599048655699171}
   - {fileID: 2286790772480852869}
   - {fileID: 8805067864770605209}
+  - {fileID: 8878481824478694530}
+  - {fileID: 7415325532445936862}
+  - {fileID: 7403536307065798324}
+  - {fileID: 312232886399667990}
   - {fileID: 4757571872646746839}
   - {fileID: 2410341672674049639}
   m_Father: {fileID: 80080277235278940}
@@ -4413,8 +4414,8 @@ RectTransform:
   - {fileID: 214436122542730707}
   - {fileID: 7173971445039433036}
   - {fileID: 7321037216084979371}
-  m_Father: {fileID: 4757571872646746839}
-  m_RootOrder: 2
+  m_Father: {fileID: 5311319403772788423}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4658,18 +4659,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4524141946290974979}
-        m_MethodName: SwitchToMenu
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: StartMenu
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4524141946290974979}
-        m_MethodName: PlayClickSound
+        m_MethodName: ReloadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5140,6 +5130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4661599048655699171}
+  - component: {fileID: 392711876}
   m_Layer: 5
   m_Name: StartMenu
   m_TagString: Untagged
@@ -5171,6 +5162,103 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!82 &392711876
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5709186661504141377}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 4981407601980716182, guid: 846f53811d16e4342ad93669128a74fc,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: b0974c8a08e4c3c49a56b58212f569dc, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5719613492611006319
 GameObject:
   m_ObjectHideFlags: 0
@@ -5197,13 +5285,9 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 8878481824478694530}
-  - {fileID: 7415325532445936862}
-  - {fileID: 7403536307065798324}
-  - {fileID: 312232886399667990}
+  m_Children: []
   m_Father: {fileID: 5311319403772788423}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6416,18 +6500,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4524141946290974979}
-        m_MethodName: SwitchToMenu
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: StartMenu
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4524141946290974979}
-        m_MethodName: PlayClickSound
+        m_MethodName: ReloadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6735,18 +6808,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4524141946290974979}
-        m_MethodName: SwitchToMenu
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: StartMenu
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4524141946290974979}
-        m_MethodName: PlayClickSound
+        m_MethodName: ReloadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
