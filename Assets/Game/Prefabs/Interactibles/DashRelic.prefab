@@ -110,7 +110,7 @@ MonoBehaviour:
   relicLifetime: 10
   pickupDelay: 1.3
   relicEffect: 3
-  relicEffectModifier: 1.45
+  relicEffectModifier: 0.5
   pickupEffect: {fileID: 1845240806346120, guid: 87508af5da0bbf144a8f14bc4439325b,
     type: 3}
   spawnEffect: {fileID: 6128198943177155182, guid: 76340460bdb1a794b87f63deffed091e,
