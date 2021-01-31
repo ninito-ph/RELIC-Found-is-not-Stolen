@@ -118,6 +118,16 @@ namespace RELIC
         #endregion
 
         #region Public Methods
+        /// <summary>
+        /// Respawns a player after its death
+        /// </summary>
+        /// <param name="player">The player to be respawned.</param>
+        public void SpawnPlayerAfterDeath(GameObject player)
+        {
+            MotorController playerMotorController = player.GetComponent<MotorController>();
+            player.transform.SetPositionAndRotation(playerSpawnPoints[playerMotorController.PlayerIndex].position, Quaternion.identity);
+            playerMotorController.Stun(playerRespawnStun);
+        }
 
         /// <summary>
         /// Adds score to a given player
