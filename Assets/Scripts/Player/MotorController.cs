@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization; 
+using UnityEngine.Serialization;
 
 namespace RELIC
 {
@@ -69,7 +69,8 @@ namespace RELIC
         [FormerlySerializedAs("dashAudio")] [SerializeField]
         private GameObject dashEffect;
 
-        [SerializeField] private GameObject respawnEffect;
+        [FormerlySerializedAs("stealAudio")] [SerializeField]
+        private GameObject stealEffect;
 
         [Header("Relic VFX Properties")]
         [Tooltip("Relic VFX names")]
@@ -81,7 +82,6 @@ namespace RELIC
         private Dictionary<RelicController.Effects, GameObject> relicVFX = new Dictionary<RelicController.Effects, GameObject>();
 
         private AudioSource audioSource;
-        private CharacterAnimation playerAnimation;
 
         public int PlayerIndex
         {
@@ -123,22 +123,19 @@ namespace RELIC
 
         #region Unity Methods
 
+        CharacterAnimation playerAnimation;
+
         private void Start()
         {
-            // Caches components
             audioSource = GetComponent<AudioSource>();
             characterController = GetComponent<CharacterController>();
-            playerAnimation = playerModel.GetComponent<CharacterAnimation>();
 
-            // Defines movement axes
             movementHorizontalAxis = name + "Horizontal";
             movementVerticalAxis = name + "Vertical";
             dashAxis = name + "Dash";
 
-            // Starts relic effects
-            StartCoroutine(TickRelicEffect());
+            playerAnimation = playerModel.GetComponent<CharacterAnimation>();
 
-            // Populates relic VFX dictionary
             for (int i = 0; i < relicVFXNames.Length; i++)
             {
                 relicVFX.Add(relicVFXNames[i], relicVFXObjects[i]);
@@ -169,25 +166,16 @@ namespace RELIC
         /// <summary>
         /// Sets the player's current Relic
         /// </summary>
-        /// <param name="effect">The effect of the active Relic</param>
-        /// <param name="modifier">The numeric modifier for the relic's effect</param>
-        /// <param name="relicGameObject">The relic's gameObject</param>
-        public void SetRelic(RelicController.Effects effect, float modifier, GameObject relicGameObject)
+        /// <param name="activeRelicEffect">The effect of the active Relic</param>
+        /// <param name="relicEffectModifier">The numeric modifier for the relic's effect</param>
+        /// <param name="relic">The relic's gameObject</param>
+        public void SetRelic(RelicController.Effects activeRelicEffect, float relicEffectModifier, GameObject relic)
         {
-            if (relic != null)
-            {
-                // Instantiates the relic at the player, as if it were dropped
-                relic.GetComponent<RelicController>().ReStart(transform.position);
-                
-                // Clears relic
-                activeRelicEffect = RelicController.Effects.None;
-                relicEffectModifier = 0f;
-                relic = null;
-            }
+            this.activeRelicEffect = activeRelicEffect;
+            this.relicEffectModifier = relicEffectModifier;
+            this.relic = relic;
 
-            activeRelicEffect = effect;
-            relicEffectModifier = modifier;
-            relic = relicGameObject;
+            StartCoroutine(TickRelicEffect());
         }
 
         /// <summary>
@@ -212,43 +200,15 @@ namespace RELIC
         /// </summary>
         private void RobRelic(MotorController player)
         {
-            // If the other player has a relic and isn't dashing
-            if (player.dashActive == false && player.Relic != null && dashActive == true)
+            if (player.dashActive == false)
             {
-                // Instantiates the relic at the player, as if it were dropped
-                player.Relic.GetComponent<RelicController>().ReStart(transform.position);
+                Instantiate(player.Relic, player.transform.position, Quaternion.identity);
 
-                // Sets the player's relic to null
                 player.Relic = null;
-                // Sets the effect modifier to zero
                 player.RelicEffectModifier = 0;
-                // Sets the active effect to none
                 player.ActiveRelicEffect = RelicController.Effects.None;
             }
         }
-
-        /// <summary>
-        /// Kills the player and respawns him
-        /// </summary>
-        public void Die()
-        {
-            // Disables the gameObject to prevent CharacterController or other effects from moving it
-            gameObject.SetActive(false);
-
-            // Move the player to his spawnpoint
-            transform.position = GameManager.gameManager.PlayerSpawnPoints[playerIndex].position;
-            // Instances a puff of smoke for looks 
-            Instantiate(respawnEffect, transform.position, Quaternion.identity);
-            // Stuns the player
-            Stun(GameManager.gameManager.PlayerRespawnStun);
-
-            // Reenables the player within the same frame
-            gameObject.SetActive(true);
-        }
-
-        #endregion
-
-        #region Private Methods
 
         /// <summary>
         /// Moves the player according to his input
@@ -371,7 +331,13 @@ namespace RELIC
             }
 
             // Robs a relic if player is in dash and other player has a relic
-            RobRelic(otherPlayer);
+            if (dashActive && otherPlayer.Relic != null)
+            {
+                if (otherPlayer.Relic != null)
+                {
+                    RobRelic(otherPlayer);
+                }
+            }
         }
 
         #endregion
@@ -398,13 +364,6 @@ namespace RELIC
             if (!moveDuringDash)
             {
                 dashDirection = moveDirection;
-            }
-
-            if (activeRelicEffect == RelicController.Effects.Trail)
-            {
-                GameObject spawnedFireTrail =
-                    Instantiate(fireTrail, transform.position, Quaternion.Euler(270f, 0f, 0f));
-                spawnedFireTrail.GetComponent<FireTrailController>().SpawnedFrom = gameObject;
             }
 
             // Waits the dash duration before proceeding
@@ -445,6 +404,13 @@ namespace RELIC
                         break;
                     case RelicController.Effects.Points:
                         GameManager.gameManager.AddScore(playerIndex, Mathf.RoundToInt(relicEffectModifier));
+                        break;
+                    case RelicController.Effects.Trail:
+                        if (dashActive == true)
+                        {
+                            Instantiate(fireTrail, transform.position, Quaternion.identity);
+                        }
+
                         break;
                 }
 
