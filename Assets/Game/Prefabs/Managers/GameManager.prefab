@@ -1,5 +1,245 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &42988095694174307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4106059381693061728}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (34)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4106059381693061728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42988095694174307}
+  m_LocalRotation: {x: -0, y: 0.9988783, z: -0, w: -0.047352143}
+  m_LocalPosition: {x: 11.19, y: -0.0010732015, z: 6.66}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 116
+  m_LocalEulerAnglesHint: {x: 0, y: 185.428, z: 0}
+--- !u!1 &261695281590884794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6284351223089098973}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (10)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &6284351223089098973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261695281590884794}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -6.517, y: -0.0010732015, z: 8.833}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 92
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &264673970727648982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4278410383126361234}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (39)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4278410383126361234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264673970727648982}
+  m_LocalRotation: {x: -0, y: 0.9988783, z: -0, w: -0.047352143}
+  m_LocalPosition: {x: 10.85, y: -0.0010732015, z: 6.51}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 121
+  m_LocalEulerAnglesHint: {x: 0, y: 185.428, z: 0}
+--- !u!1 &368963014310202018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4551578351743742121}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (26)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4551578351743742121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368963014310202018}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -15.791, y: -0.0010732015, z: -6.95}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 108
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &683892738563834332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 276685336465068255}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &276685336465068255
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683892738563834332}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -8.346, y: -0.0010732015, z: 8.793}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 89
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &934703230032912164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8734849311487435865}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (23)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &8734849311487435865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934703230032912164}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -15.51, y: -0.0010732015, z: -6.438}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 105
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &1094563434310736690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4047092380003624599}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (29)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4047092380003624599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094563434310736690}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -7.9440007, y: -0.0010732015, z: -4.539}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 111
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &1161176315152510960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8896531938690960290}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (20)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &8896531938690960290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161176315152510960}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -16.981, y: -0.0010732015, z: -9.158}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 102
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
 --- !u!1 &1313122513440916836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2520,6 +2760,336 @@ Transform:
   m_Father: {fileID: 6190040488437571168}
   m_RootOrder: 65
   m_LocalEulerAnglesHint: {x: 0, y: -32.179, z: 0}
+--- !u!1 &1656068190819138257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1104558101107523893}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (45)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1104558101107523893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656068190819138257}
+  m_LocalRotation: {x: -0, y: 0.9988783, z: -0, w: -0.047352143}
+  m_LocalPosition: {x: 4.413, y: -0.0010732015, z: -1.463}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 127
+  m_LocalEulerAnglesHint: {x: 0, y: 185.428, z: 0}
+--- !u!1 &1673420453126900982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5804134480316846069}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (12)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &5804134480316846069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673420453126900982}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -8.197, y: -0.0010732015, z: 8.024}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 94
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &2057138198800306473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6778210512470636486}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (28)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &6778210512470636486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057138198800306473}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -7.543999, y: -0.0010732015, z: -4.343}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 110
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &2132077509539522235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3570329607395896439}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (14)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &3570329607395896439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132077509539522235}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -8.391, y: -0.0010732015, z: 7.670999}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 96
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &2154331853043019742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3439990469546086551}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (33)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &3439990469546086551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2154331853043019742}
+  m_LocalRotation: {x: -0, y: 0.9988783, z: -0, w: -0.047352143}
+  m_LocalPosition: {x: 11.68, y: -0.0010732015, z: 6.61}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 115
+  m_LocalEulerAnglesHint: {x: 0, y: 185.428, z: 0}
+--- !u!1 &2229396579564193155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2366963677880418688}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &2366963677880418688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2229396579564193155}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -8.68, y: -0.0010732015, z: 9.328}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 90
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &2317849023904903414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1913228247226723600}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (24)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1913228247226723600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2317849023904903414}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -15.869999, y: -0.0010732015, z: -6.4919996}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 106
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &2529885703151880365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6881717818240626200}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (18)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &6881717818240626200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2529885703151880365}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -17.06, y: -0.0010732015, z: -8.7}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 100
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &2563563038839351287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3663329451484743491}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (15)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &3663329451484743491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2563563038839351287}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -8.346, y: -0.0010732015, z: 7.2030005}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 97
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &2625860230138159698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2256758478210378240}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &2256758478210378240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2625860230138159698}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -7.324, y: -0.0010732015, z: 9.276}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 86
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &2669883095007475534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8753424625304550050}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (16)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &8753424625304550050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2669883095007475534}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -8.784, y: -0.0010732015, z: 7.2600007}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 98
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
 --- !u!1 &2862332491282675074
 GameObject:
   m_ObjectHideFlags: 0
@@ -2631,9 +3201,475 @@ Transform:
   - {fileID: 1833797741759970933}
   - {fileID: 1833797742995983399}
   - {fileID: 1833797742189070560}
+  - {fileID: 5711804924610443763}
+  - {fileID: 2983110590891602808}
+  - {fileID: 2256758478210378240}
+  - {fileID: 1516193848884655694}
+  - {fileID: 3325341501411277686}
+  - {fileID: 276685336465068255}
+  - {fileID: 2366963677880418688}
+  - {fileID: 7502072473738049320}
+  - {fileID: 6284351223089098973}
+  - {fileID: 8778561755481289240}
+  - {fileID: 5804134480316846069}
+  - {fileID: 4249943550374788073}
+  - {fileID: 3570329607395896439}
+  - {fileID: 3663329451484743491}
+  - {fileID: 8753424625304550050}
+  - {fileID: 6486566166065607239}
+  - {fileID: 6881717818240626200}
+  - {fileID: 4608269719912161453}
+  - {fileID: 8896531938690960290}
+  - {fileID: 7353303566131950426}
+  - {fileID: 8080787687375464043}
+  - {fileID: 8734849311487435865}
+  - {fileID: 1913228247226723600}
+  - {fileID: 6331617859555070627}
+  - {fileID: 4551578351743742121}
+  - {fileID: 9171864076263487728}
+  - {fileID: 6778210512470636486}
+  - {fileID: 4047092380003624599}
+  - {fileID: 496561519554629767}
+  - {fileID: 327131646331594433}
+  - {fileID: 7928485133035033623}
+  - {fileID: 3439990469546086551}
+  - {fileID: 4106059381693061728}
+  - {fileID: 4233899364942078632}
+  - {fileID: 721030825662620925}
+  - {fileID: 8623368071779386454}
+  - {fileID: 7018189949142425437}
+  - {fileID: 4278410383126361234}
+  - {fileID: 1844465643601825407}
+  - {fileID: 580671922969951745}
+  - {fileID: 3988512477872058539}
+  - {fileID: 5158420282046910491}
+  - {fileID: 7567579399353739053}
+  - {fileID: 1104558101107523893}
+  - {fileID: 4787220480250952760}
+  - {fileID: 6911454594405873772}
   m_Father: {fileID: 5364593623122443877}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3238102064714648632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8623368071779386454}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (37)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &8623368071779386454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3238102064714648632}
+  m_LocalRotation: {x: -0, y: 0.9988783, z: -0, w: -0.047352143}
+  m_LocalPosition: {x: 10.798999, y: -0.0010732015, z: 5.944}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 119
+  m_LocalEulerAnglesHint: {x: 0, y: 185.428, z: 0}
+--- !u!1 &3314096498019127652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5711804924610443763}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &5711804924610443763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3314096498019127652}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -6.562, y: -0.0010732015, z: 9.335}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 84
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &3362184580779454949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1516193848884655694}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1516193848884655694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3362184580779454949}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -7.514, y: -0.0010732015, z: 8.928}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 87
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &3506036836705197281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1844465643601825407}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (40)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1844465643601825407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3506036836705197281}
+  m_LocalRotation: {x: -0, y: 0.9988783, z: -0, w: -0.047352143}
+  m_LocalPosition: {x: 11.548001, y: -0.0010732015, z: 5.607}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 122
+  m_LocalEulerAnglesHint: {x: 0, y: 185.428, z: 0}
+--- !u!1 &3525566947489794224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5158420282046910491}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (43)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &5158420282046910491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3525566947489794224}
+  m_LocalRotation: {x: -0, y: 0.9988783, z: -0, w: -0.047352143}
+  m_LocalPosition: {x: 4.07, y: -0.0010732015, z: -1.43}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 125
+  m_LocalEulerAnglesHint: {x: 0, y: 185.428, z: 0}
+--- !u!1 &3558642030320036682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7018189949142425437}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (38)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &7018189949142425437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3558642030320036682}
+  m_LocalRotation: {x: -0, y: 0.9988783, z: -0, w: -0.047352143}
+  m_LocalPosition: {x: 10.971999, y: -0.0010732015, z: 5.558}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 120
+  m_LocalEulerAnglesHint: {x: 0, y: 185.428, z: 0}
+--- !u!1 &3694334343803125924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 327131646331594433}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (31)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &327131646331594433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3694334343803125924}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -8.202998, y: -0.0010732015, z: -4.306999}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 113
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &3812640345119573652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9171864076263487728}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (27)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &9171864076263487728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812640345119573652}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -7.852, y: -0.0010732015, z: -4.175}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 109
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &3961056470619337651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8778561755481289240}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (11)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &8778561755481289240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3961056470619337651}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -8.54, y: -0.0010732015, z: 8.44}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 93
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &4023354771692278805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6331617859555070627}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (25)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &6331617859555070627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4023354771692278805}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -15.390999, y: -0.0010732015, z: -6.7539997}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 107
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &4179047329278015890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4249943550374788073}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (13)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4249943550374788073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4179047329278015890}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -8.635, y: -0.0010732015, z: 8.081}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 95
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &4210708038247191379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3988512477872058539}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (42)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &3988512477872058539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4210708038247191379}
+  m_LocalRotation: {x: -0, y: 0.9988783, z: -0, w: -0.047352143}
+  m_LocalPosition: {x: 11.494, y: -0.0010732015, z: 5.038}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 124
+  m_LocalEulerAnglesHint: {x: 0, y: 185.428, z: 0}
+--- !u!1 &4467094200668327331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7502072473738049320}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (9)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &7502072473738049320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4467094200668327331}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -8.784, y: -0.0010732015, z: 8.85}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 91
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &5307941661118036573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 496561519554629767}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (30)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &496561519554629767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5307941661118036573}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -8.510999, y: -0.0010732015, z: -4.139}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 112
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
 --- !u!1 &5364593622256938432
 GameObject:
   m_ObjectHideFlags: 0
@@ -3041,3 +4077,393 @@ Transform:
   m_Father: {fileID: 5364593622379267176}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5515619626309674739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 721030825662620925}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (36)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &721030825662620925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5515619626309674739}
+  m_LocalRotation: {x: -0, y: 0.9988783, z: -0, w: -0.047352143}
+  m_LocalPosition: {x: 11.289, y: -0.0010732015, z: 5.894}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 118
+  m_LocalEulerAnglesHint: {x: 0, y: 185.428, z: 0}
+--- !u!1 &5684579706130018819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6911454594405873772}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (47)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &6911454594405873772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5684579706130018819}
+  m_LocalRotation: {x: -0, y: 0.9988783, z: -0, w: -0.047352143}
+  m_LocalPosition: {x: 3.992, y: -0.0010732015, z: -2.251}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 129
+  m_LocalEulerAnglesHint: {x: 0, y: 185.428, z: 0}
+--- !u!1 &5717056541943328993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8080787687375464043}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (22)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &8080787687375464043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5717056541943328993}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -15.109998, y: -0.0010732015, z: -6.2420006}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 104
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &5944407909604217332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7928485133035033623}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (32)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &7928485133035033623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944407909604217332}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -8.603, y: -0.0010732015, z: -4.503}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 114
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &6102131839864703866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3325341501411277686}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &3325341501411277686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6102131839864703866}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -7.988, y: -0.0010732015, z: 9.188}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 88
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &6400010728334216534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2983110590891602808}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &2983110590891602808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6400010728334216534}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -6.856, y: -0.0010732015, z: 9.019}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 85
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &6559267045567416376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7567579399353739053}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (44)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &7567579399353739053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6559267045567416376}
+  m_LocalRotation: {x: -0, y: 0.9988783, z: -0, w: -0.047352143}
+  m_LocalPosition: {x: 4.0370007, y: -0.0010732015, z: -1.777}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 126
+  m_LocalEulerAnglesHint: {x: 0, y: 185.428, z: 0}
+--- !u!1 &6920320296563910188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6486566166065607239}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (17)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &6486566166065607239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920320296563910188}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -8.54, y: -0.0010732015, z: 6.85}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 99
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &7508518981816839774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4787220480250952760}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (46)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4787220480250952760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508518981816839774}
+  m_LocalRotation: {x: -0, y: 0.9988783, z: -0, w: -0.047352143}
+  m_LocalPosition: {x: 4.3800006, y: -0.0010732015, z: -1.81}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 128
+  m_LocalEulerAnglesHint: {x: 0, y: 185.428, z: 0}
+--- !u!1 &7524928624836895973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7353303566131950426}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (21)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &7353303566131950426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7524928624836895973}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -15.588998, y: -0.0010732015, z: -5.9800005}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 103
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &7817984517993763389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4608269719912161453}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (19)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4608269719912161453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817984517993763389}
+  m_LocalRotation: {x: -0, y: 0.968748, z: -0, w: -0.24804725}
+  m_LocalPosition: {x: -16.581, y: -0.0010732015, z: -8.962}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 101
+  m_LocalEulerAnglesHint: {x: 0, y: 208.724, z: 0}
+--- !u!1 &8136633310426473034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 580671922969951745}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (41)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &580671922969951745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8136633310426473034}
+  m_LocalRotation: {x: -0, y: 0.9988783, z: -0, w: -0.047352143}
+  m_LocalPosition: {x: 11.231, y: -0.0010732015, z: 5.271}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 123
+  m_LocalEulerAnglesHint: {x: 0, y: 185.428, z: 0}
+--- !u!1 &9038705963898877953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4233899364942078632}
+  m_Layer: 8
+  m_Name: Vase Spawn Point (35)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4233899364942078632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9038705963898877953}
+  m_LocalRotation: {x: -0, y: 0.9988783, z: -0, w: -0.047352143}
+  m_LocalPosition: {x: 11.363, y: -0.0010732015, z: 6.274}
+  m_LocalScale: {x: 0.6666668, y: 0.6666667, z: 0.6666668}
+  m_Children: []
+  m_Father: {fileID: 6190040488437571168}
+  m_RootOrder: 117
+  m_LocalEulerAnglesHint: {x: 0, y: 185.428, z: 0}
