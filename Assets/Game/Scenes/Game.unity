@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44366312, g: 0.4929949, b: 0.5725513, a: 1}
+  m_IndirectSpecularColor: {r: 0.44366303, g: 0.4929948, b: 0.5725512, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -327,6 +327,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 261924743357868118}
     m_Modifications:
+    - target: {fileID: 4273881502182525956, guid: 8f1d73582f8c7bd47949059076f194a7,
+        type: 3}
+      propertyPath: trapActivationDelay
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4273881502182525956, guid: 8f1d73582f8c7bd47949059076f194a7,
         type: 3}
       propertyPath: trapEffectController
@@ -886,6 +891,7 @@ GameObject:
   - component: {fileID: 998231631}
   - component: {fileID: 998231630}
   - component: {fileID: 998231629}
+  - component: {fileID: 998231633}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -901,7 +907,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998231628}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
@@ -965,8 +971,20 @@ Transform:
   m_LocalScale: {x: 7.5125, y: 1, z: 4.325}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &998231633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998231628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe6ab58804e7a14c8a4ea481991d5f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1006274748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1191,7 +1209,7 @@ PrefabInstance:
     - target: {fileID: 7790912041674833592, guid: 9726212350c537643a1e0b4cf4fa707f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7790912041674833592, guid: 9726212350c537643a1e0b4cf4fa707f,
         type: 3}
@@ -1347,6 +1365,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 261924743357868118}
     m_Modifications:
+    - target: {fileID: 4273881502182525956, guid: 8f1d73582f8c7bd47949059076f194a7,
+        type: 3}
+      propertyPath: trapActivationDelay
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4273881502182525956, guid: 8f1d73582f8c7bd47949059076f194a7,
         type: 3}
       propertyPath: trapEffectController
@@ -1617,72 +1640,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8fc75dad273f874a9a0588c4ad2ffad, type: 3}
---- !u!1 &1398041670
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1398041674}
-  - component: {fileID: 1398041673}
-  - component: {fileID: 1398041672}
-  - component: {fileID: 1398041671}
-  m_Layer: 0
-  m_Name: KillPlayer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1398041671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398041670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbe6ab58804e7a14c8a4ea481991d5f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &1398041672
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398041670}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10.000001, y: 2.220446e-16, z: 9.999999}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1398041673
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398041670}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1398041674
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398041670}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7681179, y: -2.3, z: -0.3427267}
-  m_LocalScale: {x: 7.0737, y: 1, z: 4.0154}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1415124345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1828,7 +1785,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1554901072
 GameObject:
@@ -2147,6 +2104,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 261924743357868118}
     m_Modifications:
+    - target: {fileID: 4273881502182525956, guid: 8f1d73582f8c7bd47949059076f194a7,
+        type: 3}
+      propertyPath: trapActivationDelay
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4273881502182525956, guid: 8f1d73582f8c7bd47949059076f194a7,
         type: 3}
       propertyPath: trapEffectController
