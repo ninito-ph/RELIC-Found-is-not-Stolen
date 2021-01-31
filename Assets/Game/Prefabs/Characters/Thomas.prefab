@@ -69,8 +69,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4.4
   dashSpeedMultiplier: 3
-  dashDuration: 0.15
-  dashCooldown: 2
+  dashDuration: 0.3
+  dashCooldown: 1.5
   moveDuringDash: 1
   normalStunDuration: 0.65
   fireTrail: {fileID: 1727626132299242, guid: c3416e8bf0fcb854c95191fef7a2df58, type: 3}
@@ -80,6 +80,9 @@ MonoBehaviour:
     type: 3}
   dashEffect: {fileID: 6128198943177155182, guid: 3441aedc6c63dd647bea334f8332c21e,
     type: 3}
+  stealEffect: {fileID: 0}
+  relicVFXNames: 
+  relicVFXObjects: []
   respawnEffect: {fileID: 6128198943177155182, guid: 76340460bdb1a794b87f63deffed091e,
     type: 3}
 --- !u!136 &425181403688130929
@@ -92,7 +95,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.24
+  m_Radius: 0.4
   m_Height: 0.74
   m_Direction: 1
   m_Center: {x: 0, y: 0.36, z: 0}

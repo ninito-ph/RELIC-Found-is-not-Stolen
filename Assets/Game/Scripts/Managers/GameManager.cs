@@ -40,6 +40,7 @@ namespace RELIC
         private GameObject[] spawnableRelics;
 
         private Coroutine spawnVaseRoutine;
+        private bool preSpawnVases = true;
         private Coroutine spawnPlayerRoutine;
 
         [Space] [Header("Game Events")] [SerializeField]
@@ -312,6 +313,8 @@ namespace RELIC
             Collider[] dumpArray = new Collider[10];
             // Caches LayerMask
             int bitwiseLayerMask = LayerMask.GetMask("Entities");
+            // Counts how many vases were spawned
+            int vaseCount = 0;
 
             // Saves the array in a modifiable list
             List<Transform> remainingPointsToSpawn = vaseSpawnPoints.ToList();
@@ -343,8 +346,23 @@ namespace RELIC
                 VaseController vaseController = Instantiate(vase, remainingPointsToSpawn[randomIndex].position,
                     GetRandomRotation(false, true, false)).GetComponent<VaseController>();
                 vaseController.ContainedItem = PickRelic();
+                
+                // Increments spawned vase count
+                vaseCount++;
 
-                yield return interval;
+                // Checks if there are as many spawned vases as there are spawn spots
+                if (vaseCount >= vaseSpawnPoints.Length)
+                {
+                    preSpawnVases = false;
+                }
+
+                // If pre-spawning is disabled, wait for the interval
+                if (preSpawnVases == false)
+                {
+                    yield return interval;
+                }
+
+                yield return null;
             }
         }
 

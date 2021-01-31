@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: escudo
-    second: {fileID: 2100000, guid: f84b789045feeb44fb0c7cc75ce21ca7, type: 2}
+    second: {fileID: 2100000, guid: 340f98bf9ae5c2c449efe9b904bd1785, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
