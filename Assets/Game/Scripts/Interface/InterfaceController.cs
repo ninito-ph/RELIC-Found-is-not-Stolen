@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 namespace RELIC
 {
@@ -14,19 +16,20 @@ namespace RELIC
         public static InterfaceController interfaceController = null;
 
         // Dictionary containing all menus
-        [Header("Menus")]
-        [SerializeField] private string[] menuName;
+        [Header("Menus")] [SerializeField] private string[] menuName;
         [SerializeField] private GameObject[] menuObject;
         private Dictionary<string, GameObject> menus = new Dictionary<string, GameObject>();
-        
+
         // The sound receiver for menu sounds
         private AudioSource menuAudioSource;
+
         // Audio mixers
-        [Header("Game Audio Mixer")]
-        [SerializeField] private AudioMixer mainMixer;
-        
+        [Header("Game Audio Mixer")] [SerializeField]
+        private AudioMixer mainMixer;
+
         [Header("Lobby Parameters")] [SerializeField]
         private GameObject lobbyNumberOfPlayersObject;
+
         private TextMeshProUGUI lobbyNumberOfPlayers;
 
         [SerializeField] private GameObject lobbyStartGameControlsHelpTextObject;
@@ -43,11 +46,11 @@ namespace RELIC
         {
             // Singleton initialization
             interfaceController = this;
-            
+
             // Lobby initialization
             lobbyNumberOfPlayers = lobbyNumberOfPlayersObject.GetComponent<TextMeshProUGUI>();
             menuAudioSource = GetComponent<AudioSource>();
-            
+
             // Links menu strings to menu objects
             for (int index = 0; index < menuObject.Length; index++)
             {
@@ -136,15 +139,43 @@ namespace RELIC
         {
             mainMixer.SetFloat("masterGroup", Mathf.Log10(sliderValue) * 20f);
         }
-        
+
         public void SetMusic(float sliderValue)
         {
             mainMixer.SetFloat("musicGroup", Mathf.Log10(sliderValue) * 20f);
         }
-        
+
         public void SetSFX(float sliderValue)
         {
             mainMixer.SetFloat("sfxGroup", Mathf.Log10(sliderValue) * 20f);
+        }
+
+        public void ReloadGame()
+        {
+            Debug.Log("Yes");
+            // Re-loads
+            SceneManager.LoadScene("Game");
+        }
+
+        public void ShowEndScreen()
+        {
+            HUDController.hudController.gameObject.SetActive(false);
+            int characterEndScreen = GameManager.gameManager.GetWinner();
+            switch (characterEndScreen)
+            {
+                case 0:
+                    SwitchToMenu("Liana");
+                    break;
+                case 1:
+                    SwitchToMenu("Thomas");
+                    break;
+                case 2:
+                    SwitchToMenu("Nara");
+                    break;
+                case 3:
+                    SwitchToMenu("Woody");
+                    break;
+            }
         }
 
         #endregion

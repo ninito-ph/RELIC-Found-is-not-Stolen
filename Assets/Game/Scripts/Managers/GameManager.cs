@@ -108,6 +108,7 @@ namespace RELIC
             StartGame();
             SplitscreenController.splitscreenController.GetCameras();
             SplitscreenController.splitscreenController.SetCameraAmount(playerCount);
+            StartCoroutine(GameTimer());
         }
 
 #if UNITY_EDITOR
@@ -164,6 +165,19 @@ namespace RELIC
 
             string winnerString = "Player " + winningPlayer.ToString() + " has " + largestScore.ToString() + " points!";
             return winnerString;
+        }
+        
+        /// <summary>
+        /// Generates a string with the winner's name and his score
+        /// </summary>
+        /// <returns>A string with the winner's name and his score</returns>
+        public int GetWinner()
+        {
+            // Gets the highest score using LINQ
+            int largestScore = playerScores.Max();
+
+            // Gets the index of the highest score using LINQ
+            return System.Array.IndexOf(playerScores, largestScore);
         }
 
         /// <summary>
@@ -282,6 +296,11 @@ namespace RELIC
 
             // Notifies of game end
             onGameEnd.Invoke();
+
+            foreach (GameObject player in playerPrefabs)
+            {
+                player.SetActive(false);
+            }
         }
 
         /// <summary>
