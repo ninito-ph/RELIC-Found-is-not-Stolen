@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8144705532080382586}
   - component: {fileID: 7405706859194508774}
   - component: {fileID: 7405706859194508770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DashRelic
   m_TagString: Untagged
   m_Icon: {fileID: 0}

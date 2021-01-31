@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 269905862210515027}
   - component: {fileID: 1477022700370403702}
   - component: {fileID: 1477022700370403698}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TrailRelic
   m_TagString: Untagged
   m_Icon: {fileID: 0}

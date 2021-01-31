@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2841313572158162220}
   - component: {fileID: 3508244745433563679}
   - component: {fileID: 3508244745433563651}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShieldRelic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
