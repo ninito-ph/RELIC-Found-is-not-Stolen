@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 269905862210515027}
   - component: {fileID: 1477022700370403702}
   - component: {fileID: 1477022700370403698}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TrailRelic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d9c0f737c3b2741a50dd1d3f450aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfPrefab: {fileID: 1782890555759776134}
   relicLifetime: 10
   pickupDelay: 1.3
   relicEffect: 6

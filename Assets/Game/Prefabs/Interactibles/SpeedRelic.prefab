@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5198230676370830924}
   - component: {fileID: 1615319324518402520}
   - component: {fileID: 2850861120584957493}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpeedRelic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
