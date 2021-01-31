@@ -32,6 +32,9 @@ namespace RELIC
         [SerializeField] private GameObject lobbyStartGameControlsHelpTextObject;
         [SerializeField] private GameObject lobbyTextObject;
 
+        // bool to store game state
+        private bool gameIsPaused = false;
+
         #endregion
 
         #region Unity Methods
@@ -49,6 +52,25 @@ namespace RELIC
             for (int index = 0; index < menuObject.Length; index++)
             {
                 menus.Add(menuName[index], menuObject[index]);
+            }
+        }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (gameIsPaused)
+                {
+                    menus["Pause"].gameObject.SetActive(false);
+                    Time.timeScale = 1f;
+                    gameIsPaused = false;
+                }
+                else
+                {
+                    menus["Pause"].gameObject.SetActive(true);
+                    Time.timeScale = 0f;
+                    gameIsPaused = true;
+                }
             }
         }
 
