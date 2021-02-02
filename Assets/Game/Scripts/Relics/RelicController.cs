@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Security.Cryptography;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -80,6 +78,22 @@ namespace RELIC
             gameObject.SetActive(false);
         }
 
+        private void OnTriggerStay(Collider other)
+        {
+            // If other isn't player or the relic can't be picked up yet
+            if (other.CompareTag("Player") != true || canPickup == false) return;
+            MotorController player = other.GetComponent<MotorController>();
+
+            if (Mathf.Approximately(player.StunTimer, 0f))
+            {
+                player.SetRelic(relicEffect, relicEffectModifier, gameObject);
+
+                Instantiate(pickupEffect, transform.position, Quaternion.identity);
+                StopAllCoroutines();
+                gameObject.SetActive(false);
+            }
+        }
+
         #endregion
 
         #region Public Methods
@@ -130,7 +144,7 @@ namespace RELIC
                 blinkMaterial.SetInt("_Blink", enableBlink == 1 ? enableBlink = 0 : enableBlink = 1);
                 yield return interval;
             }
-            
+
             blinkMaterial.SetInt("_Blink", 0);
         }
 
