@@ -5,21 +5,33 @@ using UnityEngine;
 namespace RELIC
 {
     /// <summary>
-    /// A controller script 
+    /// A controller script for splitscreen
     /// </summary>
     public class SplitscreenController : MonoBehaviour
     {
         #region Field Declarations
-        [Header("Cameras")]
-        [Tooltip("The four cameras used in the game.")]
-        [SerializeField]
-        private Camera[] gameCameras;
+        private List<Camera> gameCameras = new List<Camera>();
+        public static SplitscreenController splitscreenController;
         #endregion
 
-        #region MonoBehaviour Implementation
+        #region Unity Methods
+        void Awake()
+        {
+            splitscreenController = this;
+        }
         #endregion
 
         #region Public Methods
+        public void GetCameras()
+        {
+            GameObject[] cameraObjects = GameObject.FindGameObjectsWithTag("MultiplayerCamera");
+
+            foreach (GameObject cameraObject in cameraObjects)
+            {
+                gameCameras.Add(cameraObject.GetComponent<Camera>());
+            }
+        }
+
         /// <summary>
         /// Sets the amount of splitscreen cameras. Supports up to 4-way splitscreen.
         /// </summary>
@@ -31,34 +43,24 @@ namespace RELIC
             switch (cameraAmount)
             {
                 case 2:
-                    // Enables and disables GameObjects
-                    gameCameras[2].gameObject.SetActive(false);
-                    gameCameras[3].gameObject.SetActive(false);
-
-                    // Vertical double splitscreen coordinates for cameras
-                    gameCameras[0].rect = new Rect(0f, 0f, 0.5f, 1f);
-                    gameCameras[1].rect = new Rect(0.5f, 0f, 0.5f, 1f);
+                    gameCameras[0].rect = new Rect(0.25175f, 0.5117f, 0.482f, 0.465f);
+                    gameCameras[1].rect = new Rect(0.25175f, 0.023f, 0.482f, 0.465f);
+                    // total border size (percentage) = 0.036
+                    // total width border size (pixels) = 0.036 x 1980 = 71.28
+                    // desired total height border size (pixels) = 71.28 / 1020 ~= 0.07
                     break;
                 case 3:
-                    // Enables and disables GameObjects
-                    gameCameras[2].gameObject.SetActive(true);
-                    gameCameras[3].gameObject.SetActive(false);
-
                     // Three-way splitscreen coordinates for cameras
-                    gameCameras[0].rect = new Rect(0f, 0.5f, 0.5f, 0.5f);
-                    gameCameras[1].rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
-                    gameCameras[2].rect = new Rect(0f, 0f, 0.5f, 0.5f);
+                    gameCameras[0].rect = new Rect(0.012f, 0.5117f, 0.482f, 0.465f);
+                    gameCameras[1].rect = new Rect(0.506f, 0.5117f, 0.482f, 0.465f);
+                    gameCameras[2].rect = new Rect(0.012f, 0.023f, 0.482f, 0.465f);
                     break;
                 case 4:
-                    // Enables and disables GameObjects
-                    gameCameras[2].gameObject.SetActive(true);
-                    gameCameras[3].gameObject.SetActive(true);
-
                     // Four-way splitscreen coordinates for cameras
-                    gameCameras[0].rect = new Rect(0f, 0.5f, 0.5f, 0.5f);
-                    gameCameras[1].rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
-                    gameCameras[2].rect = new Rect(0f, 0f, 0.5f, 0.5f);
-                    gameCameras[3].rect = new Rect(0.5f, 0f, 0.5f, 0.5f);
+                    gameCameras[0].rect = new Rect(0.012f, 0.5117f, 0.482f, 0.465f);
+                    gameCameras[1].rect = new Rect(0.506f, 0.5117f, 0.482f, 0.465f);
+                    gameCameras[2].rect = new Rect(0.012f, 0.023f, 0.482f, 0.465f);
+                    gameCameras[3].rect = new Rect(0.506f, 0.023f, 0.482f, 0.465f);
                     break;
                 default:
                     Debug.LogError("Unsupported camera amount! Something went wrong, because this part of the code is supposed to be unreachable!");

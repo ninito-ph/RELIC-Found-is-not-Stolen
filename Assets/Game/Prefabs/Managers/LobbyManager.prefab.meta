@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Game/Prefabs/Floor.meta
+guid: d8fc75dad273f874a9a0588c4ad2ffad
+folderAsset: yes
+DefaultImporter:
+=======
+guid: ba01a36f412c8174c954fa0ca232675a
+PrefabImporter:
+>>>>>>> fix/player-movement:Assets/Game/Prefabs/InputManager.prefab.meta
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
